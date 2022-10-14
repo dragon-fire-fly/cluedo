@@ -35,7 +35,7 @@ def calculate_distance(point1, point2):
     row_diff = abs(point1[0] - point2[0])
     column_diff = abs(point1[1] - point2[1])
     total_distance = row_diff + column_diff
-    return f"{total_distance} space(s)"
+    return f"{total_distance}"
 
 
 def room_distances(rooms, player_location):
@@ -78,22 +78,41 @@ def choose_room():
     the console. Requests input for which room the player wants to move to."""
     
     print(which_room(player1))
-    print(f"You have rolled a {roll_die()}.")
+    turn_die_roll = roll_die()
+    print(f"You have rolled a {turn_die_roll}.")
     print("=" * 40)
     print(f"The rooms are the following distances: ")
     i = 0
-    room_choices = {}
+    room_options = {}
     for k, v in room_distances(ROOMS, player1).items():
         i += 1
-        room_choices[i] = k
-        if v == "0 space(s)":
-            print(f"{i}- {k}: {v} (stay in room)")
+        room_options[i] = k
+        if v == "0":
+            print(f"{i}- {k}: {v} space(s) (stay in room)")
         else:
-            print(f"{i}- {k}: {v}")
-    desired_room = input("Which room would you like to move towards?")
-    print(room_choices)
+            print(f"{i}- {k}: {v} space(s)")
+    user_room_choice = int(input("Which room would you like to move towards?: "))
+    print(f"room choices:{room_options}")
+    desired_room = room_options.pop(user_room_choice)
+    print(f"You have chosen the {desired_room}")
+    move(player1, desired_room, turn_die_roll)
 
 
+def move(player1, desired_room, die_roll):
+    """
+    Takes a player's current and desired location and moves
+    the player towards the chosen room
+    """
+    print(room_distances(ROOMS, player1)[desired_room])
+    if die_roll >= int(room_distances(ROOMS, player1)[desired_room]):
+        player1 = ROOMS[desired_room]
+        print(player1)
+        print(f"You are now in the {desired_room}")
+    # print(room_distances(ROOMS, player1)[desired_room])
+    else:
+        which_room(player1)
+        print(f"You have not rolled enough to reach the {desired_room}.")
+        input(f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay in current room\nYour answer (1 or 2): ")
 
 
 
