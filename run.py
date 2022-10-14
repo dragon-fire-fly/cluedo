@@ -24,7 +24,20 @@ ROOMS = {
     "Study": (7, 7),
 }
 
-print(GAME_BOARD[0])
-print(ROOMS)
+# print(GAME_BOARD[0])
+# print(ROOMS)
 
 
+def calculate_distance(point1, point2):
+    """Takes two points on the gameboard and calculates and returns the total
+    number of spaces between the two points"""
+    row_diff = abs(point1[0] - point2[0])
+    column_diff = abs(point1[1] - point2[1])
+    total_distance = row_diff + column_diff
+    return f"{total_distance} space(s)"
+
+
+player1 = (4, 1)
+
+print(calculate_distance(player1, ROOMS["Kitchen"]))
+print(calculate_distance(player1, ROOMS["Library"]))
