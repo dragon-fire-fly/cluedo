@@ -57,6 +57,24 @@ def room_distances(rooms, player_location):
     return distance_dict
 
 
-player = (4, 1)
+def which_room(current_space):
+    """ Takes the current space of a player and returns which room they are in. 
+    If player is not in a room, returns hallway. """
+    for room, space in ROOMS.items():
+        if current_space == space:
+            return f"You are currently in the {room}."
+    return f"You are currently in the hallway"
 
-print(room_distances(ROOMS, player))
+
+player1 = (4, 1)
+
+
+print(which_room(player1))
+
+print("=" * 40)
+print(f"The rooms are the following distances: ")
+for k, v in room_distances(ROOMS, player1).items():
+    if v == "0 space(s)":
+        pass
+    else:
+        print(f"- {k}: {v}")
