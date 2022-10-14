@@ -1,3 +1,4 @@
+import random
 # Gameboard
 
 # (#, ##) where # is the row and ## is the column
@@ -65,16 +66,35 @@ def which_room(current_space):
             return f"You are currently in the {room}."
     return f"You are currently in the hallway"
 
+def roll_die():
+    """ Returns a random number between 1 and 6. """
+    return random.randint(1, 6)
 
 player1 = (4, 1)
+# needs a validation decorator
+def choose_room():
+    """ Collects and prints information about which room the player is currently in,
+    the outcome of the die roll and the number of spaces to each room to
+    the console. Requests input for which room the player wants to move to."""
+    
+    print(which_room(player1))
+    print(f"You have rolled a {roll_die()}.")
+    print("=" * 40)
+    print(f"The rooms are the following distances: ")
+    i = 0
+    room_choices = {}
+    for k, v in room_distances(ROOMS, player1).items():
+        i += 1
+        room_choices[i] = k
+        if v == "0 space(s)":
+            print(f"{i}- {k}: {v} (stay in room)")
+        else:
+            print(f"{i}- {k}: {v}")
+    desired_room = input("Which room would you like to move towards?")
+    print(room_choices)
 
 
-print(which_room(player1))
 
-print("=" * 40)
-print(f"The rooms are the following distances: ")
-for k, v in room_distances(ROOMS, player1).items():
-    if v == "0 space(s)":
-        pass
-    else:
-        print(f"- {k}: {v}")
+
+
+choose_room()
