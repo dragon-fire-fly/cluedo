@@ -1,6 +1,54 @@
+# Cluedo Planning
+
+## Rules:
+1. The murderer, murder weapon and murder location have been placed inside the "murder envelope"
+2. Miss Scarlet always goes first, then play moves diagonally.
+3. Roll the dice or use a secret passage each turn to move from room to room. You may move up, down or sideways, but not diagonally. 
+4. On your turn, if you are in a room, you may question the other suspects about any suspect, any weapon and the location you are currently at. 
+5. Starting with the player to your left, if that player has one of the three suggested cards, they must show you one. If they don't have any cards, they player to their left is questioned next, and so on.
+6. Once you feel certain that you know the murderer, murder weapon and room, you may make an accusation. You may only make one accusation per game.
+
+
+## Potential OOP objects:
+- Game board
+- Player(s)/ player piece(s)
+- Cards
+- Dice
+- Scorecard/ tracker
+
+# Functions
+## Gameboard
+![Cluedo board](game_board_layout.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome USER_NAME,
+Welcome dragon-fire-fly,
 
 This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
 
