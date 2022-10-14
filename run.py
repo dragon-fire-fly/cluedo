@@ -37,7 +37,26 @@ def calculate_distance(point1, point2):
     return f"{total_distance} space(s)"
 
 
-player1 = (4, 1)
+def room_distances(rooms, player_location):
+    """Calls the calculate_distances() function to calculate the distance
+    between the player's current location and each of the rooms on the board.
+    Returns an updated dictionary of current distances to each room."""
+    distance_dict = {
+        "Kitchen": 0,
+        "Ball Room": 0,
+        "Conservatory": 0,
+        "Billiard Room": 0,
+        "Dining Room": 0,
+        "Library": 0,
+        "Lounge": 0,
+        "Main Hall": 0,
+        "Study": 0,
+    }
+    for room in rooms:
+        distance_dict[room] = calculate_distance(ROOMS[room], player_location)
+    return distance_dict
 
-print(calculate_distance(player1, ROOMS["Kitchen"]))
-print(calculate_distance(player1, ROOMS["Library"]))
+
+player = (4, 1)
+
+print(room_distances(ROOMS, player))
