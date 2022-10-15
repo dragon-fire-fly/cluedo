@@ -56,9 +56,7 @@ class Gameboard:
             "Study": 0,
         }
         for room in rooms:
-            distance_dict[room] = self.calculate_distance(
-                ROOMS[room], player_location
-            )
+            distance_dict[room] = self.calculate_distance(ROOMS[room], player_location)
         return distance_dict
 
     def which_room(self, current_space):
@@ -66,8 +64,8 @@ class Gameboard:
         If player is not in a room, returns hallway."""
         for room, space in ROOMS.items():
             if current_space == space:
-                return f"You are currently in the {room}."
-        return f"You are currently in the hallway"
+                return room
+        return "the hallway"
 
     def roll_die(self):
         """Returns a random number between 1 and 6."""
@@ -79,49 +77,82 @@ class Gameboard:
         the outcome of the die roll and the number of spaces to each room to
         the console. Requests input for which room the player wants to move to."""
 
-        print(self.which_room(player))
+        current_room = self.which_room(player)
+        print(f"You are currently in the {current_room}.")
         turn_die_roll = self.roll_die()
         print(f"You have rolled a {turn_die_roll}.")
         print("=" * 40)
         print(f"The rooms are the following distances: ")
         i = 0
+        room_distances = self.room_distances(ROOMS, player)
         room_options = {}
         for k, v in self.room_distances(ROOMS, player).items():
+            if v == "0":
+                passageway_room = self.check_for_secret_passageway(current_room)
+                print(f"passageway_room: {passageway_room}")
+                if passageway_room:
+                    print("Found it")
+                    room_distances[passageway_room] = "0"
+
+        for k, v in room_distances.items():
             i += 1
             room_options[i] = k
-            if v == "0":
+            if v == "0" and k == current_room:
                 print(f"{i}- {k}: {v} space(s) (stay in room)")
-            else:
+
+            elif v == "0":
+                print(f"{i}- {k}: {v} space(s) (Use secret passageway)")
+            elif current_room not in room_options.keys() and len(v) <= 2:
                 print(f"{i}- {k}: {v} space(s)")
+            else:
+                print(f"{i}- {k}: {v}")
         user_room_choice = int(input("Which room would you like to move towards?: "))
         print(f"room choices:{room_options}")
         desired_room = room_options.pop(user_room_choice)
         print(f"You have chosen the {desired_room}")
-        self.move(player, desired_room, turn_die_roll)
+        self.move(player, desired_room, turn_die_roll, room_distances)
 
-    def move(self, player, desired_room, die_roll):
+    def move(self, player, desired_room, die_roll, room_distances):
         """
         Takes a player's current and desired location and moves
         the player towards the chosen room
         """
-        print(self.room_distances(ROOMS, player)[desired_room])
-        if die_roll >= int(self.room_distances(ROOMS, player)[desired_room]):
+        print(room_distances[desired_room])
+        if die_roll >= int(room_distances[desired_room]):
             player = ROOMS[desired_room]
             print(player)
             print(f"You are now in the {desired_room}")
-        # print(room_distances(ROOMS, player)[desired_room])
+        # print(room_distances[desired_room])
         else:
             self.which_room(player)
             print(f"You have not rolled enough to reach the {desired_room}.")
-            input(
+            stay_or_move = input(
                 f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay in current room\nYour answer (1 or 2): "
             )
+            if stay_or_move == "1":
+                pass
+
+            elif stay_or_move == "2":
+                print(f"You have chosen to stay in the {self.which_room(player)}")
+                # investigate(self.which_room(player))
+
+    def check_for_secret_passageway(self, current_room):
+        """
+        Takes a player's current location and determines if there is a secret
+        passageway connecting that location to another.
+        """
+        if current_room == "Kitchen":
+            return "Study"
+        elif current_room == "Study":
+            return "Kitchen"
+        elif current_room == "Lounge":
+            return "Conservatory"
+        elif current_room == "Conservatory":
+            return "Lounge"
 
 
-
-
-player1 = (4, 1)
+player1 = (1, 1)
 
 gameboard = Gameboard(ROOMS, player1)
 
-print(gameboard.choose_room(player1))
+gameboard.choose_room(player1)
