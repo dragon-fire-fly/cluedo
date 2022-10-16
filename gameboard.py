@@ -28,9 +28,9 @@ import random
 
 
 class Gameboard:
-    def __init__(self, rooms, player):
+    def __init__(self, rooms):
         self.rooms = rooms
-        self.player = player
+        # self.player = player
 
     def calculate_distance(self, point1, point2):
         """Takes two points on the gameboard and calculates and returns the total
@@ -65,7 +65,7 @@ class Gameboard:
         """Takes the current space of a player and returns which room they are in.
         If player is not in a room, returns hallway."""
         for room, space in self.rooms.items():
-            if current_space == space:
+            if current_space[0] == space[0] and current_space[1] == space[1]:
                 return room
         return "the hallway"
 
@@ -123,6 +123,7 @@ class Gameboard:
             player = self.rooms[desired_room]
             # print(player)
             print(f"You are now in the {desired_room}")
+            return player
         # print(room_distances[desired_room])
         else:
             self.which_room(player)

@@ -96,10 +96,29 @@ print(cards.deal_cards())
 
 # print(tabulate(game_board))
 
-player = [4, 4]
+player = [1, 1]
 
-gameboard = Gameboard(ROOM_LOCATIONS, player)
-print(f"Player is at {player}")
+gameboard = Gameboard(ROOM_LOCATIONS)
 
-gameboard.choose_room(player)
-print(f"Player is at {player}")
+
+## Investigation phase
+
+
+def investigate(player):
+    """
+    Allows the player to investigate other player's cards
+    """
+    player_location = gameboard.choose_room(player)
+    print(player)
+    print("======== Investigation phase ========")
+    print(f"You are in the {gameboard.which_room(player)}\n ===== SUSPECTS =====")
+    for num, suspect in SUSPECTS.items():
+        print(num, suspect)
+    suspect = input("Who would you like to investigate?: ")
+    print("===== WEAPONS =====")
+    for num, weapon in WEAPONS.items():
+        print(num, weapon)
+    weapon = input("Which weapon would you like to investigate?: ")
+    
+
+investigate(player)
