@@ -3,7 +3,7 @@ from tabulate import tabulate
 
 from gameboard import Gameboard
 
-# from cards import Cards
+from cards import Cards
 
 # Room Locations on board
 ROOM_LOCATIONS = {
@@ -89,10 +89,10 @@ game_board = (
 )
 
 print("Start")
-# cards = Cards(CARDS, DEALT_CARDS)
+cards = Cards(CARDS, DEALT_CARDS)
 
 
-# print(cards.dealt_cards)
+print(cards.deal_cards())
 
 # print(tabulate(game_board))
 
