@@ -56,7 +56,9 @@ class Gameboard:
             "Study": 0,
         }
         for room in rooms:
-            distance_dict[room] = self.calculate_distance(self.rooms[room], player_location)
+            distance_dict[room] = self.calculate_distance(
+                self.rooms[room], player_location
+            )
         return distance_dict
 
     def which_room(self, current_space):
@@ -139,7 +141,7 @@ class Gameboard:
                         print("up")
                         die_roll -= 1
                         player[0] -= 1
-                    elif self.rooms[desired_room][0] - player[0]== 0:
+                    elif self.rooms[desired_room][0] - player[0] == 0:
                         print("No up and down movement")
                     # left or right?
                     if die_roll:
@@ -153,7 +155,7 @@ class Gameboard:
                             player[1] -= 1
                         else:
                             print("No sideways movement")
-                        return(player)
+                        return player
 
             elif stay_or_move == "2":
                 print(f"You have chosen to stay in the {self.which_room(player)}")
@@ -172,6 +174,3 @@ class Gameboard:
             return "Conservatory"
         elif current_room == "Conservatory":
             return "Lounge"
-
-
-
