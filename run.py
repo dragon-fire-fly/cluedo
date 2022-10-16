@@ -1,4 +1,5 @@
 import random
+from tabulate import tabulate
 
 from gameboard import Gameboard
 
@@ -15,11 +16,24 @@ ROOMS = {
     "Study": (7, 7),
 }
 
+game_board = (
+(("Kitchen*"), (" "), (" "), ("Ballroom"), (" "), (" "), ("Conservatory*")),
+((" "), (" "), (" "), (" "), (" "), (" "), (" ")),
+((" "), (" "), (" "), (" "), (" "), (" "), ("Billiard Room")),
+(("Dining Room"), (" "), (" "), (" "), (" "), (" "), (" ")),
+((" "), (" "), (" "), (" "), (" "), (" "), ("Library")),
+((" "), (" "), (" "), (" "), (" "), (" "), (" ")),
+(("Lounge*"), (" "), (" "), ("Main Hall"), (" "), (" "), ("Study*"))
+)
 
 print("Start")
+print(tabulate(game_board))
 
-player1 = (7, 1)
+player = [4, 4]
 
-gameboard = Gameboard(ROOMS, player1)
+gameboard = Gameboard(ROOMS, player)
+print(f"Player is at {player}")
 
-gameboard.choose_room(player1)
+gameboard.choose_room(player)
+print(f"Player is at {player}")
+

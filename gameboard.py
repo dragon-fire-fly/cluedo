@@ -129,9 +129,31 @@ class Gameboard:
                 f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay in current room\nYour answer (1 or 2): "
             )
             if stay_or_move == "1":
-                pass
-
-
+                # Calculating where on the board the player will end up after moving towards the chosen room
+                while die_roll:
+                    if self.rooms[desired_room][0] - player[0] > 0:
+                        print("down")
+                        die_roll -= 1
+                        player[0] += 1
+                    elif self.rooms[desired_room][0] - player[0] < 0:
+                        print("up")
+                        die_roll -= 1
+                        player[0] -= 1
+                    elif self.rooms[desired_room][0] - player[0]== 0:
+                        print("No up and down movement")
+                    # left or right?
+                    if die_roll:
+                        if self.rooms[desired_room][1] - player[1] > 0:
+                            print("right")
+                            die_roll -= 1
+                            player[1] += 1
+                        elif self.rooms[desired_room][1] - player[1] < 0:
+                            print("left")
+                            die_roll -= 1
+                            player[1] -= 1
+                        else:
+                            print("No sideways movement")
+                        return(player)
 
             elif stay_or_move == "2":
                 print(f"You have chosen to stay in the {self.which_room(player)}")
