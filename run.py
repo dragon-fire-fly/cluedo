@@ -51,31 +51,31 @@ DEALT_CARDS = {
 }
 
 SUSPECTS = {
-    1: "Miss Scarlett",
-    2: "Colonel Mustard",
-    3: "Mrs. White",
-    4: "Reverend Green",
-    5: "Mrs. Peacock",
-    6: "Professor Plum",
+    "1": "Miss Scarlett",
+    "2": "Colonel Mustard",
+    "3": "Mrs. White",
+    "4": "Reverend Green",
+    "5": "Mrs. Peacock",
+    "6": "Professor Plum",
 }
 WEAPONS = {
-    1: "Dagger",
-    2: "Candlestick",
-    3: "Revolver",
-    4: "Rope",
-    5: "Lead piping",
-    6: "Spanner",
+    "1": "Dagger",
+    "2": "Candlestick",
+    "3": "Revolver",
+    "4": "Rope",
+    "5": "Lead piping",
+    "6": "Spanner",
 }
 ROOMS = {
-    1: "Kitchen",
-    2: "Ball Room",
-    3: "Conservatory",
-    4: "Dining Room",
-    5: "Billiard Room",
-    6: "Library",
-    7: "Lounge",
-    8: "Hall",
-    9: "Study",
+    "1": "Kitchen",
+    "2": "Ball Room",
+    "3": "Conservatory",
+    "4": "Dining Room",
+    "5": "Billiard Room",
+    "6": "Library",
+    "7": "Lounge",
+    "8": "Hall",
+    "9": "Study",
 }
 
 game_board = (
@@ -103,22 +103,27 @@ gameboard = Gameboard(ROOM_LOCATIONS)
 
 ## Investigation phase
 
-
+# need 1-6 validation decorator
 def investigate(player):
     """
     Allows the player to investigate other player's cards
     """
     player_location = gameboard.choose_room(player)
+    current_room = gameboard.which_room(player)
     print(player)
     print("======== Investigation phase ========")
-    print(f"You are in the {gameboard.which_room(player)}\n ===== SUSPECTS =====")
-    for num, suspect in SUSPECTS.items():
-        print(num, suspect)
-    suspect = input("Who would you like to investigate?: ")
-    print("===== WEAPONS =====")
-    for num, weapon in WEAPONS.items():
-        print(num, weapon)
-    weapon = input("Which weapon would you like to investigate?: ")
-    
-
+    confirm_choice = False
+    while not confirm_choice:
+        print(f"You are in the {current_room}\n ===== SUSPECTS =====")
+        for num, suspect in SUSPECTS.items():
+            print(num, suspect)
+        suspect = input("Who would you like to investigate?: ")
+        print("===== WEAPONS =====")
+        for num, weapon in WEAPONS.items():
+            print(num, weapon)
+        weapon = input("Which weapon would you like to investigate?: ")
+        check_choice = input(f"Are you sure you want to investigate {SUSPECTS[suspect]} with the {WEAPONS[weapon]} in the {current_room}? y/n:")
+        if check_choice == "y":
+            confirm_choice = True
+        # need to add validation for y/n answer
 investigate(player)
