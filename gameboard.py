@@ -32,7 +32,7 @@ class Gameboard:
         self.rooms = rooms
         # self.player = player
 
-    def calculate_distance(self, point1, point2):
+    def calculate_distance(self, point1: tuple, point2: tuple):
         """Takes two points on the gameboard and calculates and returns the total
         number of spaces between the two points"""
         row_diff = abs(point1[0] - point2[0])
@@ -81,8 +81,8 @@ class Gameboard:
 
         current_room = self.which_room(player)
         print(f"You are currently in the {current_room}.")
-        turn_die_roll = self.roll_die()
-        print(f"You have rolled a {turn_die_roll}.")
+        die_roll = self.roll_die()
+        print(f"You have rolled a {die_roll}.")
         print("=" * 40)
         print(f"The rooms are the following distances: ")
         i = 0
@@ -111,7 +111,7 @@ class Gameboard:
         print(f"room choices:{room_options}")
         desired_room = room_options.pop(user_room_choice)
         print(f"You have chosen the {desired_room}")
-        self.move(player, desired_room, turn_die_roll, room_distances)
+        self.move(player, desired_room, die_roll, room_distances)
 
     def move(self, player, desired_room, die_roll, room_distances):
         """

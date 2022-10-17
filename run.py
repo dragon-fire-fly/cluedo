@@ -100,10 +100,22 @@ player = [1, 1]
 
 gameboard = Gameboard(ROOM_LOCATIONS)
 
+def input_validation(chosen_dict, user_input):
+    while True:
+        choice = input(f"Which {user_input} would you like to investigate?: ")
+        for k, v in chosen_dict.items():
+            if choice == k:
+                return k
+            elif choice == v:
+                return k
+        print(f"Sorry, that is not a valid input, please enter a number between 1-{len(chosen_dict)}")
+
+
+
 
 ## Investigation phase
 
-# need 1-6 validation decorator
+# need 1-6 validation
 def investigate(player):
     """
     Allows the player to investigate other player's cards
@@ -117,11 +129,11 @@ def investigate(player):
         print(f"You are in the {current_room}\n ===== SUSPECTS =====")
         for num, suspect in SUSPECTS.items():
             print(num, suspect)
-        suspect = input("Who would you like to investigate?: ")
+        suspect = input_validation(SUSPECTS, "suspect")
         print("===== WEAPONS =====")
         for num, weapon in WEAPONS.items():
             print(num, weapon)
-        weapon = input("Which weapon would you like to investigate?: ")
+        weapon = input_validation(WEAPONS, "weapon")
         check_choice = input(f"Are you sure you want to investigate {SUSPECTS[suspect]} with the {WEAPONS[weapon]} in the {current_room}? y/n:")
         if check_choice == "y":
             confirm_choice = True
