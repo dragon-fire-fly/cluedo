@@ -1,4 +1,5 @@
 import random
+import time
 from tabulate import tabulate
 
 from gameboard import Gameboard
@@ -100,16 +101,36 @@ player = [1, 1]
 
 gameboard = Gameboard(ROOM_LOCATIONS)
 
-def input_validation(chosen_dict, user_input):
+def number_input_validation(user_input, chosen_dict= None):
+    """
+    Takes an input and a relevant dictionary and prompts the user to choose an option.
+    If the user input is valid, returns 
+    """
     while True:
-        choice = input(f"Which {user_input} would you like to investigate?: ")
-        for k, v in chosen_dict.items():
-            if choice == k:
-                return k
-            elif choice == v:
-                return k
-        print(f"Sorry, that is not a valid input, please enter a number between 1-{len(chosen_dict)}")
+        if user_input == "suspect" or user_input == "weapon":
+            choice = input(f"Which {user_input} would you like to investigate?: ")
+            for k, v in chosen_dict.items():
+                if choice == k:
+                    return k
+                elif choice == v:
+                    return k
+            print(f"Sorry, that is not a valid input, please enter a number between 1-{len(chosen_dict)}")
 
+
+def y_n_input_validation(user_input):   
+    """
+    Takes user input and checks whether it is a valid yes or no answer
+    """
+    choice = user_input
+    while True:
+        if choice.lower() == "y" or choice.lower() == "yes":
+            return True
+        elif choice.lower() == "n" or choice.lower() == "no":
+            print("Please make new choices for the investigation")
+            time.sleep(1)
+            return
+        else:
+            choice = input("Sorry, that was an invalid choice. y/n? ")
 
 
 
@@ -129,13 +150,15 @@ def investigate(player):
         print(f"You are in the {current_room}\n ===== SUSPECTS =====")
         for num, suspect in SUSPECTS.items():
             print(num, suspect)
-        suspect = input_validation(SUSPECTS, "suspect")
+        suspect = number_input_validation("suspect", SUSPECTS)
         print("===== WEAPONS =====")
         for num, weapon in WEAPONS.items():
             print(num, weapon)
-        weapon = input_validation(WEAPONS, "weapon")
-        check_choice = input(f"Are you sure you want to investigate {SUSPECTS[suspect]} with the {WEAPONS[weapon]} in the {current_room}? y/n:")
-        if check_choice == "y":
-            confirm_choice = True
-        # need to add validation for y/n answer
+        weapon = number_input_validation("weapon", WEAPONS)
+        
+        print(f"Are you sure you want to investigate {SUSPECTS[suspect]} with the {WEAPONS[weapon]} in the {current_room}?")
+        check_choice = input("y/n: ")
+        confirm_choice = y_n_input_validation(check_choice)
+
+        
 investigate(player)
