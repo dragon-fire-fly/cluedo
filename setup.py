@@ -7,7 +7,7 @@
 
 from gameboard import Gameboard
 from cards import Cards
-from players import Player
+from players import AIPlayer, Player
 
 # Constants for game:
 
@@ -119,9 +119,31 @@ print(user_hand)
 print(DEALT_CARDS)
 
 # for the other characters, instatiate ai characters and assign hands
+# for character in DEALT_CARDS.keys():
+#     character = AIPlayer(DEALT_CARDS[character])
+# print(character)
 
+ai_char_list = []
+if DEALT_CARDS.get("Miss Scarlett"):
+    miss_scarlett = AIPlayer(DEALT_CARDS["Miss Scarlett"])
+    ai_char_list.append(miss_scarlett)
+if DEALT_CARDS.get("Colonel Mustard"):
+    col_mustard = AIPlayer(DEALT_CARDS["Colonel Mustard"])
+    ai_char_list.append(col_mustard)
+if DEALT_CARDS.get("Mrs. White"):
+    mrs_white = AIPlayer(DEALT_CARDS["Mrs. White"])
+    ai_char_list.append(mrs_white)
+if DEALT_CARDS["Reverend Green"]:
+    rev_green = AIPlayer(DEALT_CARDS["Reverend Green"])
+    ai_char_list.append(rev_green)
+if DEALT_CARDS["Mrs. Peacock"]:
+    mrs_peacock = AIPlayer(DEALT_CARDS["Mrs. Peacock"])
+    ai_char_list.append(mrs_peacock)
+if DEALT_CARDS["Professor Plum"]:
+    prof_plum = AIPlayer(DEALT_CARDS["Professor Plum"])
+    ai_char_list.append(prof_plum)
 
-
+print(ai_char_list[0].check_cards())
 
 
 

@@ -96,8 +96,8 @@ class Player:
 
 # AI Player class
 class AIPlayer:
-    def __init__(self):
-        pass
+    def __init__(self, cards):
+        self.cards = cards
 
-    def check_cards():
-        pass
+    def check_cards(self):
+        print(self.cards)
