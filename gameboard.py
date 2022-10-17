@@ -40,6 +40,7 @@ class Gameboard:
         total_distance = row_diff + column_diff
         return f"{total_distance}"
 
+    # player or run.py
     def room_distances(self, rooms, player_location):
         """Calls the calculate_distances() function to calculate the distance
         between the player's current location and each of the rooms on the board.
