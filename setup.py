@@ -33,12 +33,12 @@ CARDS = [
         "Miss Scarlett",
     ],
     [
-    "Dagger", 
-    "Candlestick", 
-    "Revolver", 
-    "Rope", 
-    "Lead piping", 
-    "Spanner"
+        "Dagger", 
+        "Candlestick", 
+        "Revolver", 
+        "Rope", 
+        "Lead piping", 
+        "Spanner"
     ],
     [
         "Main Hall",
@@ -109,11 +109,19 @@ player = Player(SUSPECTS,WEAPONS)
 cards.deal_cards()
 print(DEALT_CARDS)
 
-
-# Instantiate non-playable player classes
 # Ask user which player they want to play:
+chosen_character = player.choose_character()
+print(f"You have chosen {chosen_character}.")
+
+# pop out the cards dealt to the chosen character
+user_hand = DEALT_CARDS.pop(chosen_character)
+print(user_hand)
+print(DEALT_CARDS)
+
+# for the other characters, instatiate ai characters and assign hands
 
 
-player.choose_player()
+
+
 
 

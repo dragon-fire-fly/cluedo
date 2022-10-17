@@ -1,4 +1,5 @@
 import time
+import random
 
 def number_input_validation(user_input, chosen_dict= None):
     """
@@ -39,12 +40,15 @@ class Player:
         self.suspect_dict = suspect_dict
         self.weapon_dict = weapon_dict
     
-    def choose_player(self):
+    def choose_character(self):
+        """
+        Allows the user to choose which character they want to play.
+        """
         print("====== PLAYERS ======")
         for num, player in self.suspect_dict.items():
             print(num, player)
         user_character_choice = number_input_validation("character", self.suspect_dict)
-        print(f"You have chosen {self.suspect_dict[user_character_choice]}.")
+        return self.suspect_dict[user_character_choice]
 
 
     def check_scorecard(self):
@@ -80,8 +84,11 @@ class Player:
     def make_accusation():
         pass
 
-    def roll_die():
-        pass
+    def roll_die(self):
+        """
+        Returns a random number between 1 and 6.
+        """
+        return random.randint(1, 6)
 
 
 
