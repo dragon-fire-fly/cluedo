@@ -8,12 +8,14 @@ def number_input_validation(user_input, chosen_dict= None):
     while True:
         if user_input == "suspect" or user_input == "weapon":
             choice = input(f"Which {user_input} would you like to investigate?: ")
-            for k, v in chosen_dict.items():
-                if choice == k:
-                    return k
-                elif choice == v:
-                    return k
-            print(f"Sorry, that is not a valid input, please enter a number between 1-{len(chosen_dict)}")
+        elif user_input == "character":
+            choice = input(f"Which character would you like to play?: ")
+        for k, v in chosen_dict.items():
+            if choice == k:
+                return k
+            elif choice == v:
+                return k
+        print(f"Sorry, that is not a valid input, please enter a number between 1-{len(chosen_dict)}")
 
 
 def y_n_input_validation(user_input):   
@@ -36,6 +38,13 @@ class Player:
     def __init__(self, suspect_dict, weapon_dict):
         self.suspect_dict = suspect_dict
         self.weapon_dict = weapon_dict
+    
+    def choose_player(self):
+        print("====== PLAYERS ======")
+        for num, player in self.suspect_dict.items():
+            print(num, player)
+        user_character_choice = number_input_validation("character", self.suspect_dict)
+        print(f"You have chosen {self.suspect_dict[user_character_choice]}.")
 
 
     def check_scorecard(self):

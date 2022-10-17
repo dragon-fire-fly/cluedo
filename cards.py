@@ -22,7 +22,6 @@ class Cards:
             for card in cards[i]:
                 remaining_cards.append(card)
         shuffled_cards = self.shuffle_cards(remaining_cards)
-        print(shuffled_cards)
 
         # Deal to each of the six suspects
         while shuffled_cards:

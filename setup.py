@@ -106,5 +106,14 @@ cards = Cards(CARDS, DEALT_CARDS)
 player = Player(SUSPECTS,WEAPONS)
 
 # deal the game cards
-print(cards.deal_cards())
+cards.deal_cards()
+print(DEALT_CARDS)
+
+
+# Instantiate non-playable player classes
+# Ask user which player they want to play:
+
+
+player.choose_player()
+
 
