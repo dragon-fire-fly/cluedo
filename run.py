@@ -1,9 +1,11 @@
 import random
 import time
 from tabulate import tabulate
+import os
+import copy
 
 from setup import player
-from setup import gameboard
+from setup import gameboard, ROOM_LOCATIONS
 
 print("Start")
 
@@ -38,6 +40,8 @@ hours_remaining = 24
 #2
 # obtain current player location
 player_location = gameboard.current_player_location()
+old_player_location = copy.deepcopy(player_location)
+
 # obtain current room
 current_room = gameboard.which_room()
 # die roll for the turn:
@@ -52,7 +56,27 @@ desired_room = gameboard.choose_room()
 room_distances = gameboard.room_distances()
 
 # move towards the desired room
-player.move_player(player_location, desired_room, turn_die_roll, room_distances)
+new_player_location = player.move_player(player_location, desired_room, current_room, turn_die_roll, room_distances, ROOM_LOCATIONS)
+gameboard.update_player_location([new_player_location])
+
+# if new_player_location != old_player_location:
+#     print(f"Walking towards the {desired_room}...")
+#     time.sleep(2)
+#     os.system("clear")
+#     if new_player_location in ROOM_LOCATIONS.values():
+#         print(f"You are now in the {desired_room}.")
+#     else:
+#         print(f"You are now in the hallway.")
+# else:
+#     print(f"You have chosen to stay in the {current_room}")
+
+
+# print(f"New player location is: {gameboard.current_player_location()}")
+# print(type(gameboard.current_player_location()[0]))
+
+
+
+
 
 # desired room is either same room or different room
 # desired room is input into move_player() function

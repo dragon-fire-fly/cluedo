@@ -1,5 +1,7 @@
 import time
 import random
+import os
+import copy
 
 def number_input_validation(user_input, chosen_dict= None):
     """
@@ -54,53 +56,56 @@ class Player:
     def check_scorecard(self):
         pass
 
-    def move_player(self, player_location, desired_room, die_roll, room_distances):
+    def move_player(self, player_location, desired_room, current_room, die_roll, room_distances, room_dict):
         """
         Takes a player's current and desired location and moves
         the player towards the chosen room
         """
         # print(room_distances[desired_room])
         if die_roll >= int(room_distances[desired_room]):
-            player_location = self.rooms[desired_room]
-            # print(player)
+            player_location = list(room_dict[desired_room])
+            print(f"Walking to the {desired_room}...")
+            time.sleep(2)
+            os.system("clear")
             print(f"You are now in the {desired_room}")
             return player_location
         # print(room_distances[desired_room])
         else:
+            total_die_roll = copy.deepcopy(die_roll)
             print(f"You have not rolled enough to reach the {desired_room}.")
             stay_or_move = input(
-                f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay in current room\nYour answer (1 or 2): "
+                f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay at current location\nYour answer (1 or 2): "
             )
             if stay_or_move == "1":
                 # Calculating where on the board the player will end up after moving towards the chosen room
                 while die_roll:
-                    if self.rooms[desired_room][0] - player_location[0] > 0:
-                        print("down")
+                    if room_dict[desired_room][0] - player_location[0] > 0:
                         die_roll -= 1
                         player_location[0] += 1
-                    elif self.rooms[desired_room][0] - player_location[0] < 0:
-                        print("up")
+                    elif room_dict[desired_room][0] - player_location[0] < 0:
                         die_roll -= 1
                         player_location[0] -= 1
-                    elif self.rooms[desired_room][0] - player_location[0] == 0:
-                        print("No up and down movement")
                     # left or right?
                     if die_roll:
-                        if self.rooms[desired_room][1] - player_location[1] > 0:
-                            print("right")
+                        if room_dict[desired_room][1] - player_location[1] > 0:
                             die_roll -= 1
                             player_location[1] += 1
-                        elif self.rooms[desired_room][1] - player_location[1] < 0:
-                            print("left")
+                        elif room_dict[desired_room][1] - player_location[1] < 0:
                             die_roll -= 1
                             player_location[1] -= 1
-                        else:
-                            print("No sideways movement")
-                        return player_location
+                print(f"You have moved {total_die_roll} spaces towards the {desired_room}")
+                if current_room not in room_dict.keys():
+                    print("You are still in the hallway")
+                else:
+                    print("You are now in the hallway")
+                return player_location
 
             elif stay_or_move == "2":
-                print(f"You have chosen to stay in the {current_room}")
-                # investigate(self.which_room(player))
+                if player_location in room_dict.values():
+                    print(f"You have chosen to stay in the {current_room}.")
+                else:
+                    print("You have chosen to stay in the hallway.")
+                return player_location
 
 
     def investigate(self, current_room, player_location=[1,1]):
