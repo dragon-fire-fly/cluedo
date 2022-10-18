@@ -54,8 +54,53 @@ class Player:
     def check_scorecard(self):
         pass
 
-    def move_player(self):
-        pass
+    def move_player(self, player_location, desired_room, die_roll, room_distances):
+        """
+        Takes a player's current and desired location and moves
+        the player towards the chosen room
+        """
+        # print(room_distances[desired_room])
+        if die_roll >= int(room_distances[desired_room]):
+            player_location = self.rooms[desired_room]
+            # print(player)
+            print(f"You are now in the {desired_room}")
+            return player_location
+        # print(room_distances[desired_room])
+        else:
+            print(f"You have not rolled enough to reach the {desired_room}.")
+            stay_or_move = input(
+                f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay in current room\nYour answer (1 or 2): "
+            )
+            if stay_or_move == "1":
+                # Calculating where on the board the player will end up after moving towards the chosen room
+                while die_roll:
+                    if self.rooms[desired_room][0] - player_location[0] > 0:
+                        print("down")
+                        die_roll -= 1
+                        player_location[0] += 1
+                    elif self.rooms[desired_room][0] - player_location[0] < 0:
+                        print("up")
+                        die_roll -= 1
+                        player_location[0] -= 1
+                    elif self.rooms[desired_room][0] - player_location[0] == 0:
+                        print("No up and down movement")
+                    # left or right?
+                    if die_roll:
+                        if self.rooms[desired_room][1] - player_location[1] > 0:
+                            print("right")
+                            die_roll -= 1
+                            player_location[1] += 1
+                        elif self.rooms[desired_room][1] - player_location[1] < 0:
+                            print("left")
+                            die_roll -= 1
+                            player_location[1] -= 1
+                        else:
+                            print("No sideways movement")
+                        return player_location
+
+            elif stay_or_move == "2":
+                print(f"You have chosen to stay in the {current_room}")
+                # investigate(self.which_room(player))
 
 
     def investigate(self, current_room, player_location=[1,1]):
@@ -101,3 +146,6 @@ class AIPlayer:
 
     def check_cards(self):
         print(self.cards)
+    
+    def show_card(self):
+        pass

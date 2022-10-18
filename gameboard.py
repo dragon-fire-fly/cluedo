@@ -28,9 +28,17 @@ import random
 
 
 class Gameboard:
-    def __init__(self, rooms):
+    def __init__(self, rooms, player_location):
         self.rooms = rooms
-        # self.player = player
+        self.player_location = player_location
+
+    def update_player_location(self, new_location):
+        """ Updates the player_location variable stored within Gameboard"""
+        self.player_location = new_location
+    
+    def current_player_location(self):
+        """ Returns the current player_location coordinates"""
+        return self.player_location
 
     def calculate_distance(self, point1: tuple, point2: tuple):
         """Takes two points on the gameboard and calculates and returns the total
@@ -41,7 +49,7 @@ class Gameboard:
         return f"{total_distance}"
 
     # player or run.py
-    def room_distances(self, rooms, player_location):
+    def room_distances(self):
         """Calls the calculate_distances() function to calculate the distance
         between the player's current location and each of the rooms on the board.
         Returns an updated dictionary of current distances to each room."""
@@ -56,40 +64,40 @@ class Gameboard:
             "Main Hall": 0,
             "Study": 0,
         }
-        for room in rooms:
+        for room in self.rooms:
             distance_dict[room] = self.calculate_distance(
-                self.rooms[room], player_location
+                self.rooms[room], self.player_location
             )
         return distance_dict
 
-    def which_room(self, current_space):
+    def which_room(self):
         """Takes the current space of a player and returns which room they are in.
         If player is not in a room, returns hallway."""
         for room, space in self.rooms.items():
-            if current_space[0] == space[0] and current_space[1] == space[1]:
+            if self.player_location[0] == space[0] and self.player_location[1] == space[1]:
                 return room
-        return "the hallway"
+        return "hallway"
 
-    def roll_die(self):
-        """Returns a random number between 1 and 6."""
-        return random.randint(1, 6)
+    def which_coordinates(self, room):
+        """Takes the current room of a player and returns the co-ordinates for that room.
+        If player is not in a room, returns None."""
+        return self.rooms[room]
+            
 
     # needs a validation decorator
-    def choose_room(self, player):
+    def choose_room(self):
         """Collects and prints information about which room the player is currently in,
         the outcome of the die roll and the number of spaces to each room to
         the console. Requests input for which room the player wants to move to."""
 
-        current_room = self.which_room(player)
-        print(f"You are currently in the {current_room}.")
-        die_roll = self.roll_die()
-        print(f"You have rolled a {die_roll}.")
+        current_room = self.which_room()
+        # print(f"You are currently in the {current_room}.")
         print("=" * 40)
         print(f"The rooms are the following distances: ")
         i = 0
-        room_distances = self.room_distances(self.rooms, player)
+        room_distances = self.room_distances()
         room_options = {}
-        for k, v in self.room_distances(self.rooms, player).items():
+        for k, v in self.room_distances().items():
             if v == "0":
                 passageway_room = self.check_for_secret_passageway(current_room)
                 # print(f"passageway_room: {passageway_room}")
@@ -111,57 +119,57 @@ class Gameboard:
         user_room_choice = int(input("Which room would you like to move towards?: "))
         print(f"room choices:{room_options}")
         desired_room = room_options.pop(user_room_choice)
-        print(f"You have chosen the {desired_room}")
-        self.move(player, desired_room, die_roll, room_distances)
+        return desired_room
+        # self.move(player, desired_room, die_roll, room_distances)
 
-    def move(self, player, desired_room, die_roll, room_distances):
-        """
-        Takes a player's current and desired location and moves
-        the player towards the chosen room
-        """
-        print(room_distances[desired_room])
-        if die_roll >= int(room_distances[desired_room]):
-            player = self.rooms[desired_room]
-            # print(player)
-            print(f"You are now in the {desired_room}")
-            return player
-        # print(room_distances[desired_room])
-        else:
-            self.which_room(player)
-            print(f"You have not rolled enough to reach the {desired_room}.")
-            stay_or_move = input(
-                f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay in current room\nYour answer (1 or 2): "
-            )
-            if stay_or_move == "1":
-                # Calculating where on the board the player will end up after moving towards the chosen room
-                while die_roll:
-                    if self.rooms[desired_room][0] - player[0] > 0:
-                        print("down")
-                        die_roll -= 1
-                        player[0] += 1
-                    elif self.rooms[desired_room][0] - player[0] < 0:
-                        print("up")
-                        die_roll -= 1
-                        player[0] -= 1
-                    elif self.rooms[desired_room][0] - player[0] == 0:
-                        print("No up and down movement")
-                    # left or right?
-                    if die_roll:
-                        if self.rooms[desired_room][1] - player[1] > 0:
-                            print("right")
-                            die_roll -= 1
-                            player[1] += 1
-                        elif self.rooms[desired_room][1] - player[1] < 0:
-                            print("left")
-                            die_roll -= 1
-                            player[1] -= 1
-                        else:
-                            print("No sideways movement")
-                        return player
+    # def move(self, player, desired_room, die_roll, room_distances):
+    #     """
+    #     Takes a player's current and desired location and moves
+    #     the player towards the chosen room
+    #     """
+    #     print(room_distances[desired_room])
+    #     if die_roll >= int(room_distances[desired_room]):
+    #         player = self.rooms[desired_room]
+    #         # print(player)
+    #         print(f"You are now in the {desired_room}")
+    #         return player
+    #     # print(room_distances[desired_room])
+    #     else:
+    #         self.which_room()
+    #         print(f"You have not rolled enough to reach the {desired_room}.")
+    #         stay_or_move = input(
+    #             f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay in current room\nYour answer (1 or 2): "
+    #         )
+    #         if stay_or_move == "1":
+    #             # Calculating where on the board the player will end up after moving towards the chosen room
+    #             while die_roll:
+    #                 if self.rooms[desired_room][0] - player[0] > 0:
+    #                     print("down")
+    #                     die_roll -= 1
+    #                     player[0] += 1
+    #                 elif self.rooms[desired_room][0] - player[0] < 0:
+    #                     print("up")
+    #                     die_roll -= 1
+    #                     player[0] -= 1
+    #                 elif self.rooms[desired_room][0] - player[0] == 0:
+    #                     print("No up and down movement")
+    #                 # left or right?
+    #                 if die_roll:
+    #                     if self.rooms[desired_room][1] - player[1] > 0:
+    #                         print("right")
+    #                         die_roll -= 1
+    #                         player[1] += 1
+    #                     elif self.rooms[desired_room][1] - player[1] < 0:
+    #                         print("left")
+    #                         die_roll -= 1
+    #                         player[1] -= 1
+    #                     else:
+    #                         print("No sideways movement")
+    #                     return player
 
-            elif stay_or_move == "2":
-                print(f"You have chosen to stay in the {self.which_room(player)}")
-                # investigate(self.which_room(player))
+    #         elif stay_or_move == "2":
+    #             print(f"You have chosen to stay in the {self.which_room()}")
+    #             # investigate(self.which_room(player))
 
     def check_for_secret_passageway(self, current_room):
         """
