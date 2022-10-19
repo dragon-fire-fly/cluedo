@@ -11,7 +11,7 @@ print("Start")
 
 # print(tabulate(game_board))
 
-player_location = [4, 1]
+# player_location = [4, 1]
 
 # Game variables
 win_condition_satisfied = False
@@ -51,42 +51,27 @@ turn_die_roll = player.roll_die()
 print(f"You are currently in the {current_room}.\nYou have rolled a {turn_die_roll}.")
 
 # ask user for desired room
-desired_room = gameboard.choose_room()
-# distances to each room
-room_distances = gameboard.room_distances()
+desired_room, room_distances = gameboard.choose_room()
 
 # move towards the desired room
 new_player_location = player.move_player(player_location, desired_room, current_room, turn_die_roll, room_distances, ROOM_LOCATIONS)
 gameboard.update_player_location([new_player_location])
 
-# if new_player_location != old_player_location:
-#     print(f"Walking towards the {desired_room}...")
-#     time.sleep(2)
-#     os.system("clear")
-#     if new_player_location in ROOM_LOCATIONS.values():
-#         print(f"You are now in the {desired_room}.")
-#     else:
-#         print(f"You are now in the hallway.")
-# else:
-#     print(f"You have chosen to stay in the {current_room}")
-
-
-# print(f"New player location is: {gameboard.current_player_location()}")
-# print(type(gameboard.current_player_location()[0]))
-
-
-
-
-
-# desired room is either same room or different room
-# desired room is input into move_player() function
-# if enough spaces, move and update current location. 
 
 #3
-# check whether in hallway and if so, end turn
+# check whether in a room or in hallway (and if so, end turn)
+current_room = gameboard.which_room()
+print(gameboard.current_player_location())
+print(current_room)
+if current_room in ROOM_LOCATIONS:
+    player.investigate(gameboard.which_room())
+else:
+    print("End of turn")
+    
+
 
 #4
-# player.investigate(gameboard.which_room(player_location))
+
 
 #5
 # compare cards to other player decks

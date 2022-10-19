@@ -34,7 +34,7 @@ class Gameboard:
 
     def update_player_location(self, new_location):
         """ Updates the player_location variable stored within Gameboard"""
-        self.player_location = new_location
+        self.player_location = new_location[0]
     
     def current_player_location(self):
         """ Returns the current player_location coordinates"""
@@ -117,59 +117,10 @@ class Gameboard:
             else:
                 print(f"{i}- {k}: {v}")
         user_room_choice = int(input("Which room would you like to move towards?: "))
-        print(f"room choices:{room_options}")
+        # print(f"room choices:{room_options}")
         desired_room = room_options.pop(user_room_choice)
-        return desired_room
+        return (desired_room,room_distances)
         # self.move(player, desired_room, die_roll, room_distances)
-
-    # def move(self, player, desired_room, die_roll, room_distances):
-    #     """
-    #     Takes a player's current and desired location and moves
-    #     the player towards the chosen room
-    #     """
-    #     print(room_distances[desired_room])
-    #     if die_roll >= int(room_distances[desired_room]):
-    #         player = self.rooms[desired_room]
-    #         # print(player)
-    #         print(f"You are now in the {desired_room}")
-    #         return player
-    #     # print(room_distances[desired_room])
-    #     else:
-    #         self.which_room()
-    #         print(f"You have not rolled enough to reach the {desired_room}.")
-    #         stay_or_move = input(
-    #             f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay in current room\nYour answer (1 or 2): "
-    #         )
-    #         if stay_or_move == "1":
-    #             # Calculating where on the board the player will end up after moving towards the chosen room
-    #             while die_roll:
-    #                 if self.rooms[desired_room][0] - player[0] > 0:
-    #                     print("down")
-    #                     die_roll -= 1
-    #                     player[0] += 1
-    #                 elif self.rooms[desired_room][0] - player[0] < 0:
-    #                     print("up")
-    #                     die_roll -= 1
-    #                     player[0] -= 1
-    #                 elif self.rooms[desired_room][0] - player[0] == 0:
-    #                     print("No up and down movement")
-    #                 # left or right?
-    #                 if die_roll:
-    #                     if self.rooms[desired_room][1] - player[1] > 0:
-    #                         print("right")
-    #                         die_roll -= 1
-    #                         player[1] += 1
-    #                     elif self.rooms[desired_room][1] - player[1] < 0:
-    #                         print("left")
-    #                         die_roll -= 1
-    #                         player[1] -= 1
-    #                     else:
-    #                         print("No sideways movement")
-    #                     return player
-
-    #         elif stay_or_move == "2":
-    #             print(f"You have chosen to stay in the {self.which_room()}")
-    #             # investigate(self.which_room(player))
 
     def check_for_secret_passageway(self, current_room):
         """
