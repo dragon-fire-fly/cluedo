@@ -10,7 +10,7 @@ def number_dict_input_validation(user_input, chosen_dict= None):
     """
     while True:
         if user_input == "suspect" or user_input == "weapon":
-            choice = input(f"Which {user_input} would you like to investigate?: ")
+            choice = input(f"\nWhich {user_input} would you like to investigate?: ")
         elif user_input == "character":
             choice = input(f"Which character would you like to play?: ")
         for k, v in chosen_dict.items():
@@ -52,11 +52,16 @@ def y_n_input_validation(user_input):
         if choice.lower() == "y" or choice.lower() == "yes":
             return True
         elif choice.lower() == "n" or choice.lower() == "no":
+            
             print("Please make new choices for the investigation")
-            time.sleep(1)
+            time.sleep(1.5)
+            clear()
             return
         else:
             choice = input("Sorry, that was an invalid choice. y/n? ")
+
+def clear():
+    os.system("clear")
 
 # User player class
 class Player:
@@ -86,10 +91,15 @@ class Player:
         # print(room_distances[desired_room])
         if die_roll >= int(room_distances[desired_room]):
             player_location = list(room_dict[desired_room])
-            print(f"Walking to the {desired_room}...")
-            time.sleep(2)
-            os.system("clear")
-            print(f"You are now in the {desired_room}")
+            if current_room != desired_room:
+                print(f"Walking to the {desired_room}...")
+                time.sleep(2)
+                clear()
+                print(f"You are now in the {desired_room}")
+            else:
+                clear()
+                print(f"You chose to remain in the {desired_room}")
+                time.sleep(1)
             return player_location
         # print(room_distances[desired_room])
         else:
@@ -142,11 +152,11 @@ class Player:
         """
         # player_location = gameboard.choose_room(player)
         # current_room = gameboard.which_room(player)
-        print(player_location)
+        clear()
         print("======== Investigation phase ========")
         confirm_choice = False
         while not confirm_choice:
-            print(f"You are in the {current_room}\n ===== SUSPECTS =====")
+            print(f"You are in the {current_room}\n\n ===== SUSPECTS =====")
             for num, suspect in self.suspect_dict.items():
                 print(num, suspect)
             suspect = number_dict_input_validation("suspect", self.suspect_dict)

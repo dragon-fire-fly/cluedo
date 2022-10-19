@@ -7,8 +7,6 @@ import copy
 from setup import player
 from setup import gameboard, ROOM_LOCATIONS
 
-print("Start")
-
 # print(tabulate(game_board))
 
 # player_location = [4, 1]
@@ -17,6 +15,9 @@ print("Start")
 win_condition_satisfied = False
 hours_remaining = 24
 
+
+def clear():
+    os.system("clear")
 
 
 
@@ -47,7 +48,12 @@ current_room = gameboard.which_room()
 # die roll for the turn:
 turn_die_roll = player.roll_die()
 
-print(f"You are currently in the {current_room}.\nYou have rolled a {turn_die_roll}.")
+print(f"You are currently in the {current_room}.\n")
+print("Rolling die....")
+time.sleep(2)
+clear()
+print(f"You are currently in the {current_room}.\nYou have rolled a {turn_die_roll}.\n")
+
 
 # ask user for desired room
 desired_room, room_distances = gameboard.choose_room()
@@ -60,8 +66,8 @@ gameboard.update_player_location([new_player_location])
 #3
 # check whether in a room or in hallway (and if so, end turn)
 current_room = gameboard.which_room()
-print(gameboard.current_player_location())
-print(current_room)
+# print(gameboard.current_player_location())
+# print(current_room)
 if current_room in ROOM_LOCATIONS:
     player.investigate(current_room)
 else:
@@ -73,6 +79,10 @@ else:
 #5
 # compare cards to other player decks
 # for each AI player, check_cards()
+
+# print()
+
+
 
 #6
 # if card found, show_card() function 
