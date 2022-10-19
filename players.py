@@ -35,11 +35,11 @@ def number_input_validation(user_input):
 
     while True:
         user_ans = input(f"Your answer ({options}): ")
-        print(type(user_ans))
+        # print(type(user_ans))
 
         for num in range(1, user_input+1):
             if user_ans == str(num):
-                return num
+                return str(num)
         print(f"Sorry, that is not a valid input, please enter a number between 1 and {user_input}.")
 
 

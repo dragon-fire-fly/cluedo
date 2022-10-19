@@ -47,7 +47,6 @@ current_room = gameboard.which_room()
 # die roll for the turn:
 turn_die_roll = player.roll_die()
 
-
 print(f"You are currently in the {current_room}.\nYou have rolled a {turn_die_roll}.")
 
 # ask user for desired room
@@ -64,12 +63,10 @@ current_room = gameboard.which_room()
 print(gameboard.current_player_location())
 print(current_room)
 if current_room in ROOM_LOCATIONS:
-    player.investigate(gameboard.which_room())
+    player.investigate(current_room)
 else:
     print("End of turn")
     
-
-
 #4
 
 
