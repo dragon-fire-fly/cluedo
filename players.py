@@ -3,10 +3,10 @@ import random
 import os
 import copy
 
-def number_input_validation(user_input, chosen_dict= None):
+def number_dict_input_validation(user_input, chosen_dict= None):
     """
     Takes an input and a relevant dictionary and prompts the user to choose an option.
-    If the user input is valid, returns 
+    If the user input is valid, returns the key of the chosen dictionary. Else prompts for new input
     """
     while True:
         if user_input == "suspect" or user_input == "weapon":
@@ -19,6 +19,28 @@ def number_input_validation(user_input, chosen_dict= None):
             elif choice == v:
                 return k
         print(f"Sorry, that is not a valid input, please enter a number between 1-{len(chosen_dict)}")
+
+def number_input_validation(user_input):
+    """
+    Takes a number as input and prompts the user to choose an option.
+    If the user input is a number between 1 and the input, returns the number.
+    """
+    options = ""
+    for num in range(1, user_input+1):
+        if num != user_input:
+            options += f"{str(num)}, "
+        elif num == user_input:
+            options = options.strip(", ")
+            options += f" or {str(user_input)}"
+
+    while True:
+        user_ans = input(f"Your answer ({options}): ")
+        print(type(user_ans))
+
+        for num in range(1, user_input+1):
+            if user_ans == str(num):
+                return num
+        print(f"Sorry, that is not a valid input, please enter a number between 1 and {user_input}.")
 
 
 def y_n_input_validation(user_input):   
@@ -49,7 +71,7 @@ class Player:
         print("====== PLAYERS ======")
         for num, player in self.suspect_dict.items():
             print(num, player)
-        user_character_choice = number_input_validation("character", self.suspect_dict)
+        user_character_choice = number_dict_input_validation("character", self.suspect_dict)
         return self.suspect_dict[user_character_choice]
 
 
@@ -73,9 +95,11 @@ class Player:
         else:
             total_die_roll = copy.deepcopy(die_roll)
             print(f"You have not rolled enough to reach the {desired_room}.")
-            stay_or_move = input(
-                f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay at current location\nYour answer (1 or 2): "
+            print(f"1. Move {die_roll} spaces towards the {desired_room}\n2. Stay at current location"
             )
+            stay_or_move = number_input_validation(2)
+            
+            
             if stay_or_move == "1":
                 # Calculating where on the board the player will end up after moving towards the chosen room
                 while die_roll:
@@ -93,10 +117,14 @@ class Player:
                         elif room_dict[desired_room][1] - player_location[1] < 0:
                             die_roll -= 1
                             player_location[1] -= 1
+                print("Moving...")
+                time.sleep(1.5)
                 print(f"You have moved {total_die_roll} spaces towards the {desired_room}")
                 if current_room not in room_dict.keys():
+                    time.sleep(1)
                     print("You are still in the hallway")
                 else:
+                    time.sleep(1)
                     print("You are now in the hallway")
                 return player_location
 
@@ -121,11 +149,11 @@ class Player:
             print(f"You are in the {current_room}\n ===== SUSPECTS =====")
             for num, suspect in self.suspect_dict.items():
                 print(num, suspect)
-            suspect = number_input_validation("suspect", self.suspect_dict)
+            suspect = number_dict_input_validation("suspect", self.suspect_dict)
             print("===== WEAPONS =====")
             for num, weapon in self.weapon_dict.items():
                 print(num, weapon)
-            weapon = number_input_validation("weapon", self.weapon_dict)
+            weapon = number_dict_input_validation("weapon", self.weapon_dict)
             
             print(f"Are you sure you want to investigate {self.suspect_dict[suspect]} with the {self.weapon_dict[weapon]} in the {current_room}?")
             check_choice = input("y/n: ")
