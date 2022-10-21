@@ -1,7 +1,9 @@
-import time
-import random
+# import built in modules
 import os
+import random
+import time
 import copy
+
 
 def number_dict_input_validation(user_input, chosen_dict= None):
     """
@@ -49,10 +51,9 @@ def y_n_input_validation(user_input):
     """
     choice = user_input
     while True:
-        if choice.lower() == "y" or choice.lower() == "yes":
+        if choice.lower() in ["y", "yes", "yeah", "ok", "aye", "ei ei captain", "definitely"]:
             return True
-        elif choice.lower() == "n" or choice.lower() == "no":
-            
+        elif choice.lower() in ["n", "no", "nah", "nope", "no way" "nay"]:
             print("Please make new choices for the investigation")
             time.sleep(1.5)
             clear()
@@ -133,9 +134,11 @@ class Player:
                 if current_room not in room_dict.keys():
                     time.sleep(1)
                     print("You are still in the hallway")
+                    time.sleep(1)
                 else:
                     time.sleep(1)
                     print("You are now in the hallway")
+                    time.sleep(1)
                 return player_location
 
             elif stay_or_move == "2":
@@ -146,7 +149,7 @@ class Player:
                 return player_location
 
 
-    def investigate(self, current_room, player_location=[1,1]):
+    def choose_investigation_cards(self, current_room, player_location=[1,1]):
         """
         Allows the player to investigate other player's cards
         """
@@ -168,6 +171,7 @@ class Player:
             print(f"Are you sure you want to investigate {self.suspect_dict[suspect]} with the {self.weapon_dict[weapon]} in the {current_room}?")
             check_choice = input("y/n: ")
             confirm_choice = y_n_input_validation(check_choice)
+        return [self.suspect_dict[suspect], self.weapon_dict[weapon], current_room]
 
     def make_accusation():
         pass
@@ -184,11 +188,19 @@ class Player:
 
 # AI Player class
 class AIPlayer:
-    def __init__(self, cards):
+    def __init__(self, name, cards):
+        self.name = name
         self.cards = cards
 
-    def check_cards(self):
-        print(self.cards)
+    # def check_cards(self, investigation_cards):
+    #     cards = ["Miss Scarlett", "Dagger", "Kitchen"]
+    #     print(investigation_cards)
+    #     for card in investigation_cards:
+    #         if card in cards:
+    #             print(card)
+    #             return True
+    #         else:
+    #             return False
     
-    def show_card(self):
-        pass
+    # def show_card(self):
+    #     pass

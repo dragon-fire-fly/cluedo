@@ -1,23 +1,52 @@
+# import built in modules
 import random
 import time
-from tabulate import tabulate
 import os
 import copy
 
-from setup import player
+# import installed modules
+from tabulate import tabulate
+
+# import custom modules
+from setup import player, ai_char_list
 from setup import gameboard, ROOM_LOCATIONS
 
 # print(tabulate(game_board))
-
-# player_location = [4, 1]
 
 # Game variables
 win_condition_satisfied = False
 hours_remaining = 24
 
-
+# Main Game Functions
 def clear():
     os.system("clear")
+
+def investigate(investigation_cards):
+    for character in ai_char_list[::-1]:
+        print(f"{character.name} = {character.cards}")
+        for card in investigation_cards:
+            if card == character.cards[0]:
+                character_name = character.name
+                card_to_show = card
+            elif card == character.cards[1]:
+                character_name = character.name
+                card_to_show = card
+            elif card == character.cards[2]:
+                character_name = character.name
+                card_to_show = card
+
+
+    if character_name in ["Colonel Mustard", "Reverend Green", "Professor Plum"]:
+        pronoun = "he"
+        pronoun2 = "his"
+    elif character_name in ["Miss Scarlett", "Mrs. White", "Mrs. Peacock"]:
+        pronoun = "she"
+        pronoun2 = "her"
+    else:
+        pronoun = "they"
+        pronoun2 = "their"
+
+    print(f"\n{character_name} has one or more investigation cards in {pronoun2} hand. {pronoun.capitalize()} showed you the {card_to_show} card.")
 
 
 
@@ -34,6 +63,8 @@ def clear():
 10. Investigation card is updated with the card shown (if any)
 11. Next turn begins...
 '''
+
+# if __name__ -- '__main__':
 
 #1
 # minus one hour
@@ -69,7 +100,8 @@ current_room = gameboard.which_room()
 # print(gameboard.current_player_location())
 # print(current_room)
 if current_room in ROOM_LOCATIONS:
-    player.investigate(current_room)
+    investigation_list = player.choose_investigation_cards(current_room)
+    print(investigation_list)
 else:
     print("End of turn")
     
@@ -78,6 +110,29 @@ else:
 
 #5
 # compare cards to other player decks
+
+# print(ai_char_list)
+# debugging: characters and their cards:
+# print(f"Char 1 = {ai_char_list[0].name} Cards: {ai_char_list[0].cards}")
+# print(f"Char 2 = {ai_char_list[1].name} Cards: {ai_char_list[1].cards}")
+# print(f"Char 3 = {ai_char_list[2].name} Cards: {ai_char_list[2].cards}")
+# print(f"Char 4 = {ai_char_list[3].name} Cards: {ai_char_list[3].cards}")
+# print(f"Char 5 = {ai_char_list[4].name} Cards: {ai_char_list[4].cards}")
+
+investigate(investigation_list)
+
+# add card to scorecard
+
+
+# card_matched = False
+# while not card_matched:
+#     for character in ai_char_list:
+#         matching_card = character.check_cards(investigation_list)
+#         print(matching_card)
+#     if matching_card:
+#         card_matched = True
+
+
 # for each AI player, check_cards()
 
 # print()
