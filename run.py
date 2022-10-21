@@ -44,9 +44,9 @@ def investigate(investigation_cards):
         pronoun2 = "his"
 
     print(
-        f"\n{character_name} has one or more investigation cards in \
-        {pronoun2} hand. {pronoun.capitalize()} showed you the \
-        {card_to_show} card."
+        f"\n{character_name} has one or more investigation cards in "
+        f"{pronoun2} hand. {pronoun.capitalize()} showed you the "
+        f"{card_to_show} card."
     )
     scorecard.update_scorecard(character_name, card_to_show)
 
@@ -96,8 +96,8 @@ print("Rolling die....")
 time.sleep(2)
 clear()
 print(
-    f"You are currently in the {current_room}.\nYou have rolled a \
-    {turn_die_roll}.\n"
+    f"You are currently in the {current_room}.\nYou have rolled a "
+    f"{turn_die_roll}.\n"
 )
 
 

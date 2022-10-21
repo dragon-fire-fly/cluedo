@@ -105,11 +105,11 @@ game_board = (
 scorecard_table = [[
     " ",
     "Miss Scarlett",
-    "Col Mustard",
+    "Colonel Mustard",
     "Mrs White",
-    "Rev Green",
+    "Reverend Green",
     "Mrs Peacock",
-    "Prof Plum"
+    "Professor Plum"
     ], [
         'Miss Scarlett',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
@@ -182,13 +182,19 @@ def number_input_validation(no_options):
         for num in range(1, no_options+1):
             if user_ans == str(num):
                 return str(num)
-        print(f"Sorry, {user_ans} is not a valid input, please enter a number \
-            between 1 and {no_options}.")
+        print(
+            f"Sorry, {user_ans} is not a valid input, please enter a number"
+            f"between 1 and {no_options}."
+            )
 
 
 def main_menu():
-    print("Please select from the following options: \n1. Play Game (with \
-        story)\n2. Play Game (skip story)\n3. View Rules")
+    print(
+        "Please select from the following options:"
+        "\n1. Play Game (with story)"
+        "\n2. Play Game (skip story)"
+        "\n3. View Rules"
+    )
     choice = number_input_validation(3)
     if choice == "1":
         game_setup()
@@ -219,11 +225,15 @@ def game_setup():
     user_hand = DEALT_CARDS.pop(chosen_character)
     for card in enumerate(user_hand):
         scorecard.update_scorecard(chosen_character, user_hand[card[0]])
-    print(f"Your cards are: \n\t- {user_hand[0]}\n\t- {user_hand[1]}\n\t-\
-        {user_hand[2]}\n\nThese cards have been added to your scorecard which\
-            can be viewed at any time.")
-    next = input("Press 'S' to view scorecard. Press any other key to continue\
-        game: ")
+    print(
+        f"Your cards are: \n\t- {user_hand[0]}\n\t- {user_hand[1]}\n\t"
+        f"- {user_hand[2]}\n\nThese cards have been added to your scorecard "
+        f"which can be viewed at any time."
+        )
+    next = input(
+        "Press 'S' to view scorecard. Press any other key to "
+        "continue game: "
+        )
     if next.lower() == 's':
         print(scorecard.show_scorecard())
         back_to_game = input("Press any key to continue game: ")

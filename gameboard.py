@@ -98,8 +98,9 @@ class Gameboard:
                 print(f"{i}- {k}: {v} space(s)")
             else:
                 print(f"{i}- {k}: {v}")
-        user_room_choice = int(input("\nWhich room would you like to move \
-            towards?: "))
+        user_room_choice = int(input(
+            "\nWhich room would you like to move towards?: "
+            ))
         # print(f"room choices:{room_options}")
         desired_room = room_options.pop(user_room_choice)
         return (desired_room, room_distances)

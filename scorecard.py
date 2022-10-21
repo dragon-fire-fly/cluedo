@@ -37,60 +37,6 @@ class Scorecard:
         # print(tabulate(self.scorecard, tablefmt="pretty"))
 
 
-scorecard = [[
-    " ",
-    "Miss Scarlett",
-    "Colonel Mustard",
-    "Mrs White",
-    "Reverend Green",
-    "Mrs Peacock",
-    "Professor Plum"
-    ], [
-        'Miss Scarlett',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Colonel Mustard',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Mrs White',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Reverend Green',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Mrs Peacock',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Professor Plum',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-    ], [
-        'Rope',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Lead piping',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Candlestick',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Dagger',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Spanner',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Revolver',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-    ], [
-        'Main Hall',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Dining Room',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Billiard Room',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Ball Room',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Library',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Conservatory',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Study',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Lounge',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Kitchen',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ]]
-
 # scorecard_test = Scorecard(scorecard)
 
 # scorecard_test.show_scorecard()
