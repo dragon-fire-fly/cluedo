@@ -1,16 +1,17 @@
-'''- store main dictionaries and lists
-    - create object instances
-        - create gameboard object
-        - create player objects
-        - create user object
-        - create cards object'''
+# import built in modules
+import os
+import time
 
+# import installed modules
+
+# import custom modules
 from gameboard import Gameboard
 from cards import Cards
 from players import AIPlayer, Player
+from scorecard import Scorecard
+
 
 # Constants for game:
-
 ROOM_LOCATIONS = {
     "Kitchen": (1, 1),
     "Ball Room": (1, 4),
@@ -100,50 +101,122 @@ game_board = (
     (("Lounge*"), (" "), (" "), ("Main Hall"), (" "), (" "), ("Study*")),
 )
 
+scorecard = [[
+    " ",
+    "Miss Scarlett",
+    "Col Mustard", 
+    "Mrs White", 
+    "Rev Green", 
+    "Mrs Peacock", 
+    "Prof Plum"
+    ],[
+        'Miss Scarlett',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Col Mustard',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Mrs White',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Rev Green',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Mrs Peacock',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ], [
+        'Prof Plum',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+    ],[
+        'Rope',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Lead piping',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Candlestick',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Dagger',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Spanner',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ], [
+        'Revolver',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+    ],[
+        'Main Hall',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Dining Room',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Billiard Room',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Ball Room',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Library',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ], [
+        'Conservatory',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Study',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Lounge',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ],[
+        'Kitchen',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ]]
+
+
+# custom functions
+def clear():
+    os.system("clear")
+
+player_starting_location = [1, 1]
+
+# Welcome message, logo, back story etc.
+clear()
+print("Welcome to Cluedo")
+time.sleep(1)
+
 # Instatiate classes
-gameboard = Gameboard(ROOM_LOCATIONS)
+gameboard = Gameboard(ROOM_LOCATIONS, player_starting_location)
 cards = Cards(CARDS, DEALT_CARDS)
 player = Player(SUSPECTS,WEAPONS)
+scorecard = Scorecard(scorecard)
 
 # deal the game cards
 cards.deal_cards()
 print(DEALT_CARDS)
 
 # Ask user which player they want to play:
+clear()
 chosen_character = player.choose_character()
 print(f"You have chosen {chosen_character}.")
+time.sleep(1)
+print("Shuffling cards...")
+time.sleep(1)
+clear()
+
 
 # pop out the cards dealt to the chosen character
 user_hand = DEALT_CARDS.pop(chosen_character)
-print(user_hand)
-print(DEALT_CARDS)
+print(f"Your cards are: \n\t- {user_hand[0]}\n\t- {user_hand[1]}\n\t- {user_hand[2]}")
+time.sleep(2)
+clear()
+#print(DEALT_CARDS)
 
 # for the other characters, instatiate ai characters and assign hands
-# for character in DEALT_CARDS.keys():
-#     character = AIPlayer(DEALT_CARDS[character])
-# print(character)
 
 ai_char_list = []
 if DEALT_CARDS.get("Miss Scarlett"):
-    miss_scarlett = AIPlayer(DEALT_CARDS["Miss Scarlett"])
+    miss_scarlett = AIPlayer("Miss Scarlett", DEALT_CARDS["Miss Scarlett"])
     ai_char_list.append(miss_scarlett)
 if DEALT_CARDS.get("Colonel Mustard"):
-    col_mustard = AIPlayer(DEALT_CARDS["Colonel Mustard"])
+    col_mustard = AIPlayer("Colonel Mustard", DEALT_CARDS["Colonel Mustard"])
     ai_char_list.append(col_mustard)
 if DEALT_CARDS.get("Mrs. White"):
-    mrs_white = AIPlayer(DEALT_CARDS["Mrs. White"])
+    mrs_white = AIPlayer("Mrs. White", DEALT_CARDS["Mrs. White"])
     ai_char_list.append(mrs_white)
-if DEALT_CARDS["Reverend Green"]:
-    rev_green = AIPlayer(DEALT_CARDS["Reverend Green"])
+if DEALT_CARDS.get("Reverend Green"):
+    rev_green = AIPlayer("Reverend Green", DEALT_CARDS["Reverend Green"])
     ai_char_list.append(rev_green)
-if DEALT_CARDS["Mrs. Peacock"]:
-    mrs_peacock = AIPlayer(DEALT_CARDS["Mrs. Peacock"])
+if DEALT_CARDS.get("Mrs. Peacock"):
+    mrs_peacock = AIPlayer("Mrs. Peacock", DEALT_CARDS["Mrs. Peacock"])
     ai_char_list.append(mrs_peacock)
-if DEALT_CARDS["Professor Plum"]:
-    prof_plum = AIPlayer(DEALT_CARDS["Professor Plum"])
+if DEALT_CARDS.get("Professor Plum"):
+    prof_plum = AIPlayer("Professor Plum", DEALT_CARDS["Professor Plum"])
     ai_char_list.append(prof_plum)
 
-print(ai_char_list[0].check_cards())
+#print(ai_char_list[0].check_cards())
 
 
 

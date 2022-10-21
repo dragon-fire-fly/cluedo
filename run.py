@@ -8,8 +8,7 @@ import copy
 from tabulate import tabulate
 
 # import custom modules
-from setup import player, ai_char_list
-from setup import gameboard, ROOM_LOCATIONS
+from setup import player, ai_char_list, scorecard, gameboard, ROOM_LOCATIONS
 
 # print(tabulate(game_board))
 
@@ -47,6 +46,8 @@ def investigate(investigation_cards):
         pronoun2 = "their"
 
     print(f"\n{character_name} has one or more investigation cards in {pronoun2} hand. {pronoun.capitalize()} showed you the {card_to_show} card.")
+
+    scorecard.update_scorecard(character_name, card_to_show)
 
 
 
