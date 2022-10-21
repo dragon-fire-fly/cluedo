@@ -160,12 +160,61 @@ scorecard = [[
 def clear():
     os.system("clear")
 
-player_starting_location = [1, 1]
+def number_input_validation(no_options):
+    """
+    Takes a number as input and prompts the user to choose an option.
+    If the user input is a number between 1 and the input, returns the number.
+    """
+    options = ""
+    for num in range(1, no_options+1):
+        if num != no_options:
+            options += f"{str(num)}, "
+        elif num == no_options:
+            options = options.strip(", ")
+            options += f" or {str(no_options)}"
 
-# Welcome message, logo, back story etc.
-clear()
-print("Welcome to Cluedo")
-time.sleep(1)
+    while True:
+        user_ans = input(f"Your answer ({options}): ")
+        # print(type(user_ans))
+
+        for num in range(1, no_options+1):
+            if user_ans == str(num):
+                return str(num)
+        print(f"Sorry, that is not a valid input, please enter a number between 1 and {no_options}.")
+
+def main_menu():
+    print("Please select from the following options: \n1. Play Game (with story)\n2. Play Game (skip story)\n3. View Rules")
+    choice = number_input_validation(3)
+    if choice == "1":
+        game_setup()
+        # Need to add background story
+    elif choice == "2":
+        game_setup()
+    else:
+        show_rules()
+
+# Rules:
+def show_rules():
+    print("The rules will go here")
+    pass
+
+def game_setup():
+    # Ask user which player they want to play:
+    clear()
+    chosen_character = player.choose_character()
+    print(f"You have chosen {chosen_character}.")
+    time.sleep(1)
+    print("Shuffling cards...")
+    time.sleep(1)
+    clear()
+
+
+    # pop out the cards dealt to the chosen character
+    user_hand = DEALT_CARDS.pop(chosen_character)
+
+    #print(DEALT_CARDS)
+
+player_starting_location = [1, 1]
 
 # Instatiate classes
 gameboard = Gameboard(ROOM_LOCATIONS, player_starting_location)
@@ -177,22 +226,13 @@ scorecard = Scorecard(scorecard)
 cards.deal_cards()
 print(DEALT_CARDS)
 
-# Ask user which player they want to play:
+# Welcome message, logo, back story etc.
 clear()
-chosen_character = player.choose_character()
-print(f"You have chosen {chosen_character}.")
+print("Welcome to Cluedo")
+# insert fancy welcome screen
 time.sleep(1)
-print("Shuffling cards...")
-time.sleep(1)
-clear()
+main_menu()
 
-
-# pop out the cards dealt to the chosen character
-user_hand = DEALT_CARDS.pop(chosen_character)
-print(f"Your cards are: \n\t- {user_hand[0]}\n\t- {user_hand[1]}\n\t- {user_hand[2]}")
-time.sleep(2)
-clear()
-#print(DEALT_CARDS)
 
 # for the other characters, instatiate ai characters and assign hands
 
