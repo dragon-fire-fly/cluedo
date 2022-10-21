@@ -22,6 +22,46 @@ def clear():
     os.system("clear")
 
 
+def main_game_loop():
+    player_location = gameboard.current_player_location()
+    old_player_location = copy.deepcopy(player_location)
+
+    # obtain current room
+    current_room = gameboard.which_room()
+    # die roll for the turn:
+    turn_die_roll = player.roll_die()
+    print(f"You are currently in the {current_room}.\n")
+    print("Rolling die....")
+    time.sleep(2)
+    clear()
+    print(
+        f"You are currently in the {current_room}.\nYou have rolled a "
+        f"{turn_die_roll}.\n"
+    )
+    # ask user for desired room
+    desired_room, room_distances = gameboard.choose_room()
+
+    # move towards the desired room
+    new_player_location = player.move_player(
+        player_location,
+        desired_room,
+        current_room,
+        turn_die_roll,
+        room_distances,
+        ROOM_LOCATIONS,
+    )
+    gameboard.update_player_location([new_player_location])
+    # check whether in a room or in hallway (and if so, end turn)
+    current_room = gameboard.which_room()
+
+    if current_room in ROOM_LOCATIONS:
+        investigation_list = player.choose_investigation_cards(current_room)
+        print(investigation_list)
+        investigate(investigation_list)
+    else:
+        print("End of turn")
+
+
 def investigate(investigation_cards):
     for character in ai_char_list[::-1]:
         # print(f"{character.name} = {character.cards}")
@@ -46,17 +86,11 @@ def investigate(investigation_cards):
     print(
         f"\n{character_name} has one or more investigation cards in "
         f"{pronoun2} hand. {pronoun.capitalize()} showed you the "
-        f"{card_to_show} card."
+        f"{card_to_show} card.\n"
+        "Your scorecard has been updated."
     )
     scorecard.update_scorecard(character_name, card_to_show)
 
-
-# Welcome message, logo, back story etc.
-# clear()
-# print("Welcome to Cluedo")
-# # insert fancy welcome screen
-# time.sleep(1)
-# main_menu()
 
 """ Player turn:
 1. minus one hour from the game clock
@@ -79,86 +113,18 @@ def investigate(investigation_cards):
 
 # 1
 # minus one hour
+play_game = True
 
-# 2
-# obtain current player location
-
-player_location = gameboard.current_player_location()
-old_player_location = copy.deepcopy(player_location)
-
-# obtain current room
-current_room = gameboard.which_room()
-# die roll for the turn:
-turn_die_roll = player.roll_die()
-
-print(f"You are currently in the {current_room}.\n")
-print("Rolling die....")
-time.sleep(2)
-clear()
-print(
-    f"You are currently in the {current_room}.\nYou have rolled a "
-    f"{turn_die_roll}.\n"
-)
-
-
-# ask user for desired room
-desired_room, room_distances = gameboard.choose_room()
-
-# move towards the desired room
-new_player_location = player.move_player(
-    player_location,
-    desired_room,
-    current_room,
-    turn_die_roll,
-    room_distances,
-    ROOM_LOCATIONS,
-)
-gameboard.update_player_location([new_player_location])
-
-
-# 3
-# check whether in a room or in hallway (and if so, end turn)
-current_room = gameboard.which_room()
-# print(gameboard.current_player_location())
-# print(current_room)
-if current_room in ROOM_LOCATIONS:
-    investigation_list = player.choose_investigation_cards(current_room)
-    print(investigation_list)
-else:
-    print("End of turn")
-
-# 4
-
-
-# 5
-# compare cards to other player decks
-# add card to scorecard
-
-investigate(investigation_list)
-
-
-# 6
-# if card found, show_card() function
-
-# 7
-# move to next AI player, if relevant
-
-# 8
-# if card found, show_card() function
-
-# 9
-
-
-# 10
-# update investigation card
-# 11
+while play_game:
+    main_game_loop()
+    next_loop = input("Press any key to continue. ")
+    clear()
+    # if next_loop != "s":
 
 
 # player.move_player(player_location)
 
-
 # check_cards() for each
-
 
 # card_matched = False
 # while not card_matched:
@@ -167,7 +133,6 @@ investigate(investigation_list)
 #         print(matching_card)
 #     if matching_card:
 #         card_matched = True
-
 
 # print(ai_char_list)
 # debugging: characters and their cards:
