@@ -101,7 +101,7 @@ game_board = (
     (("Lounge*"), (" "), (" "), ("Main Hall"), (" "), (" "), ("Study*")),
 )
 
-scorecard = [[
+scorecard_table = [[
     " ",
     "Miss Scarlett",
     "Col Mustard", 
@@ -208,10 +208,20 @@ def game_setup():
     time.sleep(1)
     clear()
 
-
     # pop out the cards dealt to the chosen character
     user_hand = DEALT_CARDS.pop(chosen_character)
-
+    for card in enumerate(user_hand):
+        scorecard.update_scorecard(chosen_character, user_hand[card[0]])
+    
+    print(f"Your cards are: \n\t- {user_hand[0]}\n\t- {user_hand[1]}\n\t- {user_hand[2]}\n\nThese cards have been added to your scorecard which can be viewed at any time.")
+    next = input("Press 'S' to view scorecard. Press any other key to continue game: ")
+    if next.lower() == 's':
+        print(scorecard.show_scorecard())
+        back_to_game = input("Press any key to continue game: ")
+        if back_to_game or back_to_game == "":
+            clear()
+    else:
+        clear()
     #print(DEALT_CARDS)
 
 player_starting_location = [1, 1]
@@ -220,18 +230,13 @@ player_starting_location = [1, 1]
 gameboard = Gameboard(ROOM_LOCATIONS, player_starting_location)
 cards = Cards(CARDS, DEALT_CARDS)
 player = Player(SUSPECTS,WEAPONS)
-scorecard = Scorecard(scorecard)
+scorecard = Scorecard(scorecard_table)
 
 # deal the game cards
 cards.deal_cards()
 print(DEALT_CARDS)
 
-# Welcome message, logo, back story etc.
-clear()
-print("Welcome to Cluedo")
-# insert fancy welcome screen
-time.sleep(1)
-main_menu()
+
 
 
 # for the other characters, instatiate ai characters and assign hands
@@ -258,5 +263,10 @@ if DEALT_CARDS.get("Professor Plum"):
 
 #print(ai_char_list[0].check_cards())
 
-
+# Welcome message, logo, back story etc.
+clear()
+print("Welcome to Cluedo")
+# insert fancy welcome screen
+time.sleep(1)
+main_menu()
 
