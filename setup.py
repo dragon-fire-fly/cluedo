@@ -180,7 +180,7 @@ def number_input_validation(no_options):
         for num in range(1, no_options+1):
             if user_ans == str(num):
                 return str(num)
-        print(f"Sorry, that is not a valid input, please enter a number between 1 and {no_options}.")
+        print(f"Sorry, {user_ans} is not a valid input, please enter a number between 1 and {no_options}.")
 
 def main_menu():
     print("Please select from the following options: \n1. Play Game (with story)\n2. Play Game (skip story)\n3. View Rules")
