@@ -34,11 +34,11 @@ CARDS = [
         "Miss Scarlett",
     ],
     [
-        "Dagger", 
-        "Candlestick", 
-        "Revolver", 
-        "Rope", 
-        "Lead piping", 
+        "Dagger",
+        "Candlestick",
+        "Revolver",
+        "Rope",
+        "Lead piping",
         "Spanner"
     ],
     [
@@ -92,7 +92,8 @@ ROOMS = {
 }
 
 game_board = (
-    (("Kitchen*"), (" "), (" "), ("Ballroom"), (" "), (" "), ("Conservatory*")),
+    (("Kitchen*"), (" "), (" "), ("Ballroom"), (" "), (" "),
+        ("Conservatory*")),
     ((" "), (" "), (" "), (" "), (" "), (" "), (" ")),
     ((" "), (" "), (" "), (" "), (" "), (" "), ("Billiard Room")),
     (("Dining Room"), (" "), (" "), (" "), (" "), (" "), (" ")),
@@ -104,54 +105,54 @@ game_board = (
 scorecard_table = [[
     " ",
     "Miss Scarlett",
-    "Col Mustard", 
-    "Mrs White", 
-    "Rev Green", 
-    "Mrs Peacock", 
+    "Col Mustard",
+    "Mrs White",
+    "Rev Green",
+    "Mrs Peacock",
     "Prof Plum"
-    ],[
+    ], [
         'Miss Scarlett',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
-        'Col Mustard',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
+        'Colonel Mustard',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ], [
         'Mrs White',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
-        'Rev Green',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
+        'Reverend Green',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ], [
         'Mrs Peacock',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
-        'Prof Plum',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
-    ],[
+        'Professor Plum',  ' ',  ' ', ' ', ' ', ' ', ' '
+    ], [
+    ], [
         'Rope',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Lead piping',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Candlestick',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Dagger',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Spanner',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
         'Revolver',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
-    ],[
+    ], [
+    ], [
         'Main Hall',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Dining Room',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Billiard Room',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Ball Room',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Library',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
         'Conservatory',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Study',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Lounge',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ],[
+    ], [
         'Kitchen',  ' ',  ' ', ' ', ' ', ' ', ' '
     ]]
 
@@ -159,6 +160,7 @@ scorecard_table = [[
 # custom functions
 def clear():
     os.system("clear")
+
 
 def number_input_validation(no_options):
     """
@@ -180,10 +182,13 @@ def number_input_validation(no_options):
         for num in range(1, no_options+1):
             if user_ans == str(num):
                 return str(num)
-        print(f"Sorry, {user_ans} is not a valid input, please enter a number between 1 and {no_options}.")
+        print(f"Sorry, {user_ans} is not a valid input, please enter a number \
+            between 1 and {no_options}.")
+
 
 def main_menu():
-    print("Please select from the following options: \n1. Play Game (with story)\n2. Play Game (skip story)\n3. View Rules")
+    print("Please select from the following options: \n1. Play Game (with \
+        story)\n2. Play Game (skip story)\n3. View Rules")
     choice = number_input_validation(3)
     if choice == "1":
         game_setup()
@@ -193,10 +198,12 @@ def main_menu():
     else:
         show_rules()
 
+
 # Rules:
 def show_rules():
     print("The rules will go here")
     pass
+
 
 def game_setup():
     # Ask user which player they want to play:
@@ -212,9 +219,11 @@ def game_setup():
     user_hand = DEALT_CARDS.pop(chosen_character)
     for card in enumerate(user_hand):
         scorecard.update_scorecard(chosen_character, user_hand[card[0]])
-    
-    print(f"Your cards are: \n\t- {user_hand[0]}\n\t- {user_hand[1]}\n\t- {user_hand[2]}\n\nThese cards have been added to your scorecard which can be viewed at any time.")
-    next = input("Press 'S' to view scorecard. Press any other key to continue game: ")
+    print(f"Your cards are: \n\t- {user_hand[0]}\n\t- {user_hand[1]}\n\t-\
+        {user_hand[2]}\n\nThese cards have been added to your scorecard which\
+            can be viewed at any time.")
+    next = input("Press 'S' to view scorecard. Press any other key to continue\
+        game: ")
     if next.lower() == 's':
         print(scorecard.show_scorecard())
         back_to_game = input("Press any key to continue game: ")
@@ -222,25 +231,22 @@ def game_setup():
             clear()
     else:
         clear()
-    #print(DEALT_CARDS)
+    # print(DEALT_CARDS)
+
 
 player_starting_location = [1, 1]
 
 # Instatiate classes
 gameboard = Gameboard(ROOM_LOCATIONS, player_starting_location)
 cards = Cards(CARDS, DEALT_CARDS)
-player = Player(SUSPECTS,WEAPONS)
+player = Player(SUSPECTS, WEAPONS)
 scorecard = Scorecard(scorecard_table)
 
 # deal the game cards
 cards.deal_cards()
 print(DEALT_CARDS)
 
-
-
-
 # for the other characters, instatiate ai characters and assign hands
-
 ai_char_list = []
 if DEALT_CARDS.get("Miss Scarlett"):
     miss_scarlett = AIPlayer("Miss Scarlett", DEALT_CARDS["Miss Scarlett"])
@@ -261,7 +267,7 @@ if DEALT_CARDS.get("Professor Plum"):
     prof_plum = AIPlayer("Professor Plum", DEALT_CARDS["Professor Plum"])
     ai_char_list.append(prof_plum)
 
-#print(ai_char_list[0].check_cards())
+# print(ai_char_list[0].check_cards())
 
 # Welcome message, logo, back story etc.
 clear()
@@ -269,4 +275,3 @@ print("Welcome to Cluedo")
 # insert fancy welcome screen
 time.sleep(1)
 main_menu()
-
