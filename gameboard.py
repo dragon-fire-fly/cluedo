@@ -1,31 +1,7 @@
+# import built in modules
 import random
 
 # Gameboard
-
-# (#, ##) where # is the row and ## is the column
-# GAME_BOARD = (
-#     ((1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7)),
-#     ((2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7)),
-#     ((3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7)),
-#     ((4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7)),
-#     ((5, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), (5, 7)),
-#     ((6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6), (6, 7)),
-#     ((7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (7, 7)),
-# )
-
-# Room Locations on board
-# ROOMS = {
-#     "Kitchen": (1, 1),
-#     "Ball Room": (1, 4),
-#     "Conservatory": (1, 7),
-#     "Billiard Room": (3, 7),
-#     "Dining Room": (4, 1),
-#     "Library": (5, 7),
-#     "Lounge": (7, 1),
-#     "Main Hall": (7, 4),
-#     "Study": (7, 7),
-# }
-
 
 class Gameboard:
     def __init__(self, rooms, player_location):
@@ -116,7 +92,7 @@ class Gameboard:
                 print(f"{i}- {k}: {v} space(s)")
             else:
                 print(f"{i}- {k}: {v}")
-        user_room_choice = int(input("Which room would you like to move towards?: "))
+        user_room_choice = int(input("\nWhich room would you like to move towards?: "))
         # print(f"room choices:{room_options}")
         desired_room = room_options.pop(user_room_choice)
         return (desired_room,room_distances)

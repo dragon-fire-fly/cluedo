@@ -22,7 +22,7 @@ def clear():
 
 def investigate(investigation_cards):
     for character in ai_char_list[::-1]:
-        print(f"{character.name} = {character.cards}")
+        # print(f"{character.name} = {character.cards}")
         for card in investigation_cards:
             if card == character.cards[0]:
                 character_name = character.name
@@ -50,6 +50,12 @@ def investigate(investigation_cards):
     scorecard.update_scorecard(character_name, card_to_show)
 
 
+# Welcome message, logo, back story etc.
+# clear()
+# print("Welcome to Cluedo")
+# # insert fancy welcome screen
+# time.sleep(1)
+# main_menu()
 
 ''' Player turn:
 1. minus one hour from the game clock
@@ -72,6 +78,7 @@ def investigate(investigation_cards):
 
 #2
 # obtain current player location
+
 player_location = gameboard.current_player_location()
 old_player_location = copy.deepcopy(player_location)
 
@@ -111,32 +118,10 @@ else:
 
 #5
 # compare cards to other player decks
-
-# print(ai_char_list)
-# debugging: characters and their cards:
-# print(f"Char 1 = {ai_char_list[0].name} Cards: {ai_char_list[0].cards}")
-# print(f"Char 2 = {ai_char_list[1].name} Cards: {ai_char_list[1].cards}")
-# print(f"Char 3 = {ai_char_list[2].name} Cards: {ai_char_list[2].cards}")
-# print(f"Char 4 = {ai_char_list[3].name} Cards: {ai_char_list[3].cards}")
-# print(f"Char 5 = {ai_char_list[4].name} Cards: {ai_char_list[4].cards}")
+# add card to scorecard
 
 investigate(investigation_list)
 
-# add card to scorecard
-
-
-# card_matched = False
-# while not card_matched:
-#     for character in ai_char_list:
-#         matching_card = character.check_cards(investigation_list)
-#         print(matching_card)
-#     if matching_card:
-#         card_matched = True
-
-
-# for each AI player, check_cards()
-
-# print()
 
 
 
@@ -161,3 +146,31 @@ investigate(investigation_list)
 
 
 # check_cards() for each  
+
+
+
+
+
+
+
+
+
+
+
+# card_matched = False
+# while not card_matched:
+#     for character in ai_char_list:
+#         matching_card = character.check_cards(investigation_list)
+#         print(matching_card)
+#     if matching_card:
+#         card_matched = True
+
+
+
+# print(ai_char_list)
+# debugging: characters and their cards:
+# print(f"Char 1 = {ai_char_list[0].name} Cards: {ai_char_list[0].cards}")
+# print(f"Char 2 = {ai_char_list[1].name} Cards: {ai_char_list[1].cards}")
+# print(f"Char 3 = {ai_char_list[2].name} Cards: {ai_char_list[2].cards}")
+# print(f"Char 4 = {ai_char_list[3].name} Cards: {ai_char_list[3].cards}")
+# print(f"Char 5 = {ai_char_list[4].name} Cards: {ai_char_list[4].cards}")

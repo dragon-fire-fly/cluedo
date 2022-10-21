@@ -22,27 +22,27 @@ def number_dict_input_validation(user_input, chosen_dict= None):
                 return k
         print(f"Sorry, that is not a valid input, please enter a number between 1-{len(chosen_dict)}")
 
-def number_input_validation(user_input):
+def number_input_validation(no_options):
     """
     Takes a number as input and prompts the user to choose an option.
     If the user input is a number between 1 and the input, returns the number.
     """
     options = ""
-    for num in range(1, user_input+1):
-        if num != user_input:
+    for num in range(1, no_options+1):
+        if num != no_options:
             options += f"{str(num)}, "
-        elif num == user_input:
+        elif num == no_options:
             options = options.strip(", ")
-            options += f" or {str(user_input)}"
+            options += f" or {str(no_options)}"
 
     while True:
         user_ans = input(f"Your answer ({options}): ")
         # print(type(user_ans))
 
-        for num in range(1, user_input+1):
+        for num in range(1, no_options+1):
             if user_ans == str(num):
                 return str(num)
-        print(f"Sorry, that is not a valid input, please enter a number between 1 and {user_input}.")
+        print(f"Sorry, that is not a valid input, please enter a number between 1 and {no_options}.")
 
 
 def y_n_input_validation(user_input):   

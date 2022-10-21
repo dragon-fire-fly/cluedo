@@ -21,6 +21,7 @@ class Scorecard:
         char_num = self.scorecard[0].index(character)
         
         # What's the index of the list that contains the search card?
+        list_index = 0
         for list in self.scorecard[1:]:
             if search_card in list:
                 list_index = self.scorecard.index(list)
@@ -31,9 +32,9 @@ class Scorecard:
         
         # card_num = self.scorecard.index(search_card)
         
-        print(char_num)
-        print(list_index)
-        print(tabulate(self.scorecard, tablefmt="pretty"))
+        # print(char_num)
+        # print(list_index)
+        # print(tabulate(self.scorecard, tablefmt="pretty"))
 
 
 
@@ -92,25 +93,25 @@ scorecard = [[
         'Kitchen',  ' ',  ' ', ' ', ' ', ' ', ' '
     ]]
 
-scorecard_test = Scorecard(scorecard)
+# scorecard_test = Scorecard(scorecard)
 
-scorecard_test.show_scorecard()
+# scorecard_test.show_scorecard()
 
-char = "Miss Scarlett"
-char2 = "Colonel Mustard"
-char3 = "Mrs White"
-char4 = "Reverend Green"
+# char = "Miss Scarlett"
+# char2 = "Colonel Mustard"
+# char3 = "Mrs White"
+# char4 = "Reverend Green"
 
-card = "Revolver"
-card2 = "Conservatory"
-card3 = "Dagger"
-card4 = "Kitchen"
-card5 = "Ball Room"
-card6 = "Mrs White"
+# card = "Revolver"
+# card2 = "Conservatory"
+# card3 = "Dagger"
+# card4 = "Kitchen"
+# card5 = "Ball Room"
+# card6 = "Mrs White"
 
-scorecard_test.update_scorecard(char, card)
-scorecard_test.update_scorecard(char2, card2)
-scorecard_test.update_scorecard(char3, card3)
-scorecard_test.update_scorecard(char4, card4)
-scorecard_test.update_scorecard(char3, card5)
-scorecard_test.update_scorecard(char2, card6)
+# scorecard_test.update_scorecard(char, card)
+# scorecard_test.update_scorecard(char2, card2)
+# scorecard_test.update_scorecard(char3, card3)
+# scorecard_test.update_scorecard(char4, card4)
+# scorecard_test.update_scorecard(char3, card5)
+# scorecard_test.update_scorecard(char2, card6)
