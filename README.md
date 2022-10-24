@@ -1,4 +1,95 @@
-# Cluedo Planning
+# Cluedo
+
+
+<!-- Scrrenshot of finished project -->
+
+## Live site
+[PyClue on Heroku](https://pyclue.herokuapp.com/)
+
+## Repository
+
+[Cluedo GitHub Repo](https://github.com/dragon-fire-fly/cluedo)
+
+
+## Objective
+
+## Brief
+
+## User Experience
+
+### Wireframes?
+
+### Colour scheme?
+
+## Logic
+### Flow diagram
+
+## Features
+
+### Game Features
+#### Main Menu
+#### New game (with and without story)
+#### View Rules
+
+### Playing the game
+#### Choose Character
+<!-- Different character = diff starting location? -->
+#### View Scorecard
+#### Choose a room (inc. Secret Passageway)
+#### Investigation phase
+- Choose a suspect
+- Choose a weapon
+- Input validation
+- AI player shows card
+- Scorecard updated
+
+#### The Accusation
+
+
+### Python Coding Features
+#### OOP
+Classes were made for:
+- Gameboard
+- Player
+- AI Players
+- Card deck
+- Scorecard
+
+#### Custom Modules
+The Classes were saved into seperate .py files which were then imported into setup.py to be instantiated as objects to be imported and used in the main run.py file.
+
+
+### Features left to implement
+
+
+## Technologies Used
+- [Python3](https://www.python.org/) as core programming language
+- [Visual Studio Code](https://code.visualstudio.com/) - for offline code editing
+- [Heroku](https://www.heroku.com) - for cloud hosting of the project
+- [Draw.io](https://app.diagrams.net/) for creatinf flow diagram
+- [Venv virtual environment](https://docs.python.org/3/library/venv.html) - for creating a virtual environment to work in
+
+Python Modules used:
+- random (randint - for generating random integers)
+- time (sleep - for creating pauses between print statements)
+- os (system("clear") - to clear the contents of the terminal)
+- copy (deepcopy - for creating copies of variables)
+- tabulate (tabulate - for creating tables)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Rules:
 1. The murderer, murder weapon and murder location have been placed inside the "murder envelope"
@@ -8,7 +99,7 @@
 5. Starting with the player to your left, if that player has one of the three suggested cards, they must show you one. If they don't have any cards, they player to their left is questioned next, and so on.
 6. Once you feel certain that you know the murderer, murder weapon and room, you may make an accusation. You may only make one accusation per game.
 
-# Setup
+## Setup
 
 setup.py contains all information pertinent to the setup of the game. This includes:
 
@@ -19,9 +110,9 @@ setup.py contains all information pertinent to the setup of the game. This inclu
     - AI player class
 2. containing all lists and dictionaries for game setup
 
-# General Gameplay
+## General Gameplay
 Each turn consists of the following 11 steps:
-## Player turn:
+### Player turn:
 1. minus one hour from the game clock
 2. player rolls dice and decides whether to move or stay in the room
     - player.move() (inc. player.roll_die()) - generates new player co-ordinates
@@ -52,13 +143,16 @@ Each turn consists of the following 11 steps:
 - Dice
 - Scorecard/ tracker
 
-# Functions
-## Gameboard
+## Functions
+### Gameboard
 ![Cluedo board](game_board_layout.png)
 
 
 
 
+
+### Data structures
+Mention classes ( copy and paste code?)
 
 
 
