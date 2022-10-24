@@ -68,6 +68,7 @@ The Classes were saved into seperate .py files which were then imported into set
 - [Heroku](https://www.heroku.com) - for cloud hosting of the project
 - [Draw.io](https://app.diagrams.net/) for creatinf flow diagram
 - [Venv virtual environment](https://docs.python.org/3/library/venv.html) - for creating a virtual environment to work in
+- Github
 
 Python Modules used:
 - random (randint - for generating random integers)
@@ -77,11 +78,25 @@ Python Modules used:
 - tabulate (tabulate - for creating tables)
 
 
+## Testing
+### Manual testing
+### PEP-8 Compliance
+
+
+## Bugs
+### Resolved Bugs
+### Outstanding Bugs
+
+## Deployment
+### Github
+- Cloning
+
+### Heroku
 
 
 
 
-
+## Credits
 
 
 
