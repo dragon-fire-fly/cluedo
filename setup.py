@@ -106,20 +106,20 @@ scorecard_table = [[
     " ",
     "Miss Scarlett",
     "Colonel Mustard",
-    "Mrs White",
+    "Mrs. White",
     "Reverend Green",
-    "Mrs Peacock",
+    "Mrs. Peacock",
     "Professor Plum"
     ], [
         'Miss Scarlett',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
         'Colonel Mustard',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
-        'Mrs White',  ' ',  ' ', ' ', ' ', ' ', ' '
+        'Mrs. White',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
         'Reverend Green',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
-        'Mrs Peacock',  ' ',  ' ', ' ', ' ', ' ', ' '
+        'Mrs. Peacock',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
         'Professor Plum',  ' ',  ' ', ' ', ' ', ' ', ' '
     ], [
@@ -230,6 +230,10 @@ def game_setup():
         f"- {user_hand[2]}\n\nThese cards have been added to your scorecard "
         f"which can be viewed at any time."
         )
+    ai_char_list = generate_ai_characters()
+    print(f"You are {chosen_character} and you are playing against:")
+    for char in ai_char_list:
+        print(char.name)
     next = input(
         "Press 'S' to view scorecard. Press any other key to "
         "continue game: "
@@ -244,6 +248,32 @@ def game_setup():
     # print(DEALT_CARDS)
 
 
+# for the other characters, instatiate ai characters and assign hands
+def generate_ai_characters():
+    global ai_char_list
+    if DEALT_CARDS.get("Miss Scarlett"):
+        miss_scarlett = AIPlayer("Miss Scarlett", DEALT_CARDS["Miss Scarlett"])
+        ai_char_list.append(miss_scarlett)
+    if DEALT_CARDS.get("Colonel Mustard"):
+        col_mustard = AIPlayer(
+            "Colonel Mustard", DEALT_CARDS["Colonel Mustard"]
+            )
+        ai_char_list.append(col_mustard)
+    if DEALT_CARDS.get("Mrs. White"):
+        mrs_white = AIPlayer("Mrs. White", DEALT_CARDS["Mrs. White"])
+        ai_char_list.append(mrs_white)
+    if DEALT_CARDS.get("Reverend Green"):
+        rev_green = AIPlayer("Reverend Green", DEALT_CARDS["Reverend Green"])
+        ai_char_list.append(rev_green)
+    if DEALT_CARDS.get("Mrs. Peacock"):
+        mrs_peacock = AIPlayer("Mrs. Peacock", DEALT_CARDS["Mrs. Peacock"])
+        ai_char_list.append(mrs_peacock)
+    if DEALT_CARDS.get("Professor Plum"):
+        prof_plum = AIPlayer("Professor Plum", DEALT_CARDS["Professor Plum"])
+        ai_char_list.append(prof_plum)
+    return ai_char_list
+
+
 player_starting_location = [1, 1]
 
 # Instatiate classes
@@ -252,30 +282,11 @@ cards = Cards(CARDS, DEALT_CARDS)
 player = Player(SUSPECTS, WEAPONS)
 scorecard = Scorecard(scorecard_table)
 
+
+ai_char_list = []
 # deal the game cards
 cards.deal_cards()
 print(DEALT_CARDS)
-
-# for the other characters, instatiate ai characters and assign hands
-ai_char_list = []
-if DEALT_CARDS.get("Miss Scarlett"):
-    miss_scarlett = AIPlayer("Miss Scarlett", DEALT_CARDS["Miss Scarlett"])
-    ai_char_list.append(miss_scarlett)
-if DEALT_CARDS.get("Colonel Mustard"):
-    col_mustard = AIPlayer("Colonel Mustard", DEALT_CARDS["Colonel Mustard"])
-    ai_char_list.append(col_mustard)
-if DEALT_CARDS.get("Mrs. White"):
-    mrs_white = AIPlayer("Mrs. White", DEALT_CARDS["Mrs. White"])
-    ai_char_list.append(mrs_white)
-if DEALT_CARDS.get("Reverend Green"):
-    rev_green = AIPlayer("Reverend Green", DEALT_CARDS["Reverend Green"])
-    ai_char_list.append(rev_green)
-if DEALT_CARDS.get("Mrs. Peacock"):
-    mrs_peacock = AIPlayer("Mrs. Peacock", DEALT_CARDS["Mrs. Peacock"])
-    ai_char_list.append(mrs_peacock)
-if DEALT_CARDS.get("Professor Plum"):
-    prof_plum = AIPlayer("Professor Plum", DEALT_CARDS["Professor Plum"])
-    ai_char_list.append(prof_plum)
 
 # print(ai_char_list[0].check_cards())
 
