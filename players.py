@@ -4,6 +4,8 @@ import random
 import time
 import copy
 
+import setup
+
 
 def number_dict_input_validation(user_input, chosen_dict=None):
     """
@@ -14,10 +16,16 @@ def number_dict_input_validation(user_input, chosen_dict=None):
     while True:
         if user_input == "suspect" or user_input == "weapon":
             choice = input(
-                f"\nWhich {user_input} would you like to investigate?: "
+                f"\nWhich {user_input} would you like to investigate?"
+                "(press 'I' to view investigation card): "
                 )
+            if choice == "i" or choice == "I":
+                setup.scorecard.show_scorecard()
+                choice = input(
+                    f"\nWhich {user_input} would you like to investigate?: ")
         elif user_input == "character":
-            choice = input(f"Which character would you like to play?: ")
+            choice = input(
+                f"Which character would you like to play?: ")
         for k, v in chosen_dict.items():
             if choice == k:
                 return k
@@ -67,7 +75,7 @@ def y_n_input_validation(user_input):
             "yeah",
             "ok",
             "aye",
-            "aye aye Captain",
+            "aye aye captain",
             "definitely",
         ]:
             return True
@@ -204,14 +212,15 @@ class Player:
             suspect = number_dict_input_validation(
                 "suspect", self.suspect_dict
                 )
+            clear()
             print("===== WEAPONS =====")
             for num, weapon in self.weapon_dict.items():
                 print(num, weapon)
             weapon = number_dict_input_validation("weapon", self.weapon_dict)
 
             print(
-                f"Are you sure you want to investigate"
-                f"{self.suspect_dict[suspect]} with the"
+                f"Are you sure you want to investigate "
+                f"{self.suspect_dict[suspect]} with the "
                 f"{self.weapon_dict[weapon]} in the {current_room}?"
             )
             check_choice = input("y/n: ")
