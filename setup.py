@@ -235,10 +235,10 @@ def game_setup():
     for char in ai_char_list:
         print(char.name)
     next = input(
-        "Press 'S' to view scorecard. Press any other key to "
+        "Press 'I' to view investigation card. Press any other key to "
         "continue game: "
         )
-    if next.lower() == 's':
+    if next.lower() == 'i':
         print(scorecard.show_scorecard())
         back_to_game = input("Press any key to continue game: ")
         if back_to_game or back_to_game == "":
