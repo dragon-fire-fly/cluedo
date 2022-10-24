@@ -12,6 +12,25 @@
 
 
 ## Objective
+"PyClue" is a one player Python terminal game based upon the classic detective game Cluedo. More information about the history and gameplay of Cluedo can be found on the [Cluedo wikidpedia page](https://en.wikipedia.org/wiki/Cluedo).
+
+## Story
+You were invited to a dinner party at the esteemed Dr Black's country Mansion for an evening of dinner, drinks, dancing and debauchery. 
+
+Unfortunately, as the clock struck midnight, a piercing scream reverberated throughout the Manor, caused by the discovery of Dr Black's body. He has been murdered in cold blood.
+
+You and the other five guests have gathered around Dr Black's body in the hallway, but something seems strange. This is clearly not the scene of the crime.
+
+In addition, a series of objects found around the Manor have been collected as potential murder weapons and lie strewn around the body.
+
+Your role now is to figure out WHO committed the crime, WHICH item was used and WHERE the murder took place.... and hopefully to prove your innocence!
+
+
+Roll the die to move around the Mansion and perform investigations to eliminate suspects, items and locations in order to figure out the details of this murder most foul.
+
+Once you think you know WHO, WHAT and WHERE, you may make an accusation. Be careful though, if you guess incorrectly, perhaps suspicion will fall on YOU. 
+
+Now what are you waiting for? There's no time to lose!
 
 ## Brief
 
@@ -23,6 +42,15 @@
 
 ## Logic
 ### Flow diagram
+A basic flow diagram of the game mechanics is shown below.
+![Flow diagram for Cluedo game](planning_files/flow_diagram_white_bg.png)
+
+### Gameboard layout
+The layout of rooms in the mansion in the original cluedo game are as follows:
+![Original Cluedo room layout](planning_files/cluedo_rooms_original_game.png)
+
+A simplified gameboard to be used in the PyClue game was designed on a grid system as follows:
+![Mansion room layout](planning_files/gameboard_with_coords.png)
 
 ## Features
 
