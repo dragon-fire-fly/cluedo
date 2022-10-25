@@ -16,17 +16,21 @@ def number_input_validation(no_options):
         user_ans = input(
             f"Enter 1 - {no_options} to choose a room or enter 'I' to view "
             "the investigation card: "
-            )
+            ).strip()
         if user_ans.isnumeric():
             for num in range(1, no_options + 1):
                 if user_ans == str(num):
                     return int(user_ans)
+            print(
+                f"Sorry, '{user_ans}' is not a valid input, please enter "
+                f"'I' or a number between 1 and {no_options}."
+            )
         elif user_ans == "i" or user_ans == "I":
             setup.scorecard.show_scorecard()
         else:
             print(
-                f"Sorry, '{user_ans}' is not a valid input, please enter a "
-                f"number between 1 and {no_options}."
+                f"Sorry, '{user_ans}' is not a valid input, please enter "
+                f"'I' or a number between 1 and {no_options}."
             )
 
 

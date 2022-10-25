@@ -18,18 +18,19 @@ def number_dict_input_validation(user_input, chosen_dict=None):
             choice = input(
                 f"\nWhich {user_input} would you like to investigate?"
                 "(press 'I' to view investigation card): "
-                )
+                ).strip()
             if choice == "i" or choice == "I":
                 setup.scorecard.show_scorecard()
                 choice = input(
-                    f"\nWhich {user_input} would you like to investigate?: ")
+                    f"\nWhich {user_input} would you like to investigate?:\
+                        ").strip()
         elif user_input == "character":
             choice = input(
-                f"Which character would you like to play?: ")
+                f"Which character would you like to play?: ").strip()
         for k, v in chosen_dict.items():
             if choice == k:
                 return k
-            elif choice == v:
+            elif choice.lower() == v.lower():
                 return k
         print(
             f"Sorry, that is not a valid input, please enter a number between "
