@@ -199,7 +199,6 @@ def main_menu():
     if choice == "1":
         story()
         game_setup()
-        # Need to add background story
     elif choice == "2":
         game_setup()
     else:
@@ -278,7 +277,7 @@ def generate_ai_characters():
 def story():
     story_1 = "You were invited to a dinner party at the esteemed Dr Black's \
 country Mansion for an evening of dinner, drinks, dancing and debauchery.\n"
-    story_2 = "Unfortunately, as the clock struck midnight, a piercing scream \
+    story_2 = "As the clock strikes midnight, a piercing scream \
 reverberates throughout the Manor, caused by the discovery of Dr \
 Black's body. He has been murdered in cold blood.\n"
     story_3 = "You and the other five guests have gathered around Dr Black's \
@@ -303,9 +302,13 @@ suspicion will fall on YOU.\n"
         ]
     story_board = ""
     for story in story_board_list:
-        story_board += story
         print(story_board)
-        input("Press any key to continue. ")
+        story_board += story
+        for letter in story:
+            time.sleep(0.025)
+            print(letter, end='', flush=True)
+
+        input("\nPress enter to continue. ")
         clear()
 
 
