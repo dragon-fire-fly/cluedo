@@ -176,7 +176,7 @@ def number_input_validation(no_options):
             options += f" or {str(no_options)}"
 
     while True:
-        user_ans = input(f"Your answer ({options}): ")
+        user_ans = input(f"Your answer ({options}): ").strip()
         # print(type(user_ans))
 
         for num in range(1, no_options+1):
@@ -227,20 +227,20 @@ def game_setup():
         scorecard.update_scorecard(chosen_character, user_hand[card[0]])
     print(
         f"Your cards are: \n\t- {user_hand[0]}\n\t- {user_hand[1]}\n\t"
-        f"- {user_hand[2]}\n\nThese cards have been added to your scorecard "
-        f"which can be viewed at any time."
+        f"- {user_hand[2]}\n\nThese cards have been added to your "
+        f"investigation card which can be viewed at any time.\n"
         )
     ai_char_list = generate_ai_characters()
     print(f"You are {chosen_character} and you are playing against:")
     for char in ai_char_list:
-        print(char.name)
+        print(f"\t- {char.name}")
     next = input(
-        "Press 'I' to view investigation card. Press any other key to "
+        "\nEnter 'I' to view investigation card or press enter to "
         "continue game: "
         )
     if next.lower() == 'i':
-        print(scorecard.show_scorecard())
-        back_to_game = input("Press any key to continue game: ")
+        scorecard.show_scorecard()
+        back_to_game = input("Press enter to continue game: ")
         if back_to_game or back_to_game == "":
             clear()
     else:
