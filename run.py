@@ -9,7 +9,7 @@ from tabulate import tabulate
 
 # import custom modules
 from setup import player, ai_char_list, scorecard, gameboard, ROOM_LOCATIONS
-
+from validation import number_input_validation, clear
 # print(tabulate(game_board))
 
 # Game variables
@@ -18,10 +18,6 @@ hours_remaining = 24
 
 
 # Main Game Functions
-def clear():
-    os.system("clear")
-
-
 def main_game_loop():
     player_location = gameboard.current_player_location()
     old_player_location = copy.deepcopy(player_location)
@@ -56,7 +52,7 @@ def main_game_loop():
 
     if current_room in ROOM_LOCATIONS:
         investigation_list = player.choose_investigation_cards(current_room)
-        print(investigation_list)
+        # print(investigation_list)
         investigate(investigation_list)
     else:
         print("End of turn")
@@ -87,9 +83,10 @@ def investigate(investigation_cards):
         f"\n{character_name} has one or more investigation cards in "
         f"{pronoun2} hand. {pronoun.capitalize()} showed you the "
         f"{card_to_show} card.\n"
-        "Your scorecard has been updated."
+        "Your investigation card has been updated."
     )
     scorecard.update_scorecard(character_name, card_to_show)
+    input("Press enter to continue. ")
 
 
 """ Player turn:
@@ -117,27 +114,4 @@ play_game = True
 
 while play_game:
     main_game_loop()
-    next_loop = input("Press any key to continue. ")
     clear()
-    # if next_loop != "s":
-
-
-# player.move_player(player_location)
-
-# check_cards() for each
-
-# card_matched = False
-# while not card_matched:
-#     for character in ai_char_list:
-#         matching_card = character.check_cards(investigation_list)
-#         print(matching_card)
-#     if matching_card:
-#         card_matched = True
-
-# print(ai_char_list)
-# debugging: characters and their cards:
-# print(f"Char 1 = {ai_char_list[0].name} Cards: {ai_char_list[0].cards}")
-# print(f"Char 2 = {ai_char_list[1].name} Cards: {ai_char_list[1].cards}")
-# print(f"Char 3 = {ai_char_list[2].name} Cards: {ai_char_list[2].cards}")
-# print(f"Char 4 = {ai_char_list[3].name} Cards: {ai_char_list[3].cards}")
-# print(f"Char 5 = {ai_char_list[4].name} Cards: {ai_char_list[4].cards}")

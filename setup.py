@@ -9,7 +9,7 @@ from gameboard import Gameboard
 from cards import Cards
 from players import AIPlayer, Player
 from scorecard import Scorecard
-
+from validation import clear, number_input_validation
 
 # Constants for game:
 ROOM_LOCATIONS = {
@@ -157,37 +157,6 @@ scorecard_table = [[
     ]]
 
 
-# custom functions
-def clear():
-    os.system("clear")
-
-
-def number_input_validation(no_options):
-    """
-    Takes a number as input and prompts the user to choose an option.
-    If the user input is a number between 1 and the input, returns the number.
-    """
-    options = ""
-    for num in range(1, no_options+1):
-        if num != no_options:
-            options += f"{str(num)}, "
-        elif num == no_options:
-            options = options.strip(", ")
-            options += f" or {str(no_options)}"
-
-    while True:
-        user_ans = input(f"Your answer ({options}): ").strip()
-        # print(type(user_ans))
-
-        for num in range(1, no_options+1):
-            if user_ans == str(num):
-                return str(num)
-        print(
-            f"Sorry, {user_ans} is not a valid input, please enter a number"
-            f"between 1 and {no_options}."
-            )
-
-
 def main_menu():
     print(
         "Please select from the following options:"
@@ -208,7 +177,6 @@ def main_menu():
 # Rules:
 def show_rules():
     print("The rules will go here")
-    pass
 
 
 def game_setup():
@@ -237,7 +205,7 @@ def game_setup():
     next = input(
         "\nEnter 'I' to view investigation card or press enter to "
         "continue game: "
-        )
+        ).strip()
     if next.lower() == 'i':
         scorecard.show_scorecard()
         back_to_game = input("Press enter to continue game: ")
@@ -245,7 +213,6 @@ def game_setup():
             clear()
     else:
         clear()
-    # print(DEALT_CARDS)
 
 
 # for the other characters, instatiate ai characters and assign hands
@@ -302,6 +269,8 @@ suspicion will fall on YOU.\n"
         ]
     story_board = ""
     for story in story_board_list:
+        clear()
+        print(LOGO)
         print(story_board)
         story_board += story
         for letter in story:
@@ -329,9 +298,7 @@ print(DEALT_CARDS)
 # print(ai_char_list[0].check_cards())
 
 # Welcome message, logo, back story etc.
-clear()
-print("Welcome to .... ")
-print('''
+LOGO = '''
  ██▓███ ▓██   ██▓ ▄████▄   ██▓     █    ██ ▓█████
 ▓██░  ██▒▒██  ██▒▒██▀ ▀█  ▓██▒     ██  ▓██▒▓█   ▀
 ▓██░ ██▓▒ ▒██ ██░▒▓█    ▄ ▒██░    ▓██  ▒██░▒███
@@ -342,8 +309,10 @@ print('''
 ░░       ▒ ▒ ░░  ░          ░ ░    ░░░ ░ ░    ░
          ░ ░     ░ ░          ░  ░   ░        ░  ░
          ░ ░     ░
-''')
-
+'''
+clear()
+print("Welcome to .... ")
+print(LOGO)
 
 # insert fancy welcome screen
 time.sleep(1)

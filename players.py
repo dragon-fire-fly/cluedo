@@ -5,100 +5,12 @@ import time
 import copy
 
 import setup
-
-
-def number_dict_input_validation(user_input, chosen_dict=None):
-    """
-    Takes an input and a relevant dictionary and prompts the user to choose
-    an option. If the user input is valid, returns the key of the chosen
-    dictionary. Else prompts for new input.
-    """
-    while True:
-        if user_input == "suspect" or user_input == "weapon":
-            choice = input(
-                f"\nWhich {user_input} would you like to investigate?"
-                "(press 'I' to view investigation card): "
-                ).strip()
-            if choice == "i" or choice == "I":
-                setup.scorecard.show_scorecard()
-                choice = input(
-                    f"\nWhich {user_input} would you like to investigate?:\
-                        ").strip()
-        elif user_input == "character":
-            choice = input(
-                f"Which character would you like to play?: ").strip()
-        for k, v in chosen_dict.items():
-            if choice == k:
-                return k
-            elif choice.lower() == v.lower():
-                return k
-        print(
-            f"Sorry, that is not a valid input, please enter a number between "
-            f"1-{len(chosen_dict)}"
-        )
-
-
-def number_input_validation(no_options):
-    """
-    Takes a number as input and prompts the user to choose an option.
-    If the user input is a number between 1 and the input, returns the number.
-    """
-    options = ""
-    for num in range(1, no_options + 1):
-        if num != no_options:
-            options += f"{str(num)}, "
-        elif num == no_options:
-            options = options.strip(", ")
-            options += f" or {str(no_options)}"
-
-    while True:
-        user_ans = input(f"Your answer ({options}): ")
-        # print(type(user_ans))
-
-        for num in range(1, no_options + 1):
-            if user_ans == str(num):
-                return str(num)
-        print(
-            f"Sorry, that is not a valid input, please enter a number between "
-            f"1 and {no_options}."
-        )
-
-
-def y_n_input_validation(user_input):
-    """
-    Takes user input and checks whether it is a valid yes or no answer
-    """
-    choice = user_input
-    while True:
-        if choice.lower() in [
-            "y",
-            "yes",
-            "yeah",
-            "ok",
-            "aye",
-            "aye aye captain",
-            "definitely",
-        ]:
-            return True
-        elif choice.lower() in [
-            "n",
-            "no",
-            "nah",
-            "nope",
-            "no way",
-            "no way José",
-            "nay",
-        ]:
-            print("Please make new choices for the investigation")
-            time.sleep(1.5)
-            clear()
-            return
-        else:
-            choice = input("Sorry, that was an invalid choice. y/n? ")
-
-
-def clear():
-    os.system("clear")
+from validation import (
+            clear,
+            number_input_validation,
+            number_dict_input_validation,
+            y_n_input_validation
+            )
 
 
 # User player class
@@ -201,8 +113,6 @@ class Player:
         """
         Allows the player to investigate other player's cards
         """
-        # player_location = gameboard.choose_room(player)
-        # current_room = gameboard.which_room(player)
         clear()
         print("======== Investigation phase ========")
         confirm_choice = False
@@ -219,12 +129,13 @@ class Player:
                 print(num, weapon)
             weapon = number_dict_input_validation("weapon", self.weapon_dict)
 
+            clear()
             print(
                 f"Are you sure you want to investigate "
                 f"{self.suspect_dict[suspect]} with the "
                 f"{self.weapon_dict[weapon]} in the {current_room}?"
             )
-            check_choice = input("y/n: ")
+            check_choice = input("y/n: ").strip()
             confirm_choice = y_n_input_validation(check_choice)
         return [
             self.suspect_dict[suspect], self.weapon_dict[weapon], current_room
@@ -245,16 +156,3 @@ class AIPlayer:
     def __init__(self, name, cards):
         self.name = name
         self.cards = cards
-
-    # def check_cards(self, investigation_cards):
-    #     cards = ["Miss Scarlett", "Dagger", "Kitchen"]
-    #     print(investigation_cards)
-    #     for card in investigation_cards:
-    #         if card in cards:
-    #             print(card)
-    #             return True
-    #         else:
-    #             return False
-
-    # def show_card(self):
-    #     pass
