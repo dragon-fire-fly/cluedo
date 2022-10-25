@@ -197,6 +197,7 @@ def main_menu():
     )
     choice = number_input_validation(3)
     if choice == "1":
+        story()
         game_setup()
         # Need to add background story
     elif choice == "2":
@@ -272,6 +273,51 @@ def generate_ai_characters():
         prof_plum = AIPlayer("Professor Plum", DEALT_CARDS["Professor Plum"])
         ai_char_list.append(prof_plum)
     return ai_char_list
+
+
+def story():
+    print(
+        "You were invited to a dinner party at the esteemed Dr Black's "
+        "country Mansion for an evening of dinner, drinks, dancing and "
+        "debauchery. "
+        )
+    input("Press any key to continue. ")
+    print(
+        "Unfortunately, as the clock struck midnight, a piercing scream "
+        "reverberated throughout the Manor, caused by the discovery of Dr "
+        "Black's body. He has been murdered in cold blood."
+        )
+    input("Press any key to continue. ")
+    print(
+        "You and the other five guests have gathered around Dr Black's body "
+        "in the hallway, but something seems strange. This is clearly not the "
+        "scene of the crime.\nIn addition, a series of objects found around "
+        "the Manor have been collected as potential murder weapons and lie "
+        "strewn around the body."
+        )
+    input("Press any key to continue. ")
+    print(
+        "Your role now is to figure out WHO committed the crime, WHICH item "
+        "was used and WHERE the murder took place.... and hopefully prove "
+        "your innocence!"
+        )
+    input("Press any key to continue. ")
+    print(
+        "Roll the die to move around the Mansion and perform investigations "
+        "to eliminate suspects, items and locations in order to figure out "
+        "the details of this murder most foul."
+        )
+    input("Press any key to continue. ")
+    print(
+        "Once you think you know WHO, WHAT and WHERE, you may make an "
+        "accusation. Be careful though, if you guess incorrectly, perhaps "
+        "suspicion will fall on YOU. "
+        )
+    input("Press any key to continue")
+    print(
+        "Now what are you waiting for? There's no time to lose!"
+    )
+    input("Press any key to start the game. ")
 
 
 player_starting_location = [1, 1]
