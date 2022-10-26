@@ -158,32 +158,41 @@ scorecard_table = [[
 
 
 def main_menu():
-    print(
-        "Please select from the following options:"
-        "\n1. Play Game (with story)"
-        "\n2. Play Game (skip story)"
-        "\n3. View Rules"
-    )
-    choice = number_input_validation(3)
-    if choice == "1":
-        story()
-        game_setup()
-    elif choice == "2":
-        game_setup()
-    else:
-        show_rules()
+    menu_loop = True
+    while menu_loop:
+        print(
+            "Please select from the following options:"
+            "\n1. Play Game (with story)"
+            "\n2. Play Game (skip story)"
+            "\n3. View Rules"
+        )
+        choice = number_input_validation(3)
+        if choice == "1" or choice == "2":
+            menu_loop = False
+            # Ask user which player they want to play:
+            clear()
+            if choice == "1":
+                time.sleep(2)
+                story()
+                game_setup()
+            elif choice == "2":
+                game_setup()
+        else:
+            show_rules()
 
 
 # Rules:
 def show_rules():
+    clear()
     print("The rules will go here")
+    input("Press enter to continue")
+    clear()
 
 
 def game_setup():
-    # Ask user which player they want to play:
     clear()
     chosen_character = player.choose_character()
-    print(f"You have chosen {chosen_character}.")
+    print(f"You have chosen to play as {chosen_character}.")
     time.sleep(1)
     print("Shuffling cards...")
     time.sleep(1)
@@ -242,7 +251,7 @@ def generate_ai_characters():
 
 
 def story():
-    story_1 = "You were invited to a dinner party at the esteemed Dr Black's \
+    story_1 = "You are attending a dinner party at the esteemed Dr Black's \
 country Mansion for an evening of dinner, drinks, dancing and debauchery.\n"
     story_2 = "As the clock strikes midnight, a piercing scream \
 reverberates throughout the Manor, caused by the discovery of Dr \
@@ -254,7 +263,7 @@ the Manor have been collected as potential murder weapons and lie \
 strewn around the body.\n"
     story_4 = "Your role now is to figure out WHO committed the crime, WHICH \
 item was used and WHERE the murder took place.... and hopefully prove \
-your innocence!\n"
+your innocence in the process!\n"
     story_5 = "Roll the die to move around the Mansion and perform \
 investigations to eliminate suspects, items and locations in order to \
 figure out the details of this murder most foul.\n"
@@ -286,7 +295,7 @@ player_starting_location = [1, 1]
 # Instatiate classes
 gameboard = Gameboard(ROOM_LOCATIONS, player_starting_location)
 cards = Cards(CARDS, DEALT_CARDS)
-player = Player(SUSPECTS, WEAPONS)
+player = Player(SUSPECTS, WEAPONS, ROOMS)
 scorecard = Scorecard(scorecard_table)
 
 
