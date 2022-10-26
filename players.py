@@ -15,9 +15,10 @@ from validation import (
 
 # User player class
 class Player:
-    def __init__(self, suspect_dict, weapon_dict):
+    def __init__(self, suspect_dict, weapon_dict, room_dict):
         self.suspect_dict = suspect_dict
         self.weapon_dict = weapon_dict
+        self.room_dict = room_dict
 
     def choose_character(self):
         """
@@ -121,13 +122,15 @@ class Player:
             for num, suspect in self.suspect_dict.items():
                 print(num, suspect)
             suspect = number_dict_input_validation(
-                "suspect", self.suspect_dict
+                "suspect", self.suspect_dict, "investigation"
                 )
             clear()
             print("===== WEAPONS =====")
             for num, weapon in self.weapon_dict.items():
                 print(num, weapon)
-            weapon = number_dict_input_validation("weapon", self.weapon_dict)
+            weapon = number_dict_input_validation(
+                "weapon", self.weapon_dict, "investigation"
+                )
 
             clear()
             print(
@@ -141,8 +144,37 @@ class Player:
             self.suspect_dict[suspect], self.weapon_dict[weapon], current_room
             ]
 
-    def make_accusation():
-        pass
+    def make_accusation(self):
+
+        print("\n ===== SUSPECTS =====")
+        for num, suspect in self.suspect_dict.items():
+            print(num, suspect)
+        suspect = number_dict_input_validation(
+            "suspect", self.suspect_dict, "accusation"
+            )
+        clear()
+        print("===== WEAPONS =====")
+        for num, weapon in self.weapon_dict.items():
+            print(num, weapon)
+        weapon = number_dict_input_validation(
+            "weapon", self.weapon_dict, "accusation"
+            )
+        clear()
+        print("===== ROOMS =====")
+        for num, room in self.room_dict.items():
+            print(num, room)
+        room = number_dict_input_validation(
+            "room", self.room_dict, "accusation"
+            )
+        clear()
+        print(
+            f"Are you sure you want to accuse "
+            f"{self.suspect_dict[suspect]} with the "
+            f"{self.weapon_dict[weapon]} in the {self.room_dict[room]}?"
+            f"\nYou may only make one accusation per game."
+        )
+        check_choice = input("y/n: ").strip()
+        confirm_choice = y_n_input_validation(check_choice)
 
     def roll_die(self):
         """
