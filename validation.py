@@ -19,34 +19,34 @@ def number_input_validation(no_options):
 
     while True:
         user_ans = input(f"Your answer ({options}): ").strip()
-        # print(type(user_ans))
 
         for num in range(1, no_options + 1):
             if user_ans == str(num):
                 return str(num)
         print(
-            f"Sorry, that is not a valid input, please enter a number between "
-            f"1 and {no_options}."
+            f"Sorry, {user_ans} is not a valid input, please enter a number "
+            f"between 1 and {no_options}."
         )
 
 
-def number_dict_input_validation(user_input, chosen_dict=None):
+def number_dict_input_validation(user_input, chosen_dict, phase=None):
     """
     Takes an input and a relevant dictionary and prompts the user to choose
     an option. If the user input is valid, returns the key of the chosen
     dictionary. Else prompts for new input.
     """
     while True:
-        if user_input == "suspect" or user_input == "weapon":
+        choice = ""
+        if user_input in ["suspect", "weapon", "room"]:
             choice = input(
-                f"\nWhich {user_input} would you like to investigate?"
-                "(press 'I' to view investigation card): "
+                f"\nWhich {user_input} would you like to include in your "
+                f"{phase}? (press 'I' to view investigation card): "
                 ).strip()
             if choice == "i" or choice == "I":
                 setup.scorecard.show_scorecard()
                 choice = input(
-                    f"\nWhich {user_input} would you like to investigate?:\
-                        ").strip()
+                    f"\nWhich {user_input} would you like to include in your "
+                    f"{phase}?:").strip()
         elif user_input == "character":
             choice = input(
                 f"\nWhich character would you like to play?: ").strip()
