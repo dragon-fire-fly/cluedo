@@ -14,14 +14,14 @@ from validation import number_input_validation, clear
 
 # Game variables
 win_condition_satisfied = False
-hours_remaining = 24
 
 
 # Main Game Functions
-def main_game_loop():
+def main_game_loop(hours_remaining):
     player_location = gameboard.current_player_location()
     old_player_location = copy.deepcopy(player_location)
-
+    print(f"You have {hours_remaining} hours remaining...")
+    time.sleep(2)
     # obtain current room
     current_room = gameboard.which_room()
     # die roll for the turn:
@@ -89,6 +89,23 @@ def investigate(investigation_cards):
     input("Press enter to continue. ")
 
 
+def end_of_turn():
+    clear()
+    print("It's the end on your turn, What would you like to do?")
+    print("1. Make accusation\n2. End turn\n3. View investigation card ")
+    choice = number_input_validation(3)
+    if choice == "3":
+        scorecard.show_scorecard()
+        print("It's the end on your turn, What would you like to do?")
+        print("1. Make accusation\n2. End turn ")
+        choice = number_input_validation(2)
+    if choice == "1":
+        print("")
+        player.make_accusation()
+    else:
+        clear()
+
+
 """ Player turn:
 1. minus one hour from the game clock
 2. player rolls dice and decides whether to move or stay in the room
@@ -106,12 +123,15 @@ def investigate(investigation_cards):
 11. Next turn begins...
 """
 
-# if __name__ -- '__main__':
 
 # 1
 # minus one hour
 play_game = True
+hours_remaining = 24
 
-while play_game:
-    main_game_loop()
-    clear()
+if __name__ == '__main__':
+    while play_game:
+        main_game_loop(hours_remaining)
+        end_of_turn()
+        hours_remaining -= 1
+        clear()
