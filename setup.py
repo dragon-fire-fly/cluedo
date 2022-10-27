@@ -102,59 +102,40 @@ game_board = (
     (("Lounge*"), (" "), (" "), ("Main Hall"), (" "), (" "), ("Study*")),
 )
 
-scorecard_table = [[
-    " ",
-    "Miss Scarlett",
-    "Colonel Mustard",
-    "Mrs. White",
-    "Reverend Green",
-    "Mrs. Peacock",
-    "Professor Plum"
-    ], [
-        'Miss Scarlett',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Colonel Mustard',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Mrs. White',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Reverend Green',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Mrs. Peacock',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Professor Plum',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-    ], [
-        'Rope',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Lead piping',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Candlestick',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Dagger',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Spanner',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Revolver',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-    ], [
-        'Main Hall',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Dining Room',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Billiard Room',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Ball Room',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Library',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Conservatory',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Study',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Lounge',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ], [
-        'Kitchen',  ' ',  ' ', ' ', ' ', ' ', ' '
-    ]]
+scorecard_table = [
+    [
+        " ",
+        "Miss Scarlett",
+        "Colonel Mustard",
+        "Mrs. White",
+        "Reverend Green",
+        "Mrs. Peacock",
+        "Professor Plum",
+    ],
+    ["Miss Scarlett", " ", " ", " ", " ", " ", " "],
+    ["Colonel Mustard", " ", " ", " ", " ", " ", " "],
+    ["Mrs. White", " ", " ", " ", " ", " ", " "],
+    ["Reverend Green", " ", " ", " ", " ", " ", " "],
+    ["Mrs. Peacock", " ", " ", " ", " ", " ", " "],
+    ["Professor Plum", " ", " ", " ", " ", " ", " "],
+    [""],
+    ["Rope", " ", " ", " ", " ", " ", " "],
+    ["Lead piping", " ", " ", " ", " ", " ", " "],
+    ["Candlestick", " ", " ", " ", " ", " ", " "],
+    ["Dagger", " ", " ", " ", " ", " ", " "],
+    ["Spanner", " ", " ", " ", " ", " ", " "],
+    ["Revolver", " ", " ", " ", " ", " ", " "],
+    [""],
+    ["Main Hall", " ", " ", " ", " ", " ", " "],
+    ["Dining Room", " ", " ", " ", " ", " ", " "],
+    ["Billiard Room", " ", " ", " ", " ", " ", " "],
+    ["Ball Room", " ", " ", " ", " ", " ", " "],
+    ["Library", " ", " ", " ", " ", " ", " "],
+    ["Conservatory", " ", " ", " ", " ", " ", " "],
+    ["Study", " ", " ", " ", " ", " ", " "],
+    ["Lounge", " ", " ", " ", " ", " ", " "],
+    ["Kitchen", " ", " ", " ", " ", " ", " "],
+]
 
 
 def main_menu():
@@ -169,7 +150,6 @@ def main_menu():
         choice = number_input_validation(3)
         if choice == "1" or choice == "2":
             menu_loop = False
-            # Ask user which player they want to play:
             clear()
             if choice == "1":
                 time.sleep(2)
@@ -190,13 +170,18 @@ def show_rules():
 
 
 def game_setup():
+
+    # global player_starting_location
     clear()
     chosen_character = player.choose_character()
     print(f"You have chosen to play as {chosen_character}.")
+    player.set_starting_location(chosen_character)
     time.sleep(1)
     print("Shuffling cards...")
     time.sleep(1)
     clear()
+    # deal the game cards
+    murder_cards = cards.deal_cards()
 
     # pop out the cards dealt to the chosen character
     user_hand = DEALT_CARDS.pop(chosen_character)
@@ -206,7 +191,7 @@ def game_setup():
         f"Your cards are: \n\t- {user_hand[0]}\n\t- {user_hand[1]}\n\t"
         f"- {user_hand[2]}\n\nThese cards have been added to your "
         f"investigation card which can be viewed at any time.\n"
-        )
+    )
     ai_char_list = generate_ai_characters()
     print(f"You are {chosen_character} and you are playing against:")
     for char in ai_char_list:
@@ -214,8 +199,8 @@ def game_setup():
     next = input(
         "\nEnter 'I' to view investigation card or press enter to "
         "continue game: "
-        ).strip()
-    if next.lower() == 'i':
+    ).strip()
+    if next.lower() == "i":
         scorecard.show_scorecard()
         back_to_game = input("Press enter to continue game: ")
         if back_to_game or back_to_game == "":
@@ -272,10 +257,7 @@ accusation. Be careful though, if you guess incorrectly, perhaps \
 suspicion will fall on YOU.\n"
     story_7 = "Now what are you waiting for? There's no time to lose!\n"
 
-    story_board_list = [
-        story_1, story_2, story_3, story_4, story_5,
-        story_6, story_7
-        ]
+    story_board_list = [story_1, story_2, story_3, story_4, story_5, story_6, story_7]
     story_board = ""
     for story in story_board_list:
         clear()
@@ -284,15 +266,14 @@ suspicion will fall on YOU.\n"
         story_board += story
         for letter in story:
             time.sleep(0.025)
-            print(letter, end='', flush=True)
+            print(letter, end="", flush=True)
 
         input("\nPress enter to continue. ")
         clear()
 
 
-player_starting_location = [1, 1]
-
 # Instatiate classes
+player_starting_location = [1, 1]
 gameboard = Gameboard(ROOM_LOCATIONS, player_starting_location)
 cards = Cards(CARDS, DEALT_CARDS)
 player = Player(SUSPECTS, WEAPONS, ROOMS)
@@ -300,14 +281,12 @@ scorecard = Scorecard(scorecard_table)
 
 
 ai_char_list = []
-# deal the game cards
-cards.deal_cards()
-print(DEALT_CARDS)
+
 
 # print(ai_char_list[0].check_cards())
 
 # Welcome message, logo, back story etc.
-LOGO = '''
+LOGO = """
  ██▓███ ▓██   ██▓ ▄████▄   ██▓     █    ██ ▓█████
 ▓██░  ██▒▒██  ██▒▒██▀ ▀█  ▓██▒     ██  ▓██▒▓█   ▀
 ▓██░ ██▓▒ ▒██ ██░▒▓█    ▄ ▒██░    ▓██  ▒██░▒███
@@ -318,7 +297,7 @@ LOGO = '''
 ░░       ▒ ▒ ░░  ░          ░ ░    ░░░ ░ ░    ░
          ░ ░     ░ ░          ░  ░   ░        ░  ░
          ░ ░     ░
-'''
+"""
 clear()
 print("Welcome to .... ")
 print(LOGO)
