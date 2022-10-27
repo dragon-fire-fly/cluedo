@@ -41,15 +41,15 @@ def number_dict_input_validation(user_input, chosen_dict, phase=None):
             choice = input(
                 f"\nWhich {user_input} would you like to include in your "
                 f"{phase}? (press 'I' to view investigation card): "
-                ).strip()
+            ).strip()
             if choice == "i" or choice == "I":
                 setup.scorecard.show_scorecard()
                 choice = input(
                     f"\nWhich {user_input} would you like to include in your "
-                    f"{phase}?:").strip()
+                    f"{phase}?:"
+                ).strip()
         elif user_input == "character":
-            choice = input(
-                f"\nWhich character would you like to play?: ").strip()
+            choice = input(f"\nWhich character would you like to play?: ").strip()
         for k, v in chosen_dict.items():
             if choice == k:
                 return k
@@ -61,7 +61,7 @@ def number_dict_input_validation(user_input, chosen_dict, phase=None):
         )
 
 
-def y_n_input_validation(user_input):
+def y_n_input_validation(user_input, phase):
     """
     Takes user input and checks whether it is a valid yes or no answer
     """
@@ -86,13 +86,19 @@ def y_n_input_validation(user_input):
             "no way José",
             "nay",
         ]:
-            print("Please make new choices for the investigation")
-            time.sleep(1.5)
-            clear()
-            return
+            if phase == "investigation":
+                print(f"Please make new choices for the {phase}")
+                time.sleep(1.5)
+                clear()
+                return
+            else:
+                print(f"No {phase} made this round")
+                return
         else:
-            choice = input(f"Sorry, {choice} was an invalid choice. \
-        y/n? ").strip()
+            choice = input(
+                f"Sorry, {choice} was an invalid choice. \
+        y/n? "
+            ).strip()
 
 
 def clear():
