@@ -3,15 +3,15 @@ import random
 
 
 class Cards:
-    def __init__(self, cards, dealt_cards):
+    def __init__(self, cards: list[list[str]], dealt_cards: dict[str, list]):
         self.cards = cards
         self.dealt_cards = dealt_cards
 
-    def shuffle_cards(self, card_deck):
+    def shuffle_cards(self, card_deck: list[list[str]]) -> list[list[str]]:
         random.shuffle(card_deck)
         return card_deck
 
-    def deal_cards(self):
+    def deal_cards(self) -> tuple:
         cards = self.shuffle_cards(self.cards)
 
         # Pop one suspect, one weapon and one room
@@ -30,4 +30,4 @@ class Cards:
                 random_card = shuffled_cards.pop()
                 self.dealt_cards[key].append(random_card)
 
-        return self.dealt_cards
+        return murder_envelope
