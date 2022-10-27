@@ -8,8 +8,9 @@ import copy
 from tabulate import tabulate
 
 # import custom modules
-from setup import player, ai_char_list, scorecard, gameboard, ROOM_LOCATIONS
+from setup import player, ai_char_list, scorecard, gameboard, ROOM_LOCATIONS, cards
 from validation import number_input_validation, clear
+
 # print(tabulate(game_board))
 
 # Game variables
@@ -46,7 +47,7 @@ def main_game_loop(hours_remaining):
         room_distances,
         ROOM_LOCATIONS,
     )
-    gameboard.update_player_location([new_player_location])
+    gameboard.update_player_location(new_player_location)
     # check whether in a room or in hallway (and if so, end turn)
     current_room = gameboard.which_room()
 
@@ -59,6 +60,8 @@ def main_game_loop(hours_remaining):
 
 
 def investigate(investigation_cards):
+    character_name = ""
+    card_to_show = ""
     for character in ai_char_list[::-1]:
         # print(f"{character.name} = {character.cards}")
         for card in investigation_cards:
@@ -101,7 +104,20 @@ def end_of_turn():
         choice = number_input_validation(2)
     if choice == "1":
         print("")
-        player.make_accusation()
+        accusation = player.make_accusation()
+        if accusation != []:
+            clear()
+            print(
+                f"You have chosen: {accusation[0]}, {accusation[1]} and \
+{accusation[2]}.")
+            time.sleep(1)
+            conclusion = cards.check_murder_envelope(accusation)
+            print(conclusion)
+            global play_game
+            play_game = False
+            input("Press enter to exit the program")
+        else:
+            clear()
     else:
         clear()
 
@@ -129,7 +145,7 @@ def end_of_turn():
 play_game = True
 hours_remaining = 24
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     while play_game:
         main_game_loop(hours_remaining)
         end_of_turn()
