@@ -10,7 +10,7 @@ from validation import (
     number_input_validation,
     number_dict_input_validation,
     y_n_input_validation,
-    )
+)
 
 
 # User player class
@@ -98,7 +98,7 @@ class Player:
                         if room_dict[desired_room][1] - player_location[1] > 0:
                             die_roll -= 1
                             player_location[1] += 1
-                        elif room_dict[desired_room][1] - player_location[1] \
+                        elif room_dict[desired_room][1] - player_location[1]\
                                 < 0:
                             die_roll -= 1
                             player_location[1] -= 1
@@ -154,10 +154,7 @@ class Player:
                 f"{self.suspect_dict[suspect]} with the "
                 f"{self.weapon_dict[weapon]} in the {current_room}?"
             )
-            check_choice = input("y/n: ").strip()
-            confirm_choice = y_n_input_validation(
-                check_choice, "investigation"
-                )
+            confirm_choice = y_n_input_validation("investigation")
         return [
             self.suspect_dict[suspect],
             self.weapon_dict[weapon],
@@ -167,7 +164,7 @@ class Player:
     def make_accusation(self) -> list[str]:
 
         clear()
-        print("\n ===== SUSPECTS =====")
+        print("===== SUSPECTS =====")
         for num, suspect in self.suspect_dict.items():
             print(num, suspect)
         suspect = number_dict_input_validation(
@@ -194,8 +191,7 @@ class Player:
             f"{self.weapon_dict[weapon]} in the {self.room_dict[room]}?"
             f"\nYou may only make one accusation per game."
         )
-        check_choice = input("y/n: ").strip()
-        confirm_choice = y_n_input_validation(check_choice, "accusation")
+        confirm_choice = y_n_input_validation("accusation")
         accusation = []
         if confirm_choice == "y":
             accusation = [
