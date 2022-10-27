@@ -3,6 +3,7 @@ import random
 
 
 import setup
+
 # Gameboard
 
 
@@ -14,9 +15,9 @@ def number_input_validation(no_options):
     """
     while True:
         user_ans = input(
-            f"Enter 1 - {no_options} to choose a room or enter 'I' to view "
+            f"\nEnter 1 - {no_options} to choose a room or enter 'I' to view "
             "the investigation card: "
-            ).strip()
+        ).strip()
         if user_ans.isnumeric():
             for num in range(1, no_options + 1):
                 if user_ans == str(num):
@@ -35,28 +36,28 @@ def number_input_validation(no_options):
 
 
 class Gameboard:
-    def __init__(self, rooms, player_location):
+    def __init__(self, rooms: dict[str, tuple[int, int]], player_location: list[int]):
         self.rooms = rooms
         self.player_location = player_location
 
-    def update_player_location(self, new_location):
+    def update_player_location(self, new_location: list[int]):
         """Updates the player_location variable stored within Gameboard"""
-        self.player_location = new_location[0]
+        self.player_location = new_location
 
     def current_player_location(self):
         """Returns the current player_location coordinates"""
         return self.player_location
 
-    def calculate_distance(self, point1: tuple, point2: tuple):
+    def calculate_distance(self, point1, point2):
         """Takes two points on the gameboard and calculates and returns the
         total number of spaces between the two points"""
         row_diff = abs(point1[0] - point2[0])
         column_diff = abs(point1[1] - point2[1])
         total_distance = row_diff + column_diff
-        return f"{total_distance}"
+        return int(total_distance)
 
     # player or run.py
-    def room_distances(self):
+    def room_distances(self) -> dict[str, int]:
         """Calls the calculate_distances() function to calculate the distance
         between the player's current location and each of the rooms on the
         board. Returns an updated dictionary of current distances to each room.
@@ -78,21 +79,20 @@ class Gameboard:
             )
         return distance_dict
 
-    def which_room(self):
+    def which_room(self) -> str:
         """Takes the current space of a player and returns which room they
         are in. If player is not in a room, returns hallway."""
+        a = self.player_location[0]
+        b = self.player_location[1]
         for room, space in self.rooms.items():
-            if (
-                self.player_location[0] == space[0]
-                and self.player_location[1] == space[1]
-            ):
+            if a == space[0] and b == space[1]:
                 return room
         return "hallway"
 
-    def which_coordinates(self, room):
-        """Takes the current room of a player and returns the co-ordinates for
-        that room. If player is not in a room, returns None."""
-        return self.rooms[room]
+    # def which_coordinates(self, room):
+    #     """Takes the current room of a player and returns the co-ordinates
+    #       for that room. If player is not in a room, returns None."""
+    #     return self.rooms[room]
 
     # needs a validation decorator
     def choose_room(self):
@@ -110,8 +110,7 @@ class Gameboard:
         room_options = {}
         for k, v in self.room_distances().items():
             if v == "0":
-                passageway_room = \
-                    self.check_for_secret_passageway(current_room)
+                passageway_room = self.check_for_secret_passageway(current_room)
                 # print(f"passageway_room: {passageway_room}")
                 if passageway_room:
                     room_distances[passageway_room] = "0"
@@ -124,7 +123,7 @@ class Gameboard:
 
             elif v == "0":
                 print(f"{i}- {k}: {v} space(s) (Use secret passageway)")
-            elif current_room not in room_options.keys() and len(v) <= 2:
+            elif current_room not in room_options.keys() and v <= 9:
                 print(f"{i}- {k}: {v} space(s)")
             else:
                 print(f"{i}- {k}: {v}")
@@ -134,7 +133,7 @@ class Gameboard:
         return (desired_room, room_distances)
         # self.move(player, desired_room, die_roll, room_distances)
 
-    def check_for_secret_passageway(self, current_room):
+    def check_for_secret_passageway(self, current_room: str):
         """
         Takes a player's current location and determines if there is a secret
         passageway connecting that location to another.
