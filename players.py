@@ -32,6 +32,22 @@ class Player:
         )
         return self.suspect_dict[user_character_choice]
 
+    def set_starting_location(self, character):
+        starting_location = [1, 1]
+        if character == "Miss Scarlett":
+            starting_location = [1, 4]
+        elif character == "Colonel Mustard":
+            starting_location = [3, 7]
+        elif character == "Mrs. White":
+            starting_location = [1, 1]
+        elif character == "Reverend Green":
+            starting_location = [1, 7]
+        elif character == "Mrs. Peacock":
+            starting_location = [7, 1]
+        elif character == "Professor Plum":
+            starting_location = [7, 7]
+        setup.gameboard.update_player_location(starting_location)
+
     def move_player(
         self,
         player_location,
@@ -40,7 +56,7 @@ class Player:
         die_roll,
         room_distances,
         room_dict,
-    ):
+    ) -> list[int]:
         """
         Takes a player's current and desired location and moves
         the player towards the chosen room
@@ -139,13 +155,17 @@ class Player:
                 f"{self.weapon_dict[weapon]} in the {current_room}?"
             )
             check_choice = input("y/n: ").strip()
-            confirm_choice = y_n_input_validation(check_choice)
-        return [
-            self.suspect_dict[suspect], self.weapon_dict[weapon], current_room
-            ]
+            confirm_choice = y_n_input_validation(
+                check_choice, "investigation"
+                )
+            return [
+                self.suspect_dict[suspect],
+                self.weapon_dict[weapon],
+                current_room
+                ]
 
     def make_accusation(self):
-
+        clear()
         print("\n ===== SUSPECTS =====")
         for num, suspect in self.suspect_dict.items():
             print(num, suspect)
@@ -174,7 +194,14 @@ class Player:
             f"\nYou may only make one accusation per game."
         )
         check_choice = input("y/n: ").strip()
-        confirm_choice = y_n_input_validation(check_choice)
+        confirm_choice = y_n_input_validation(check_choice, "accusation")
+        if confirm_choice:
+            return [
+                self.suspect_dict[suspect], self.weapon_dict[weapon],
+                self.room_dict[room]
+                ]
+        else:
+            return
 
     def roll_die(self):
         """
