@@ -275,7 +275,7 @@ suspicion will fall on YOU.\n"
 # Instatiate classes
 player_starting_location = [1, 1]
 gameboard = Gameboard(ROOM_LOCATIONS, player_starting_location)
-cards = Cards(CARDS, DEALT_CARDS)
+cards = Cards(CARDS, DEALT_CARDS, ["", "", ""])
 player = Player(SUSPECTS, WEAPONS, ROOMS)
 scorecard = Scorecard(scorecard_table)
 
