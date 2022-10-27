@@ -6,21 +6,21 @@ import copy
 
 import setup
 from validation import (
-            clear,
-            number_input_validation,
-            number_dict_input_validation,
-            y_n_input_validation
-            )
+    clear,
+    number_input_validation,
+    number_dict_input_validation,
+    y_n_input_validation,
+    )
 
 
 # User player class
 class Player:
-    def __init__(self, suspect_dict, weapon_dict, room_dict):
+    def __init__(self, suspect_dict: dict, weapon_dict: dict, room_dict: dict):
         self.suspect_dict = suspect_dict
         self.weapon_dict = weapon_dict
         self.room_dict = room_dict
 
-    def choose_character(self):
+    def choose_character(self) -> str:
         """
         Allows the user to choose which character they want to play.
         """
@@ -32,7 +32,7 @@ class Player:
         )
         return self.suspect_dict[user_character_choice]
 
-    def set_starting_location(self, character):
+    def set_starting_location(self, character: str) -> None:
         starting_location = [1, 1]
         if character == "Miss Scarlett":
             starting_location = [1, 4]
@@ -50,18 +50,17 @@ class Player:
 
     def move_player(
         self,
-        player_location,
-        desired_room,
-        current_room,
-        die_roll,
-        room_distances,
-        room_dict,
+        player_location: list[int],
+        desired_room: str,
+        current_room: str,
+        die_roll: int,
+        room_distances: dict[str, int],
+        room_dict: dict[str, tuple],
     ) -> list[int]:
         """
         Takes a player's current and desired location and moves
         the player towards the chosen room
         """
-        # print(room_distances[desired_room])
         if die_roll >= int(room_distances[desired_room]):
             player_location = list(room_dict[desired_room])
             if current_room != desired_room:
@@ -124,30 +123,31 @@ class Player:
                     print(f"You have chosen to stay in the {current_room}.")
                 else:
                     print("You have chosen to stay in the hallway.")
-                return player_location
+            return player_location
 
-    def choose_investigation_cards(self, current_room, player_location=[1, 1]):
+    def choose_investigation_cards(self, current_room: str) -> list[str]:
         """
-        Allows the player to investigate other player's cards
+        Allows the player to choose a suspect and a weapon to investigate
         """
         clear()
         print("======== Investigation phase ========")
         confirm_choice = False
+        suspect = ""
+        weapon = 2
         while not confirm_choice:
             print(f"You are in the {current_room}\n\n ===== SUSPECTS =====")
             for num, suspect in self.suspect_dict.items():
                 print(num, suspect)
             suspect = number_dict_input_validation(
                 "suspect", self.suspect_dict, "investigation"
-                )
+            )
             clear()
             print("===== WEAPONS =====")
             for num, weapon in self.weapon_dict.items():
                 print(num, weapon)
             weapon = number_dict_input_validation(
                 "weapon", self.weapon_dict, "investigation"
-                )
-
+            )
             clear()
             print(
                 f"Are you sure you want to investigate "
@@ -158,20 +158,21 @@ class Player:
             confirm_choice = y_n_input_validation(
                 check_choice, "investigation"
                 )
-            return [
-                self.suspect_dict[suspect],
-                self.weapon_dict[weapon],
-                current_room
-                ]
+        return [
+            self.suspect_dict[suspect],
+            self.weapon_dict[weapon],
+            current_room
+            ]
 
-    def make_accusation(self):
+    def make_accusation(self) -> list[str]:
+
         clear()
         print("\n ===== SUSPECTS =====")
         for num, suspect in self.suspect_dict.items():
             print(num, suspect)
         suspect = number_dict_input_validation(
             "suspect", self.suspect_dict, "accusation"
-            )
+        )
         clear()
         print("===== WEAPONS =====")
         for num, weapon in self.weapon_dict.items():
@@ -195,15 +196,16 @@ class Player:
         )
         check_choice = input("y/n: ").strip()
         confirm_choice = y_n_input_validation(check_choice, "accusation")
-        if confirm_choice:
-            return [
-                self.suspect_dict[suspect], self.weapon_dict[weapon],
-                self.room_dict[room]
-                ]
-        else:
-            return
+        accusation = []
+        if confirm_choice == "y":
+            accusation = [
+                self.suspect_dict[suspect],
+                self.weapon_dict[weapon],
+                self.room_dict[room],
+            ]
+        return accusation
 
-    def roll_die(self):
+    def roll_die(self) -> int:
         """
         Returns a random number between 1 and 6.
         """
@@ -212,6 +214,6 @@ class Player:
 
 # AI Player class
 class AIPlayer:
-    def __init__(self, name, cards):
+    def __init__(self, name: str, cards: list[str]):
         self.name = name
         self.cards = cards
