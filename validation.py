@@ -4,7 +4,7 @@ import time
 import setup
 
 
-def number_input_validation(no_options):
+def number_input_validation(no_options: int) -> str:
     """
     Takes a number as input and prompts the user to choose an option.
     If the user input is a number between 1 and the input, returns the number.
@@ -29,7 +29,9 @@ def number_input_validation(no_options):
         )
 
 
-def number_dict_input_validation(user_input, chosen_dict, phase=None):
+def number_dict_input_validation(
+    user_input: str, chosen_dict: dict, phase=None
+        ):
     """
     Takes an input and a relevant dictionary and prompts the user to choose
     an option. If the user input is valid, returns the key of the chosen
@@ -49,7 +51,9 @@ def number_dict_input_validation(user_input, chosen_dict, phase=None):
                     f"{phase}?:"
                 ).strip()
         elif user_input == "character":
-            choice = input(f"\nWhich character would you like to play?: ").strip()
+            choice = input(
+                f"\nWhich character would you like to play?: "
+                ).strip()
         for k, v in chosen_dict.items():
             if choice == k:
                 return k
@@ -61,14 +65,16 @@ def number_dict_input_validation(user_input, chosen_dict, phase=None):
         )
 
 
-def y_n_input_validation(user_input, phase):
+def y_n_input_validation(phase: str) -> bool:
     """
     Takes user input and checks whether it is a valid yes or no answer
     """
-    choice = user_input
+
     while True:
+        choice = input("y/n: ").strip()
         if choice.lower() in [
             "y",
+            "ye",
             "yes",
             "yeah",
             "ok",
@@ -90,15 +96,12 @@ def y_n_input_validation(user_input, phase):
                 print(f"Please make new choices for the {phase}")
                 time.sleep(1.5)
                 clear()
-                return
+                return False
             else:
                 print(f"No {phase} made this round")
-                return
-        else:
-            choice = input(
-                f"Sorry, {choice} was an invalid choice. \
-        y/n? "
-            ).strip()
+                time.sleep(1.5)
+                return False
+        print(f"Sorry, {choice} was an invalid choice.")
 
 
 def clear():
