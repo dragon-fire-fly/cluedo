@@ -23,7 +23,7 @@ You and the other five guests have gathered around Dr Black's body in the hallwa
 
 In addition, a series of objects found around the Manor have been collected as potential murder weapons and lie strewn around the body.
 
-Your role now is to figure out WHO committed the crime, WHICH item was used and WHERE the murder took place.... and hopefully to prove your innocence!
+Your role now is to figure out WHO committed the crime, WHICH item was used and WHERE the murder took place.... and hopefully prove your innocence!
 
 
 Roll the die to move around the Mansion and perform investigations to eliminate suspects, items and locations in order to figure out the details of this murder most foul.
@@ -42,15 +42,15 @@ Now what are you waiting for? There's no time to lose!
 
 ## Logic
 ### Flow diagram
-A basic flow diagram of the game mechanics is shown below.
-![Flow diagram for Cluedo game](planning_files/flow_diagram_white_bg.png)
+A basic flow diagram of the game mechanics is shown below.  
+![Flow diagram for Cluedo game](documentation/planning_files/flow_diagram_white_bg.png)
 
 ### Gameboard layout
-The layout of rooms in the mansion in the original cluedo game are as follows:
-![Original Cluedo room layout](planning_files/cluedo_rooms_original_game.png)
+The layout of rooms in the mansion in the original cluedo game are as follows:  
+![Original Cluedo room layout](documentation/planning_files/cluedo_rooms_original_game.png)
 
-A simplified gameboard to be used in the PyClue game was designed on a grid system as follows:
-![Mansion room layout](planning_files/gameboard_with_coords.png)
+A simplified gameboard to be used in the PyClue game was designed on a grid system as follows:  
+![Mansion room layout](documentation/planning_files/gameboard_with_coords.png)
 
 ## Features
 
@@ -63,7 +63,15 @@ A simplified gameboard to be used in the PyClue game was designed on a grid syst
 #### Choose Character
 <!-- Different character = diff starting location? -->
 #### View Scorecard
+
+
+#### Update Scorecard
+
 #### Choose a room (inc. Secret Passageway)
+- room distances are calculated and displayed (inc. secret passageway rooms)
+- Player prompted for choice
+- Player moved to or towards (depending on if enough moves available) chosen room or stays in current room if preferred
+
 #### Investigation phase
 - Choose a suspect
 - Choose a weapon
@@ -72,9 +80,35 @@ A simplified gameboard to be used in the PyClue game was designed on a grid syst
 - Scorecard updated
 
 #### The Accusation
-
+- Choose a suspect
+- Choose a weapon
+- Choose a room
+- Input validation
+- Check if player definitely wants to submit
 
 ### Python Coding Features
+#### Game constants
+<details>
+<summary> Click to expand and view the constants used for the game. These are lists, dictionaries and other iterables that are used by the game functions to set the initial (or in some cases updated) values for the game:
+</summary>
+
+| .py file  | name  | img  |
+|---|---|---|
+| setup.py  | Room Locations  | ![room_locations](documentation/features/code_features/constants/room_locations.png)  |
+| setup.py  | Cards  | ![room_locations](documentation/features/code_features/constants/cards.png)  |
+| setup.py  | Dealt cards (empty)  | ![room_locations](documentation/features/code_features/constants/dealt_cards_empty.png)   |
+| setup.py  | Suspects  | ![room_locations](documentation/features/code_features/constants/suspects.png)   |
+| setup.py  | Weapons  | ![room_locations](documentation/features/code_features/constants/weapons.png)   |
+| setup.py  | Rooms  | ![room_locations](documentation/features/code_features/constants/rooms.png)   |
+| setup.py  | Game Board  | ![room_locations](documentation/features/code_features/constants/game_board.png)   |
+|  setup.py | Scorecard/investigation card  | ![room_locations](documentation/features/code_features/constants/scorecard.png)   |
+
+
+
+
+</details>
+
+
 #### OOP
 Classes were made for:
 - Gameboard
@@ -88,6 +122,9 @@ The Classes were saved into seperate .py files which were then imported into set
 
 
 ### Features left to implement
+- save/load functionality
+- difficulty setting
+- multiplayer/ AI players playing
 
 
 ## Technologies Used
@@ -126,6 +163,9 @@ Python Modules used:
 
 ## Credits
 
+
+logo:
+http://patorjk.com/software/taag/#p=display&f=Bloody&t=PyClue%0A%0A%0A%0A
 
 
 
