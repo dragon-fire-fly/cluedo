@@ -117,11 +117,125 @@ Classes were made for:
 - Card deck
 - Scorecard
 
+The code for each class is discussed below:
+
+<details>
+<summary> Click to expand and view the Gameboard class code:
+</summary>
+
+| function  | description  | img  |
+|---|---|---|
+| __init__   |  | ![](documentation/features/code_features)  |
+| update_player_location  |   | ![](documentation/features/code_features)  |
+| current_player_location  |   | ![](documentation/features/code_features)  |
+| calculate_distance  |   | ![](documentation/features/code_features)  |
+| room_distances  |   | ![](documentation/features/code_features)  |
+| which_room  |   | ![](documentation/features/code_features)  |
+| choose_room  |   | ![](documentation/features/code_features)  |
+| check_for_secret_passageway  |   | ![](documentation/features/code_features)  |
+
+</details>
+
+<details>
+<summary> Click to expand and view the Player class code:
+</summary>
+
+| function  | description  | img  |
+|---|---|---|
+| __init__   |  | ![](documentation/features/code_features)  |
+| choose_character  |   | ![](documentation/features/code_features)  |
+| set_starting_location  |   | ![](documentation/features/code_features)  |
+| move_player  |   | ![](documentation/features/code_features)  |
+| choose_investigation_cards  |   | ![](documentation/features/code_features)  |
+| make_accusation  |   | ![](documentation/features/code_features)  |
+| roll_die  |   | ![](documentation/features/code_features)  |
+
+</details>
+
+<details>
+<summary> Click to expand and view the AI Player class code:
+</summary>
+
+| function  | description  | img  |
+|---|---|---|
+| __init__  |   | ![](documentation/features/code_features)  |
+
+
+</details>
+
+<details>
+<summary> Click to expand and view the Cards class code:
+</summary>
+
+| function  | description  | img  |
+|---|---|---|
+| __init__  |   | ![](documentation/features/code_features)  |
+| shuffle_cards  |   | ![](documentation/features/code_features)  |
+| deal_cards  |   | ![](documentation/features/code_features)  |
+| check_murder_envelope  |   | ![](documentation/features/code_features)  |
+
+
+
+</details>
+
+<details>
+<summary> Click to expand and view the Scorecard class code:
+</summary>
+
+| function  | description  | img  |
+|---|---|---|
+| __init__  |   | ![](documentation/features/code_features)  |
+| show_scorecard  |   | ![](documentation/features/code_features)  |
+| update_scorecard  |   | ![](documentation/features/code_features)  |
+
+
+</details>
+
 #### Custom Modules
 The Classes were saved into seperate .py files which were then imported into setup.py to be instantiated as objects to be imported and used in the main run.py file.
 
+<details>
+<summary> Click to expand and view the code for the setup.py methods:
+</summary>
 
-### Features left to implement
+| function  | description  | img  |
+|---|---|---|
+| main_menu()  |   | ![](documentation/features/code_features)  |
+| show_rules()  |   | ![](documentation/features/code_features)  |
+| game_setup()  |   | ![](documentation/features/code_features)  |
+| generate_ai_characters()  |   | ![](documentation/features/code_features)  |
+| story()  |   | ![](documentation/features/code_features)  |
+
+</details>
+
+<details>
+<summary> Click to expand and view the code for the run.py methods:
+</summary>
+
+| function  | description  | img  |
+|---|---|---|
+| main_game_loop()  |   | ![](documentation/features/code_features)  |
+| investigate()  |   | ![](documentation/features/code_features)  |
+| end_of_turn()  |   | ![](documentation/features/code_features)  |
+
+
+</details>
+
+<details>
+<summary> Click to expand and view the code for the validation.py methods:
+</summary>
+
+| function  | description  | img  |
+|---|---|---|
+| number_input_validation  |   | ![](documentation/features/code_features)  |
+| number_dict_input_validation  |   | ![](documentation/features/code_features)  |
+| y_n_input_validation  |   | ![](documentation/features/code_features)  |
+| clear  |   | ![](documentation/features/code_features)  |
+
+
+</details>
+
+### Future Features
 - save/load functionality
 - difficulty setting
 - multiplayer/ AI players playing
