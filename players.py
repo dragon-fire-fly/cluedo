@@ -193,7 +193,7 @@ class Player:
         )
         confirm_choice = y_n_input_validation("accusation")
         accusation = []
-        if confirm_choice == "y":
+        if confirm_choice is True:
             accusation = [
                 self.suspect_dict[suspect],
                 self.weapon_dict[weapon],
