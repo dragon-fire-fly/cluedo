@@ -22,7 +22,6 @@ class Cards:
 
         # Pop one suspect, one weapon and one room
         self.murder_envelope = [cards[0].pop(), cards[1].pop(), cards[2].pop()]
-        self.murder_envelope = ["Miss Scarlett", "Dagger", "Kitchen"]
 
         # mix the remaining cards together
         remaining_cards = []
