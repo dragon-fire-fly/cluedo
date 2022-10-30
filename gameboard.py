@@ -36,7 +36,9 @@ def number_input_validation(no_options):
 
 
 class Gameboard:
-    def __init__(self, rooms: dict[str, tuple[int, int]], player_location: list[int]):
+    def __init__(
+        self, rooms: dict[str, tuple[int, int]], player_location: list[int]
+            ):
         self.rooms = rooms
         self.player_location = player_location
 
@@ -109,19 +111,21 @@ class Gameboard:
         room_distances = self.room_distances()
         room_options = {}
         for k, v in self.room_distances().items():
-            if v == "0":
-                passageway_room = self.check_for_secret_passageway(current_room)
+            if v == 0:
+                passageway_room = self.check_for_secret_passageway(
+                    current_room
+                    )
                 # print(f"passageway_room: {passageway_room}")
                 if passageway_room:
-                    room_distances[passageway_room] = "0"
+                    room_distances[passageway_room] = 0
 
         for k, v in room_distances.items():
             i += 1
             room_options[i] = k
-            if v == "0" and k == current_room:
+            if v == 0 and k == current_room:
                 print(f"{i}- {k}: {v} space(s) (stay in room)")
 
-            elif v == "0":
+            elif v == 0:
                 print(f"{i}- {k}: {v} space(s) (Use secret passageway)")
             elif current_room not in room_options.keys() and v <= 9:
                 print(f"{i}- {k}: {v} space(s)")
