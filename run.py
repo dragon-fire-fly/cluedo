@@ -63,7 +63,6 @@ def investigate(investigation_cards):
     character_name = ""
     card_to_show = ""
     for character in ai_char_list[::-1]:
-        # print(f"{character.name} = {character.cards}")
         for card in investigation_cards:
             if card == character.cards[0]:
                 character_name = character.name
@@ -74,22 +73,25 @@ def investigate(investigation_cards):
             elif card == character.cards[2]:
                 character_name = character.name
                 card_to_show = card
-
-    if character_name in ["Miss Scarlett", "Mrs. White", "Mrs. Peacock"]:
-        pronoun = "she"
-        pronoun2 = "her"
+    if not character_name and not card_to_show:
+        print("No other characters had any cards to show.")
+        input("Press enter to continue ")
     else:
-        pronoun = "he"
-        pronoun2 = "his"
+        if character_name in ["Miss Scarlett", "Mrs. White", "Mrs. Peacock"]:
+            pronoun = "she"
+            pronoun2 = "her"
+        else:
+            pronoun = "he"
+            pronoun2 = "his"
 
-    print(
-        f"\n{character_name} has one or more investigation cards in "
-        f"{pronoun2} hand. {pronoun.capitalize()} showed you the "
-        f"{card_to_show} card.\n"
-        "Your investigation card has been updated."
-    )
-    scorecard.update_scorecard(character_name, card_to_show)
-    input("Press enter to continue. ")
+        print(
+            f"\n{character_name} has one or more investigation cards in "
+            f"{pronoun2} hand. {pronoun.capitalize()} showed you the "
+            f"{card_to_show} card.\n"
+            "Your investigation card has been updated."
+        )
+        scorecard.update_scorecard(character_name, card_to_show)
+        input("\nPress enter to continue. ")
 
 
 def end_of_turn():
@@ -109,10 +111,10 @@ def end_of_turn():
             clear()
             print(
                 f"You have chosen: {accusation[0]}, {accusation[1]} and \
-{accusation[2]}.")
+{accusation[2]}."
+            )
             time.sleep(1)
             conclusion = cards.check_murder_envelope(accusation)
-            print(conclusion)
             global play_game
             play_game = False
             input("Press enter to exit the program")
