@@ -13,21 +13,22 @@ class Cards:
         self.dealt_cards = dealt_cards
         self.murder_envelope = murder_envelope
 
-    def shuffle_cards(self, card_deck: list[list[str]]) -> list[list[str]]:
+    def shuffle_cards(self, card_deck: list[str]) -> list[str]:
         random.shuffle(card_deck)
         return card_deck
 
     def deal_cards(self) -> None:
-        cards = self.shuffle_cards(self.cards)
+        suspect_cards = self.shuffle_cards(self.cards[0])
+        weapon_cards = self.shuffle_cards(self.cards[1])
+        room_cards = self.shuffle_cards(self.cards[2])
 
         # Pop one suspect, one weapon and one room
-        self.murder_envelope = [cards[0].pop(), cards[1].pop(), cards[2].pop()]
+        self.murder_envelope = [
+            suspect_cards.pop(), weapon_cards.pop(), room_cards.pop()
+            ]
 
         # mix the remaining cards together
-        remaining_cards = []
-        for i in range(3):
-            for card in cards[i]:
-                remaining_cards.append(card)
+        remaining_cards = suspect_cards + weapon_cards + room_cards
         shuffled_cards = self.shuffle_cards(remaining_cards)
 
         # Deal to each of the six suspects
