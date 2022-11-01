@@ -86,6 +86,9 @@ A simplified gameboard to be used in the PyClue game was designed on a grid syst
 - Input validation
 - Check if player definitely wants to submit
 
+#### Favicon
+A magnifying glass icon was chosen as the favicon for the Heroku terminal program
+
 ### Python Coding Features
 #### Game constants
 <details>
@@ -125,14 +128,14 @@ The code for each class is discussed below:
 
 | function  | description  | img  |
 |---|---|---|
-| __init__   |  | ![](documentation/features/code_features)  |
-| update_player_location  |   | ![](documentation/features/code_features)  |
-| current_player_location  |   | ![](documentation/features/code_features)  |
-| calculate_distance  |   | ![](documentation/features/code_features)  |
-| room_distances  |   | ![](documentation/features/code_features)  |
-| which_room  |   | ![](documentation/features/code_features)  |
-| choose_room  |   | ![](documentation/features/code_features)  |
-| check_for_secret_passageway  |   | ![](documentation/features/code_features)  |
+| __ init __()   |  | ![init method](documentation/features/code_features/oop/gameboard_class/init.png) |
+| update_player_location()  |   | ![update player location method](documentation/features/code_features/oop/gameboard_class/update_player_location.png)  |
+| current_player_location()  |   | ![current player location method](documentation/features/code_features/oop/gameboard_class/current_player_location.png)  |
+| calculate_distance()  |   | ![calculate distance method](documentation/features/code_features/oop/gameboard_class/calculate_distance.png)  |
+| room_distances()  |   | ![room distances method](documentation/features/code_features/oop/gameboard_class/room_distances.png)  |
+| which_room()  |   | ![which room method](documentation/features/code_features/oop/gameboard_class/which_room.png)  |
+| choose_room() |   | ![choose room method](documentation/features/code_features/oop/gameboard_class/choose_room.png)  |
+| check_for_secret_passageway()  |   | ![check for secret passageway method](documentation/features/code_features/oop/gameboard_class/check_for_secret_passageway.png)  |
 
 </details>
 
@@ -142,13 +145,13 @@ The code for each class is discussed below:
 
 | function  | description  | img  |
 |---|---|---|
-| __init__   |  | ![](documentation/features/code_features)  |
-| choose_character  |   | ![](documentation/features/code_features)  |
-| set_starting_location  |   | ![](documentation/features/code_features)  |
-| move_player  |   | ![](documentation/features/code_features)  |
-| choose_investigation_cards  |   | ![](documentation/features/code_features)  |
-| make_accusation  |   | ![](documentation/features/code_features)  |
-| roll_die  |   | ![](documentation/features/code_features)  |
+| __ init __()   |  | ![init method](documentation/features/code_features/oop/player_class/init.png)  |
+| choose_character()  |   | ![choose character method](documentation/features/code_features/oop/player_class/choose_character.png)  |
+| set_starting_location()  |   | ![set starting location method](documentation/features/code_features/oop/player_class/set_starting_location.png)  |
+| move_player()  |   | ![move player method part 1](documentation/features/code_features/oop/player_class/move_player_1.png) ![move player method part 2](documentation/features/code_features/oop/player_class/move_player_2.png)  |
+| choose_investigation_cards()  |   | ![choose investigation cards method](documentation/features/code_features/oop/player_class/choose_investigation_cards.png)  |
+| make_accusation()  |   | ![make accusation method](documentation/features/code_features/oop/player_class/make_accusation.png)  |
+| roll_die()  |   | ![roll die method](documentation/features/code_features/oop/player_class/roll_die.png)  |
 
 </details>
 
@@ -158,7 +161,7 @@ The code for each class is discussed below:
 
 | function  | description  | img  |
 |---|---|---|
-| __init__  |   | ![](documentation/features/code_features)  |
+| __ init __()  |   | ![init method](documentation/features/code_features/oop/ai_player_class/init.png)  |
 
 
 </details>
@@ -169,10 +172,10 @@ The code for each class is discussed below:
 
 | function  | description  | img  |
 |---|---|---|
-| __init__  |   | ![](documentation/features/code_features)  |
-| shuffle_cards  |   | ![](documentation/features/code_features)  |
-| deal_cards  |   | ![](documentation/features/code_features)  |
-| check_murder_envelope  |   | ![](documentation/features/code_features)  |
+| __ init __()  |   | ![init method](documentation/features/code_features/oop/cards_class/init.png)  |
+| shuffle_cards()  |   | ![shuffle cards method](documentation/features/code_features/oop/cards_class/shuffle_cards.png)  |
+| deal_cards()  |   | ![deal cards method](documentation/features/code_features/oop/cards_class/deal_cards.png)  |
+| check_murder_envelope()  |   | ![check murder envelope method](documentation/features/code_features/oop/cards_class/check_murder_envelope.png)  |
 
 
 
@@ -184,9 +187,9 @@ The code for each class is discussed below:
 
 | function  | description  | img  |
 |---|---|---|
-| __init__  |   | ![](documentation/features/code_features)  |
-| show_scorecard  |   | ![](documentation/features/code_features)  |
-| update_scorecard  |   | ![](documentation/features/code_features)  |
+| __ init __()  |   | ![init method](documentation/features/code_features/oop/scorecard_class/init.png)  |
+| show_scorecard()  |   | ![show scorecard method](documentation/features/code_features/oop/scorecard_class/show_scorecard.png)  |
+| update_scorecard()  |   | ![update scorecard method](documentation/features/code_features/oop/scorecard_class/update_scorecard.png)  |
 
 
 </details>
@@ -281,6 +284,10 @@ Python Modules used:
 logo:
 http://patorjk.com/software/taag/#p=display&f=Bloody&t=PyClue%0A%0A%0A%0A
 
+favicon:
+https://game-icons.net/1x1/lorc/magnifying-glass.html#download
+https://favicon.io/
+
 
 
 
@@ -290,11 +297,10 @@ http://patorjk.com/software/taag/#p=display&f=Bloody&t=PyClue%0A%0A%0A%0A
 
 ## Rules:
 1. The murderer, murder weapon and murder location have been placed inside the "murder envelope"
-2. Miss Scarlet always goes first, then play moves clockwise.
-3. Roll the dice or use a secret passage each turn to move from room to room. You may move up, down or sideways, but not diagonally. 
-4. On your turn, if you are in a room, you may question the other suspects about any suspect, any weapon and the location you are currently at. 
-5. Starting with the player to your left, if that player has one of the three suggested cards, they must show you one. If they don't have any cards, they player to their left is questioned next, and so on.
-6. Once you feel certain that you know the murderer, murder weapon and room, you may make an accusation. You may only make one accusation per game.
+2. Roll the dice or use a secret passage each turn to move from room to room. You may move up, down or sideways, but not diagonally. 
+3. On your turn, if you are in a room, you may question the other suspects about any suspect, any weapon and the location you are currently at. 
+4. Starting with the player to your left, if that player has one of the three suggested cards, they must show you one. If they don't have any cards, they player to their left is questioned next, and so on.
+5. Once you feel certain that you know the murderer, murder weapon and room, you may make an accusation. You may only make one accusation per game.
 
 ## Setup
 
