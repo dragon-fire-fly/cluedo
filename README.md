@@ -198,42 +198,42 @@ The code for each class is discussed below:
 The Classes were saved into seperate .py files which were then imported into setup.py to be instantiated as objects to be imported and used in the main run.py file.
 
 <details>
-<summary> Click to expand and view the code for the setup.py methods:
+<summary> Click to expand and view the code for the setup.py functions:
 </summary>
 
 | function  | description  | img  |
 |---|---|---|
-| main_menu()  |   | ![](documentation/features/code_features)  |
-| show_rules()  |   | ![](documentation/features/code_features)  |
-| game_setup()  |   | ![](documentation/features/code_features)  |
-| generate_ai_characters()  |   | ![](documentation/features/code_features)  |
-| story()  |   | ![](documentation/features/code_features)  |
+| main_menu()  |   | ![main menu function](documentation/features/code_features/functions/setup/main_menu.png)  |
+| show_rules()  |   | ![show rules function](documentation/features/code_features)  |
+| game_setup()  |   | ![game setup function](documentation/features/code_features/functions/setup/game_setup.png)  |
+| generate_ai_characters()  |   | ![generate ai characters function](documentation/features/code_features/functions/setup/generate_ai_characters.png)  |
+| story()  |   | ![story function](documentation/features/code_features/functions/setup/story.png)  |
 
 </details>
 
 <details>
-<summary> Click to expand and view the code for the run.py methods:
+<summary> Click to expand and view the code for the run.py functions:
 </summary>
 
 | function  | description  | img  |
 |---|---|---|
-| main_game_loop()  |   | ![](documentation/features/code_features)  |
-| investigate()  |   | ![](documentation/features/code_features)  |
-| end_of_turn()  |   | ![](documentation/features/code_features)  |
+| main_game_loop()  |   | ![main game loop function](documentation/features/code_features/functions/run/main_game_loop.png)  |
+| investigate()  |   | ![investigate function](documentation/features/code_features/functions/run/investigate.png)  |
+| end_of_turn()  |   | ![end of turn function](documentation/features/code_features/functions/run/end_of_turn.png)  |
 
 
 </details>
 
 <details>
-<summary> Click to expand and view the code for the validation.py methods:
+<summary> Click to expand and view the code for the validation.py functions:
 </summary>
 
 | function  | description  | img  |
 |---|---|---|
-| number_input_validation  |   | ![](documentation/features/code_features)  |
-| number_dict_input_validation  |   | ![](documentation/features/code_features)  |
-| y_n_input_validation  |   | ![](documentation/features/code_features)  |
-| clear  |   | ![](documentation/features/code_features)  |
+| number_input_validation  |   | ![number input validation function](documentation/features/code_features/functions/validation/number_input_validation.png)  |
+| number_dict_input_validation  |   | ![number dict input validation function](documentation/features/code_features/functions/validation/number_dict_input_validation.png)  |
+| y_n_input_validation  |   | ![y n input validation function](documentation/features/code_features/functions/validation/y_n_input_validation.png)  |
+| clear  |   | ![clear function](documentation/features/code_features/functions/validation/clear.png)  |
 
 
 </details>
