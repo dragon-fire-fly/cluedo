@@ -12,6 +12,7 @@ from scorecard import Scorecard
 from validation import clear, number_input_validation
 
 # Constants for game:
+
 ROOM_LOCATIONS = {
     "Kitchen": (1, 1),
     "Ball Room": (1, 4),
@@ -161,7 +162,6 @@ def main_menu():
             show_rules()
 
 
-# Rules:
 def show_rules():
     clear()
     print("The rules will go here")
@@ -193,9 +193,9 @@ def game_setup():
         f"investigation card which can be viewed at any time.\n"
     )
     ai_char_list = generate_ai_characters()
-    print(f"You are {chosen_character} and you are playing against:")
-    for char in ai_char_list:
-        print(f"\t- {char.name}")
+    # print(f"You are {chosen_character} and you are playing against:")
+    # for char in ai_char_list:
+    #     print(f"\t- {char.name}")
     next = input(
         "\nEnter 'I' to view investigation card or press enter to "
         "continue game: "
@@ -237,27 +237,28 @@ def generate_ai_characters():
 
 def story():
     story_1 = "You are attending a dinner party at the esteemed Dr Black's \
-country Mansion for an evening of dinner, drinks, dancing and debauchery.\n"
+country Mansion for an evening of dinner, drinks,\ndancing and debauchery.\n"
     story_2 = "As the clock strikes midnight, a piercing scream \
-reverberates throughout the Manor, caused by the discovery of Dr \
+reverberates throughout the Manor, caused by the discovery of \nDr \
 Black's body. He has been murdered in cold blood.\n"
     story_3 = "You and the other five guests have gathered around Dr Black's \
-body in the hallway, but something seems strange. This is clearly not \
+body in the hallway, but something seems strange. \nThis is clearly not \
 the scene of the crime.\nIn addition, a series of objects found around \
 the Manor have been collected as potential murder weapons and lie \
-strewn around the body.\n"
+\nstrewn around the body.\n"
     story_4 = "Your role now is to figure out WHO committed the crime, WHICH \
-item was used and WHERE the murder took place.... and hopefully prove \
+item was used and WHERE the murder took place. \n... and hopefully prove \
 your innocence in the process!\n"
     story_5 = "Roll the die to move around the Mansion and perform \
-investigations to eliminate suspects, items and locations in order to \
+investigations to eliminate suspects, items and locations \nin order to \
 figure out the details of this murder most foul.\n"
     story_6 = "Once you think you know WHO, WHAT and WHERE, you may make an \
-accusation. Be careful though, if you guess incorrectly, perhaps \
+accusation. \nBe careful though, if you guess incorrectly, perhaps \
 suspicion will fall on YOU.\n"
     story_7 = "Now what are you waiting for? There's no time to lose!\n"
 
-    story_board_list = [story_1, story_2, story_3, story_4, story_5, story_6, story_7]
+    story_board_list = [story_1, story_2, story_3, story_4, story_5, story_6,
+                        story_7]
     story_board = ""
     for story in story_board_list:
         clear()
