@@ -158,15 +158,32 @@ This method checks whether the space the user is currently in is a room, and if 
 <summary> Click to expand and view the Player class code:
 </summary>
 
-| function  | description  | img  |
-|---|---|---|
-| __ init __()   |  | ![init method](documentation/features/code_features/oop/player_class/init.png)  |
-| choose_character()  |   | ![choose character method](documentation/features/code_features/oop/player_class/choose_character.png)  |
-| set_starting_location()  |   | ![set starting location method](documentation/features/code_features/oop/player_class/set_starting_location.png)  |
-| move_player()  |   | ![move player method part 1](documentation/features/code_features/oop/player_class/move_player_1.png) ![move player method part 2](documentation/features/code_features/oop/player_class/move_player_2.png)  |
-| choose_investigation_cards()  |   | ![choose investigation cards method](documentation/features/code_features/oop/player_class/choose_investigation_cards.png)  |
-| make_accusation()  |   | ![make accusation method](documentation/features/code_features/oop/player_class/make_accusation.png)  |
-| roll_die()  |   | ![roll die method](documentation/features/code_features/oop/player_class/roll_die.png)  |
+- **__ init __()**  
+The Player class init method initializes the suspect, weapon and room dictionaries as a number (str type e.g. "3") as the key and the name of the suspects, weapons or rooms as the values.  
+![init method](documentation/features/code_features/oop/player_class/init.png)  
+- **choose_character()**  
+Calls the number_dict_input_validation() method to prompt the user to choose a character. Returns the name of the character the user selected from the relevant value from the suspect dictionary.    
+![choose character method](documentation/features/code_features/oop/player_class/choose_character.png)  
+- **set_starting_location()**  
+Assigns the starting location for whichever player the user selected. Updates the gameboard object in the setup file with this location. Returns nothing.  
+![set starting location method](documentation/features/code_features/oop/player_class/set_starting_location.png)  
+- **roll_die()**  
+Simply returns a random number between 1-6 using the randomint() method from the random class. 
+![roll die method](documentation/features/code_features/oop/player_class/roll_die.png)  
+- **move_player()**  
+This method takes six arguments (current player location, desired room, current room, value of die roll, room distances dictionary and the room dictionary) in order to return the new player location after a player has chosen to move (or not to move!)  
+  
+    First, the method evaluates whether the user has rolled enough on the die to make it to the desired room from the current room. If so, the player location is updated to the desired room. If the desired room is different from the current room, it prints that the user is "walking" there. If the desired room is the same as the current room, it prints "you have chosen to remain in the <desired_room>".  
+  
+    If the user has not rolled enough to reach the desired room, they are given the option to move towards the desired room (by the number of spaces in the die roll), or to stay in the current room. If they choose to move towards the desired room, the player will be moved up/down by one space (depending on the direction of the desired room), then left/right by one space (depending on the direction of the desired room). Each time the player moves, one is subtracted from the die roll, until all the moves have been used up. The function then returns the co-ordinates of the new space.  
+
+![move player method part 1](documentation/features/code_features/oop/player_class/move_player_1.png) ![move player method part 2](documentation/features/code_features/oop/player_class/move_player_2.png)  
+- **choose_investigation_cards()**  
+Uses suspect and weapon dictionaries to allow user to select a suspect and weapon for their investigation. The room for the investigation is determined by the current room, which is passed as an argument into this method. The method returns the suspect, weapon and current room as a list.   
+![choose investigation cards method](documentation/features/code_features/oop/player_class/choose_investigation_cards.png)  
+- **make_accusation()**  
+The make accusation method is similar to the choose investigation cards method detailed above, but allows the user to also choose any room. The accusation can be performed from anywhere, once the user reaches the end of their turn. The method uses the y/n input validation method, as well as the number dictionary input validation method to ensure that user input is valid. The method returns the names of the suspect, weapon and room as a list.  
+![make accusation method](documentation/features/code_features/oop/player_class/make_accusation.png)  
 
 </details>
 
@@ -174,9 +191,9 @@ This method checks whether the space the user is currently in is a room, and if 
 <summary> Click to expand and view the AI Player class code:
 </summary>
 
-| function  | description  | img  |
-|---|---|---|
-| __ init __()  |   | ![init method](documentation/features/code_features/oop/ai_player_class/init.png)  |
+- __ init __()  
+The AI player class only has an init method which initializes the name of the player and the list of three cards in their hand.  
+![init method](documentation/features/code_features/oop/ai_player_class/init.png)  
 
 
 </details>
