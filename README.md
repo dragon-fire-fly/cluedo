@@ -202,12 +202,18 @@ The AI player class only has an init method which initializes the name of the pl
 <summary> Click to expand and view the Cards class code:
 </summary>
 
-| function  | description  | img  |
-|---|---|---|
-| __ init __()  |   | ![init method](documentation/features/code_features/oop/cards_class/init.png)  |
-| shuffle_cards()  |   | ![shuffle cards method](documentation/features/code_features/oop/cards_class/shuffle_cards.png)  |
-| deal_cards()  |   | ![deal cards method](documentation/features/code_features/oop/cards_class/deal_cards.png)  |
-| check_murder_envelope()  |   | ![check murder envelope method](documentation/features/code_features/oop/cards_class/check_murder_envelope.png)  |
+- **__ init __()**  
+The init method initializes the cards to be dealt, the dealt cards dictionary (which starts as an empty list for each character) and the murder envelope, which starts as a list of empty strings.  
+![init method](documentation/features/code_features/oop/cards_class/init.png)  
+- **shuffle_cards()**  
+The shuffle cards method takes a list of strings and used the shuffle() method from the random module to shuffle the deck and return it.  
+![shuffle cards method](documentation/features/code_features/oop/cards_class/shuffle_cards.png)  
+- **deal_cards()**  
+The deal cards method takes each of the sub lists from the cards list and calls the shuffle cards method. The method then pops the last card from each list to compile the murder envelope. The method then adds the remaining cards together into one deck and calls the shuffle_cards() method again. The shuffled cards are then assigned to each of the keys in the dealt_cards dictionary until all shuffled cards have been assigned.  
+![deal cards method](documentation/features/code_features/oop/cards_class/deal_cards.png)  
+- **check_murder_envelope()**  
+This method takes the player's guess as a list of strings (suspect, weapon, room) and checks each card from the guess against each card in the murder envelope. If all three cards match (using the "and" logical operator in the conditional if statement), a win statement is printed and "win" is returned. Otherwise, the wrong guess and lose statement is printed and "lose" is returned.  
+![check murder envelope method](documentation/features/code_features/oop/cards_class/check_murder_envelope.png)  
 
 
 
