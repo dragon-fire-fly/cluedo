@@ -358,7 +358,15 @@ Python Modules used:
 
 ## Bugs
 ### Resolved Bugs
+1. [Always printing that user is in the hallway bug](https://github.com/dragon-fire-fly/cluedo/issues/2)
+2. [Secret passageway bug](https://github.com/dragon-fire-fly/cluedo/issues/3)
+3. [Number not recognised as valid input](https://github.com/dragon-fire-fly/cluedo/issues/4)
+4. [Cards are shown by last AI player with relevant card instead of first bug](https://github.com/dragon-fire-fly/cluedo/issues/5)
+5. ['Colonel Mustard not in list' bug](https://github.com/dragon-fire-fly/cluedo/issues/6)
+6. [Game crashing if the murder cards are investigated bug](https://github.com/dragon-fire-fly/cluedo/issues/7)
+7. [Cards in the "murder envelope" always the same bug](https://github.com/dragon-fire-fly/cluedo/issues/8)
 ### Outstanding Bugs
+[Sometimes end in wrong room bug](https://github.com/dragon-fire-fly/cluedo/issues/9)
 
 ## Deployment
 ### Github
