@@ -126,16 +126,31 @@ The code for each class is discussed below:
 <summary> Click to expand and view the Gameboard class code:
 </summary>
 
-| function  | description  | img  |
-|---|---|---|
-| __ init __()   |  | ![init method](documentation/features/code_features/oop/gameboard_class/init.png) |
-| update_player_location()  |   | ![update player location method](documentation/features/code_features/oop/gameboard_class/update_player_location.png)  |
-| current_player_location()  |   | ![current player location method](documentation/features/code_features/oop/gameboard_class/current_player_location.png)  |
-| calculate_distance()  |   | ![calculate distance method](documentation/features/code_features/oop/gameboard_class/calculate_distance.png)  |
-| room_distances()  |   | ![room distances method](documentation/features/code_features/oop/gameboard_class/room_distances.png)  |
-| which_room()  |   | ![which room method](documentation/features/code_features/oop/gameboard_class/which_room.png)  |
-| choose_room() |   | ![choose room method](documentation/features/code_features/oop/gameboard_class/choose_room.png)  |
-| check_for_secret_passageway()  |   | ![check for secret passageway method](documentation/features/code_features/oop/gameboard_class/check_for_secret_passageway.png)  |
+
+- **__ init __()**   
+The Gameboard init method initializes the room dictionary (as room: (x, x))and the current player location (as a [x, x] list).  
+![init method](documentation/features/code_features/oop/gameboard_class/init.png)  
+- **update_player_location()**   
+This method receives a new location (as [x, x] list) and updates the current location stored within the Gameboard class.  
+![update player location method](documentation/features/code_features/oop/gameboard_class/update_player_location.png)  
+- **current_player_location()**  
+This method simply returns the current location stored within the Gameboard class.  
+![current player location method](documentation/features/code_features/oop/gameboard_class/current_player_location.png)  
+- **calculate_distance()**  
+This method takes the co-ordinates of two points (either as a [x, x] list or an (x, x) tuple) and calculates and returns the total distance between the two points as an int. The calculation adds all the spaces on the x and y axis as players are not allowed to move diagonally in Pyclue.   
+![calculate distance method](documentation/features/code_features/oop/gameboard_class/calculate_distance.png)  
+- **room_distances()**   
+This method starts with a dictionary of the rooms and a default value of 0 spaces for each room. The method then updates the distance (dictionary value)by calling the calculate_distance() method for each room in the dictionary and returns it.   
+![room distances method](documentation/features/code_features/oop/gameboard_class/room_distances.png)  
+- **which_room()**  
+This method evaluates whether the co-ordinates of the player's current location matches the co-ordinates of any room in the room dictionary. If so,. it returns the name of the room. Otherwise, returns "hallway".    
+![which room method](documentation/features/code_features/oop/gameboard_class/which_room.png)  
+- **choose_room()**  
+This method calls the room_distances() method and the check_for_secret_passageways() method and displays the rooms with their corresponding distances to the user and prompts for a choice. The choice is validated with the number_input_validation() function and the desired room and updated room_distances library are returned.  
+![choose room method](documentation/features/code_features/oop/gameboard_class/choose_room.png)  
+- **check_for_secret_passageway()**  
+This method checks whether the space the user is currently in is a room, and if so, checks whether that room has a secret passageway. The Kitchen and Study are linked with a passageway, as are the Lounge and the Conservatory. If a passageway is present, the name of the connected location is returned.
+![check for secret passageway method](documentation/features/code_features/oop/gameboard_class/check_for_secret_passageway.png)  
 
 </details>
 
@@ -215,11 +230,15 @@ The Classes were saved into seperate .py files which were then imported into set
 <summary> Click to expand and view the code for the run.py functions:
 </summary>
 
-| function  | description  | img  |
-|---|---|---|
-| main_game_loop()  |   | ![main game loop function](documentation/features/code_features/functions/run/main_game_loop.png)  |
-| investigate()  |   | ![investigate function](documentation/features/code_features/functions/run/investigate.png)  |
-| end_of_turn()  |   | ![end of turn function](documentation/features/code_features/functions/run/end_of_turn.png)  |
+- main_game_loop()  
+description 
+![main game loop function](documentation/features/code_features/functions/run/main_game_loop.png)  
+- investigate()  
+description     
+![investigate function](documentation/features/code_features/functions/run/investigate.png)  
+- end_of_turn()   
+description    
+![end of turn function](documentation/features/code_features/functions/run/end_of_turn.png)  
 
 
 </details>
