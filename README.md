@@ -55,29 +55,48 @@ A simplified gameboard to be used in the PyClue game was designed on a grid syst
 ## Features
 
 ### Game Features
-#### Main Menu
-#### New game (with and without story)
+- **Main Menu**
+The main menu displays the "PyClue" logo and three options - play game (with story), play game (skip story) and view rules.  
+![main menu](documentation/features/game_features/main_menu.png)
+
+
+- **Story**  
+The story prints in seven parts with a "typewriter" type effect.
+![story part 1](documentation/features/game_features/story_1.png)
+![story part 2](documentation/features/game_features/story_2.png)
 #### View Rules
 
 ### Playing the game
-#### Choose Character
-<!-- Different character = diff starting location? -->
-#### View Scorecard
+- **Choose Character**  
+![choose character](documentation/features/game_features/select_player.png)
+
+- **View Scorecard**  
+The investigation card can be viewed at almost all times throughout the game and marks which player has shown which card so far to aid future investigations.  
+![view investigation card](documentation/features/game_features/view_investigation_card.png)
 
 
 #### Update Scorecard
 
-#### Choose a room (inc. Secret Passageway)
+- **Choose a room (inc. Secret Passageway)**
 - room distances are calculated and displayed (inc. secret passageway rooms)
 - Player prompted for choice
 - Player moved to or towards (depending on if enough moves available) chosen room or stays in current room if preferred
 
-#### Investigation phase
-- Choose a suspect
-- Choose a weapon
-- Input validation
-- AI player shows card
-- Scorecard updated
+![choose room](documentation/features/game_features/choose_room.png)
+
+- **Investigation phase**
+- Choose a suspect  
+![choose suspect](documentation/features/game_features/choose_suspect.png)  
+- Choose a weapon  
+![choose weapon](documentation/features/game_features/choose_weapon.png)  
+- Input validation  
+![yes no input validation](documentation/features/game_features/input_validation_y_n.png)  
+- AI player shows card  
+![ai showing card](documentation/features/game_features/ai_show_card.png)
+- Scorecard updated  
+![updated scorecard](documentation/features/game_features/updated_scorecard.png)
+
+
 
 #### The Accusation
 - Choose a suspect
