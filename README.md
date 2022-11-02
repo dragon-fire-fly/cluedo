@@ -228,12 +228,21 @@ The Classes were saved into seperate .py files which were then imported into set
 <summary> Click to expand and view the code for the validation.py functions:
 </summary>
 
-| function  | description  | img  |
-|---|---|---|
-| number_input_validation  |   | ![number input validation function](documentation/features/code_features/functions/validation/number_input_validation.png)  |
-| number_dict_input_validation  |   | ![number dict input validation function](documentation/features/code_features/functions/validation/number_dict_input_validation.png)  |
-| y_n_input_validation  |   | ![y n input validation function](documentation/features/code_features/functions/validation/y_n_input_validation.png)  |
-| clear  |   | ![clear function](documentation/features/code_features/functions/validation/clear.png)  |
+
+- number_input_validation()  
+Takes the number of options as an argument and prompts the user for a number between 1 and the number of options. If the user input is valid, the user choice (as a string) is returned. Otherwise, the user is informed that their answer was not valid and is prompted for a new input.  
+![number input validation function](documentation/features/code_features/functions/validation/number_input_validation.png)  
+
+- number_dict_input_validation()  
+Accepts a string value ("character", "suspect", "weapon" or "room"), a relevant dictionary (suspect_dict, weapon_dict or room_dict) and optionally a phase ("investigation" or "accusation"). The user is prompted for an input relevant to the arguments passed. If the input is either a key or a value from the relevant dictionary, the key of the dictionary is returned. If the input is invalid, the user is informed and requeted for a new input.  
+![number dict input validation function](documentation/features/code_features/functions/validation/number_dict_input_validation.png)  
+
+- y_n_input_validation()  
+This function prompts the user for a y/n answer (as a str type). The function asssesses whether the (lowercased) user input is in the list of "yes" words or "no" words. If the user input is in neither list, it informs the user that their answerwas not valid and requests a new answer. The function returns true or false, and if false, also prints an appropriate message.  
+![y n input validation function](documentation/features/code_features/functions/validation/y_n_input_validation.png)  
+- clear()  
+Clear simply performs a terminal clearing function using the linux specific clearing method from the os module   
+![clear function](documentation/features/code_features/functions/validation/clear.png)
 
 
 </details>
