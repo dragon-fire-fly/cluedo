@@ -1,5 +1,4 @@
 # import built in modules
-import os
 import random
 import time
 import copy
@@ -13,7 +12,6 @@ from validation import (
 )
 
 
-# User player class
 class Player:
     def __init__(self, suspect_dict: dict, weapon_dict: dict, room_dict: dict):
         self.suspect_dict = suspect_dict
@@ -48,6 +46,12 @@ class Player:
             starting_location = [7, 7]
         setup.gameboard.update_player_location(starting_location)
 
+    def roll_die(self) -> int:
+        """
+        Returns a random number between 1 and 6.
+        """
+        return random.randint(1, 6)
+
     def move_player(
         self,
         player_location: list[int],
@@ -73,7 +77,6 @@ class Player:
                 print(f"You chose to remain in the {desired_room}")
                 time.sleep(1)
             return player_location
-        # print(room_distances[desired_room])
         else:
             total_die_roll = copy.deepcopy(die_roll)
             print(f"You have not rolled enough to reach the {desired_room}.")
@@ -84,8 +87,6 @@ class Player:
             stay_or_move = number_input_validation(2)
 
             if stay_or_move == "1":
-                # Calculating where on the board the player will end up after
-                # moving towards the chosen room
                 while die_roll:
                     if room_dict[desired_room][0] - player_location[0] > 0:
                         die_roll -= 1
@@ -93,7 +94,6 @@ class Player:
                     elif room_dict[desired_room][0] - player_location[0] < 0:
                         die_roll -= 1
                         player_location[0] -= 1
-                    # left or right?
                     if die_roll:
                         if room_dict[desired_room][1] - player_location[1] > 0:
                             die_roll -= 1
@@ -162,7 +162,6 @@ class Player:
             ]
 
     def make_accusation(self) -> list[str]:
-
         clear()
         print("===== SUSPECTS =====")
         for num, suspect in self.suspect_dict.items():
@@ -201,14 +200,7 @@ class Player:
             ]
         return accusation
 
-    def roll_die(self) -> int:
-        """
-        Returns a random number between 1 and 6.
-        """
-        return random.randint(1, 6)
 
-
-# AI Player class
 class AIPlayer:
     def __init__(self, name: str, cards: list[str]):
         self.name = name
