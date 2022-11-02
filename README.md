@@ -271,13 +271,17 @@ The story is broken into seven paragraphs to make it easier to read and a nicer 
 </summary>
 
 - main_game_loop()  
-description 
+The `main_game_loop()` function calls the `gameboard.current_player_location()` method to obtain the player's current location, which is fed into the `gameboard.which_room()` method to obtain the current room, which is then displayed to the user. The die is then automatically rolled using the `player.roll_die()` method and the rooms with their distances are displayed by calling the `gameboard.choose_room()` method.  
+    The player then moves based on the user input to the `player.move_player()` method and the current location is updated by calling the `gameboard.update_player_location(new_player_location)` method.  
+    If the player is in a room (determined by the result of `if current_room in ROOM_LOCATIONS:`), the user is invited to choose investigation cards for the round by calling `player.choose_investigation_cards(current_room)` and then calling `investigate(investigation_list)` on the chosen cards.  
+    If the player is not in a room, the turn ends without an investigation phase. 
+
 ![main game loop function](documentation/features/code_features/functions/run/main_game_loop.png)  
 - investigate()  
-description     
+The `investigate()` method compares the three cards chosen during the `main_game_loop()` to the cards in the ai character hands. For each of the five characters in the `ai_character_list`, each of the three `investigation_cards` is compared in turn to each card in each character's hand. This comparison is run starting at the last character and ending at the first character in the list by using list slicing [::-1]. The function then prints the name of the   
 ![investigate function](documentation/features/code_features/functions/run/investigate.png)  
 - end_of_turn()   
-description    
+At the end of the turn, the user is asked whether they would like to end their turn, make an accusation or view the investigation card. If they choose to make an accusation, the `player.make_accusation()` method is called and then the `cards.check_murder_envelope(accusation)` method is called to compare the guessed cards to the "murder envelope".   
 ![end of turn function](documentation/features/code_features/functions/run/end_of_turn.png)  
 
 
