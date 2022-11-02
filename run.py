@@ -1,26 +1,23 @@
 # import built in modules
-import random
 import time
-import os
-import copy
-
-# import installed modules
-from tabulate import tabulate
 
 # import custom modules
-from setup import player, ai_char_list, scorecard, gameboard, ROOM_LOCATIONS, cards
-from validation import number_input_validation, clear
-
-# print(tabulate(game_board))
+from setup import (
+    player,
+    ai_char_list,
+    scorecard,
+    gameboard,
+    ROOM_LOCATIONS,
+    cards
+    )
+from validation import number_input_validation, clear, y_n_input_validation
 
 # Game variables
 win_condition_satisfied = False
 
 
-# Main Game Functions
 def main_game_loop(hours_remaining):
     player_location = gameboard.current_player_location()
-    old_player_location = copy.deepcopy(player_location)
     print(f"You have {hours_remaining} hours remaining...")
     time.sleep(2)
     # obtain current room
@@ -53,7 +50,6 @@ def main_game_loop(hours_remaining):
 
     if current_room in ROOM_LOCATIONS:
         investigation_list = player.choose_investigation_cards(current_room)
-        # print(investigation_list)
         investigate(investigation_list)
     else:
         print("End of turn")
@@ -97,14 +93,14 @@ def investigate(investigation_cards):
 def end_of_turn():
     clear()
     print("It's the end on your turn, What would you like to do?")
-    print("1. Make accusation\n2. End turn\n3. View investigation card ")
+    print("1. End turn\n2. Make accusation\n3. View investigation card ")
     choice = number_input_validation(3)
     if choice == "3":
         scorecard.show_scorecard()
         print("It's the end on your turn, What would you like to do?")
-        print("1. Make accusation\n2. End turn ")
+        print("1. End turn\n2. Make accusation ")
         choice = number_input_validation(2)
-    if choice == "1":
+    if choice == "2":
         print("")
         accusation = player.make_accusation()
         if accusation != []:
@@ -116,34 +112,24 @@ def end_of_turn():
             time.sleep(1)
             conclusion = cards.check_murder_envelope(accusation)
             global play_game
-            play_game = False
-            input("Press enter to exit the program")
+            print("Would you like to play again?")
+            play_game_choice = y_n_input_validation("end of game")
+            if play_game_choice:
+                clear()
+                play_game = True
+                hours_remaining = 24
+                while play_game:
+                    main_game_loop(hours_remaining)
+                    end_of_turn()
+                    hours_remaining -= 1
+                    clear()
         else:
+            play_game = False
             clear()
     else:
         clear()
 
 
-""" Player turn:
-1. minus one hour from the game clock
-2. player rolls dice and decides whether to move or stay in the room
-3. if player moves to hallway, turn ends
-4. if player in room, player chooses a suspect and weapon to investigate
-5. The three chosen cards (suspect, weapon, room) are compared to the next
-    player (index 0 in player list)
-6. if the next player has one or more investigation cards, they must show one
-7. if the next player has none of the investigation cards, the next player's
-    (index 1 in player list) cards are compared to investigation cards
-8. Play continues in this manner until a card is shown. Once a card is shown,
-    turn ends
-9. If no cards are shown, turn still ends
-10. Investigation card is updated with the card shown (if any)
-11. Next turn begins...
-"""
-
-
-# 1
-# minus one hour
 play_game = True
 hours_remaining = 24
 
