@@ -97,9 +97,11 @@ def y_n_input_validation(phase: str) -> bool:
                 time.sleep(1.5)
                 clear()
                 return False
-            else:
+            elif phase == "accusation":
                 print(f"No {phase} made this round")
                 time.sleep(1.5)
+                return False
+            elif phase == "end of game":
                 return False
         print(f"Sorry, {choice} was an invalid choice.")
 
