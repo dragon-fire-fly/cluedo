@@ -159,19 +159,39 @@ def main_menu():
             elif choice == "2":
                 game_setup()
         else:
+            clear()
             show_rules()
 
 
 def show_rules():
     clear()
-    print("The rules will go here")
-    input("Press enter to continue")
+    rule_1 = "1. The murderer, murder weapon and murder location have been \
+placed inside the 'murder envelope'\n"
+    rule_2 = "2. Roll the dice or use a secret passage each turn to move from \
+room to room. You may move up, down or sideways, but not diagonally. \n"
+    rule_3 = "3. On your turn, if you are in a room, you may question the \
+other suspects about any suspect, any weapon and the location you are \
+currently at.\n"
+    rule_4 = "4. Starting with the player to your left, if that player has \
+one of the three suggested cards, they must show you one. \n   If they don't \
+have any cards, they player to their left is questioned next, and so on.\n"
+    rule_5 = "5. Once you feel certain that you know the murderer, murder \
+weapon and room, you may make an accusation. You may only make one accusation \
+per game.\n\n"
+    rules = [rule_1, rule_2, rule_3, rule_4, rule_5]
+    clear()
+    print(LOGO)
+    for rule in rules:
+        for letter in rule:
+            time.sleep(0.025)
+            print(letter, end="", flush=True)
+        time.sleep(0.5)
+
+    input("Press enter to continue ")
     clear()
 
 
 def game_setup():
-
-    # global player_starting_location
     clear()
     chosen_character = player.choose_character()
     print(f"You have chosen to play as {chosen_character}.")
@@ -180,8 +200,7 @@ def game_setup():
     print("Shuffling cards...")
     time.sleep(1)
     clear()
-    # deal the game cards
-    murder_cards = cards.deal_cards()
+    cards.deal_cards()
 
     # pop out the cards dealt to the chosen character
     user_hand = DEALT_CARDS.pop(chosen_character)
@@ -192,10 +211,7 @@ def game_setup():
         f"- {user_hand[2]}\n\nThese cards have been added to your "
         f"investigation card which can be viewed at any time.\n"
     )
-    ai_char_list = generate_ai_characters()
-    # print(f"You are {chosen_character} and you are playing against:")
-    # for char in ai_char_list:
-    #     print(f"\t- {char.name}")
+    generate_ai_characters()
     next = input(
         "\nEnter 'I' to view investigation card or press enter to "
         "continue game: "
@@ -209,7 +225,6 @@ def game_setup():
         clear()
 
 
-# for the other characters, instatiate ai characters and assign hands
 def generate_ai_characters():
     global ai_char_list
     if DEALT_CARDS.get("Miss Scarlett"):
