@@ -59,7 +59,10 @@ A simplified gameboard to be used in the PyClue game was designed on a grid syst
 
 ## Features
 
-### Game Features
+### Game Features  
+
+Below are screenshots of the game being played in the Heroku deployed terminal to show the game features. Features of the code can be found below.
+
 **Main Menu**  
 The main menu displays the "PyClue" logo and three options - play game (with story), play game (skip story) and view rules.  
 ![main menu](documentation/features/game_features/main_menu.png)
@@ -128,8 +131,41 @@ The investigation card can be viewed at almost all times throughout the game and
 A magnifying glass icon was chosen as the favicon for the Heroku terminal program  
 ![favicon](documentation/features/game_features/favicon.png)  
 
-### Python Coding Features
-#### Game constants
+### **Python Coding Features**
+
+The general gameplay is summarised into 12 points as shown below:  
+
+**Player turn:**  
+1. play starts with 24 hours on the game clock. One hour is removed from the clock each turn.
+    - within run.py
+2. player rolls dice and decides whether to move or stay in the room
+    - `player.roll_die()`
+    - `player.move_player()` - generates new player co-ordinates
+    - `gameboard.update_player_location()` - update to new player location
+3. if player moves to hallway, turn ends
+    - `gameboard.which_room()` - returns which room player is in (or hallway)
+4. if player in room, player chooses a suspect and weapon to investigate
+    - `player.choose_investigation_cards()` - chooses three cards to compare (1 x suspect, 1 x weapon, 1 x room)
+5. The three chosen cards (suspect, weapon, room) are compared to the next player (index 0 in player list)
+    - `investigate()` checks chosen cards against each AI player's hand
+6. if the next player has one or more investigation cards, they must show one
+    - part of `invetigate()`
+7. if the next player has none of the investigation cards, the next player's (index 1 in player list, then index 2, etc.) cards are compared to investigation cards
+    - part of `investigate()`
+8. Play continues in this manner until a card is shown. Once a card is shown, end of turn sequence initiates
+    - `end_of_turn()`
+9. If no cards are shown by any player, turn still ends
+10. Investigation card is updated with the card shown (if any)
+    - `scorecard.update_scorecard()`
+11. Option to make an accusation, choosing one each suspect, weapon and room
+    - `player.make_accusation()`
+12. Next turn begins...  
+
+
+A more detailed look at each of the code features is shown below:  
+
+
+#### Game constants  
 <details>
 <summary> Click to expand and view the constants used for the game. These are lists, dictionaries and other iterables that are used by the game functions to set the initial (or in some cases updated) values for the game:
 </summary>
@@ -363,7 +399,7 @@ Clear simply performs a terminal clearing function using the linux specific clea
 - [Draw.io](https://app.diagrams.net/) for creatinf flow diagram
 - [Venv virtual environment](https://docs.python.org/3/library/venv.html) - for creating a virtual environment to work in
 - GitHub
-- Code annotations for determining which data types can be received (e.g. `def y_n_input_validation(phase: str) -> bool:`)
+- Code annotations for determining which data type can be received and which is returned  (e.g. `def y_n_input_validation(phase: str) -> bool:`)
 
 Python Modules used:
 - random (randint - for generating random integers)
@@ -433,7 +469,7 @@ Or, if using Gitpod, you can click below to create your own workspace using this
 
 
 ## Credits
-
+### Content
 
 logo:
 http://patorjk.com/software/taag/#p=display&f=Bloody&t=PyClue%0A%0A%0A%0A
@@ -443,18 +479,13 @@ https://game-icons.net/1x1/lorc/magnifying-glass.html#download
 https://favicon.io/
 
 
+### Acknowledgements
+A huge thank you to my Mentor Tim Nelson for his continued support, enthusiasm, advice and debugging help!  
+I would also like to thank my peers in the May 2022 cohort at Code Institute for support and always providing encouragement and inspiration and my husband for his understanding, patience and partial play testing (even if his conclusion was "One player Cluedo is really boring"! :D)
 
 
 
 
-
-
-## Rules:
-1. The murderer, murder weapon and murder location have been placed inside the "murder envelope"
-2. Roll the dice or use a secret passage each turn to move from room to room. You may move up, down or sideways, but not diagonally. 
-3. On your turn, if you are in a room, you may question the other suspects about any suspect, any weapon and the location you are currently at. 
-4. Starting with the player to your left, if that player has one of the three suggested cards, they must show you one. If they don't have any cards, they player to their left is questioned next, and so on.
-5. Once you feel certain that you know the murderer, murder weapon and room, you may make an accusation. You may only make one accusation per game.
 
 ## Setup
 
@@ -467,29 +498,7 @@ setup.py contains all information pertinent to the setup of the game. This inclu
     - AI player class
 2. containing all lists and dictionaries for game setup
 
-## General Gameplay
-Each turn consists of the following 11 steps:
-### Player turn:
-1. minus one hour from the game clock
-2. player rolls dice and decides whether to move or stay in the room
-    - player.move() (inc. player.roll_die()) - generates new player co-ordinates
-    - gameboard.update() - update to new player location
-3. if player moves to hallway, turn ends
-    - gameboard.which_room() - returns which room player is in (or hallway)
-4. if player in room, player chooses a suspect and weapon to investigate
-    - player.investigate() - chooses three cards to compare (1 x suspect, 1 x weapon, 1 x room)
-5. The three chosen cards (suspect, weapon, room) are compared to the next player (index 0 in player list)
-    - for each AI player, check_cards()
-6. if the next player has one or more investigation cards, they must show one
-    - AI player show_card()
-7. if the next player has none of the investigation cards, the next player's (index 1 in player list) cards are compared to investigation cards
-    - AI player check_cards()
-8. Play continues in this manner until a card is shown. Once a card is shown, turn ends
-    - AI player show_card()
-9. If no cards are shown by any player, turn still ends
-10. Investigation card is updated with the card shown (if any)
-    investigation_card.update()
-11. Next turn begins...
+
 
 
 
