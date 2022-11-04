@@ -38,17 +38,17 @@
 | Input validation - open investigation card with "investigation"  | "investigation"  |  input not accepted  | yes  | ![open investigation card with "investigation"](documentation/testing/manual_testing/investigation_card/invalid_input.png)  |
 | Input validation - open investigation card with number  | "0"  |  input not accepted  | yes  | ![open investigation card with "0"](documentation/testing/manual_testing/investigation_card/invalid_number.png)  |
 | Update investigation card when card shown  | completes an investigation round  | card shown and "x" placed in correct place in investigation card  |  yes |  ![update investigation card](documentation/testing/manual_testing/investigation_card/investigation_card_updated.png)![successfully updated](documentation/testing/manual_testing/investigation_card/peacock_rope.png) |
+| Correct cards added at start of game  | select character  |  The three cards printed at the start should correcpond to the three cards marked on the investigation card | yes  | ![correct cards?](documentation/testing/manual_testing/investigation_card/correct_cards_1.png)![correct cards added](documentation/testing/manual_testing/investigation_card/correct_cards_2.png)  |
 |   |   |   | yes  |   |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
 |   |   |   | yes  | ![](documentation/testing/manual_testing)  |
 |   |   |   | yes  | ![](documentation/testing/manual_testing)  |
 |   |   |   |  yes | ![](documentation/testing/manual_testing)  |
 
-
+### 
 
 |What is being tested?   |  What is the input? |  Expected response | Actual response  | Screenshot  |
 |---|---|---|---|---|
-|   |   |   | yes  |  ![](documentation/testing/manual_testing/) |
+|   |   |   | yes  |  ![](documentation/testing/manual_testing) |
 |   |   |   | yes  | ![](documentation/testing/manual_testing)  |
 |   |   |   | yes  | ![](documentation/testing/manual_testing)  |
 |   |   |   | yes  | ![](documentation/testing/manual_testing)  |
