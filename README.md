@@ -372,7 +372,23 @@ Python Modules used:
 
 ## Deployment
 ### Github
-- Cloning
+Following these steps will allow you to clone a repository and open it in your local IDE, for example Visual Studio Code, Eclipse or NetBeans:
+
+1. Locate the repository of the [project you would like to copy](https://github.com/dragon-fire-fly/cluedo).
+2. Click the "Code" button to access a drop down menu.
+3. Ensuring that HTTPS is selected, select the copy button (as shown in the screenshot below) to copy the URL of the repository of interest.
+4. Open your local IDE and change the current working directory in GitBash to the desired location for the new repository.
+5. In the command line, type 'git clone' and paste the URL obtained earlier from GitHub.
+
+![GitHub cloning](documentation/deployment/ssh_clone.png)
+
+Alternatively, you can create a local copy of this repository, by typing the follow into your IDE terminal:
+
+`git clone git@github.com:dragon-fire-fly/cluedo.git`
+
+Or, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dragon-fire-fly/cluedo)
 
 ### Heroku
 1. To deploy a project using Heroku, first [create an account and log in](https://www.heroku.com). Create a new app by using the drop down menu.  
