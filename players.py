@@ -102,6 +102,7 @@ class Player:
                                 < 0:
                             die_roll -= 1
                             player_location[1] -= 1
+                clear()
                 print("Moving...")
                 time.sleep(1.5)
                 print(
@@ -116,6 +117,7 @@ class Player:
                     time.sleep(1)
                     print("You are now in the hallway")
                     time.sleep(1)
+                input("\nPress enter to continue ")
                 return player_location
 
             elif stay_or_move == "2":
