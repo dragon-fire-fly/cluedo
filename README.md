@@ -100,6 +100,7 @@ The investigation card can be viewed at almost all times throughout the game and
 
 #### The Accusation
 - Choose a suspect
+
 - Choose a weapon
 - Choose a room
 - Input validation
@@ -343,7 +344,8 @@ Clear simply performs a terminal clearing function using the linux specific clea
 - [Heroku](https://www.heroku.com) - for cloud hosting of the project
 - [Draw.io](https://app.diagrams.net/) for creatinf flow diagram
 - [Venv virtual environment](https://docs.python.org/3/library/venv.html) - for creating a virtual environment to work in
-- Github
+- GitHub
+- Code annotations for determining which data types can be received (e.g. `def y_n_input_validation(phase: str) -> bool:`)
 
 Python Modules used:
 - random (randint - for generating random integers)
@@ -372,6 +374,7 @@ The details of each of the resolved and outstanding bugs can be viewed by follow
 5. ['Colonel Mustard not in list' bug](https://github.com/dragon-fire-fly/cluedo/issues/6) (issue #6)
 6. [Game crashing if the murder cards are investigated bug](https://github.com/dragon-fire-fly/cluedo/issues/7) (issue #7)
 7. [Cards in the "murder envelope" always the same bug](https://github.com/dragon-fire-fly/cluedo/issues/8) (issue #8)
+8. [KeyError when selecting a room](https://github.com/dragon-fire-fly/cluedo/issues/11) (issue #11)
 
 ### Outstanding Bugs
 1. [Sometimes end in wrong room bug](https://github.com/dragon-fire-fly/cluedo/issues/9) (issue #9)  
