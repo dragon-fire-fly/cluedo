@@ -18,7 +18,7 @@ win_condition_satisfied = False
 
 def main_game_loop(hours_remaining):
     player_location = gameboard.current_player_location()
-    print(f"You have {hours_remaining} hours remaining...")
+    print(f"You have {hours_remaining} hour(s) remaining...")
     time.sleep(2)
     # obtain current room
     current_room = gameboard.which_room()
@@ -91,6 +91,7 @@ def investigate(investigation_cards):
 
 
 def end_of_turn():
+    global hours_remaining
     clear()
     print("It's the end on your turn, What would you like to do?")
     print("1. End turn\n2. Make accusation\n3. View investigation card ")
@@ -110,32 +111,44 @@ def end_of_turn():
 {accusation[2]}."
             )
             time.sleep(1)
-            conclusion = cards.check_murder_envelope(accusation)
-            global play_game
-            print("Would you like to play again?")
-            play_game_choice = y_n_input_validation("end of game")
-            if play_game_choice:
-                clear()
-                play_game = True
-                hours_remaining = 24
-                while play_game:
-                    main_game_loop(hours_remaining)
-                    end_of_turn()
-                    hours_remaining -= 1
-                    clear()
+            cards.check_murder_envelope(accusation)
+            hours_remaining = 0
         else:
-            play_game = False
             clear()
     else:
         clear()
+    
 
-
-play_game = True
+# play_game = True
 hours_remaining = 24
+play_game = True
 
 if __name__ == "__main__":
-    while play_game:
+    while hours_remaining >= 1:
         main_game_loop(hours_remaining)
         end_of_turn()
         hours_remaining -= 1
         clear()
+        if hours_remaining == 0:
+            end_1 = "The clock strikes midnight once again and the air around \
+you grows cold.\n\nSadly your investigation efforts were not enough to find \
+the culprit this time. \nYou'd better hope that the professional \
+investigation finds you innocent."
+            end_2 = "..."
+            end_3 = "You ARE innocent... right? \n"
+            end_list = [end_1, end_2, end_3]
+            end_message = ""
+            for part in end_list:
+                clear()
+                print(end_message)
+                time.sleep(1)
+                end_message += part
+                for letter in part:
+                    time.sleep(0.025)
+                    print(letter, end="", flush=True)
+
+    print("\nThank you for playing PyClue!\n\
+If you would like to play again, please click the orange 'Run Program' \
+button at the top of the screen to restart.")
+    time.sleep(1)
+    print("Goodbye!")
