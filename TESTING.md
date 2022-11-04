@@ -29,49 +29,48 @@
 | Input validation (shortened name)  | "col mustard  |  input not accepted (only accepts specific dictionary keys/values) |  yes  | ![input validation shortened name](documentation/testing/manual_testing/character_selection/col_mustard.png)  |
 
 
-
-
-|What is being tested?   |  What is the input? |  Expected response | Actual response  | Screenshot  |
-|---|---|---|---|---|
-|   |   |   |   |  ![](documentation/testing/manual_testing/) |
-|   |   |   |   | ![](documentation/testing/manual_testing)  |
-|   |   |   |   | ![](documentation/testing/manual_testing)  |
-|   |   |   |   | ![](documentation/testing/manual_testing)  |
-|   |   |   |   |  ![](documentation/testing/manual_testing) |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-
-
-
+### Investigation Card
 
 |What is being tested?   |  What is the input? |  Expected response | Actual response  | Screenshot  |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-
+| Open investigation card with "i"  | "i"  | opens investigation card  | yes  |  ![open investigation card with "i"](documentation/testing/manual_testing/investigation_card/investigation_card_i.png) |
+| Open investigation card with "I"   | "I"  | opens investigation card   | yes  | ![open investigation card with "I"](documentation/testing/manual_testing/investigation_card/investigation_card_I.png)  |
+| Input validation - open investigation card with "investigation"  | "investigation"  |  input not accepted  | yes  | ![open investigation card with "investigation"](documentation/testing/manual_testing/investigation_card/invalid_input.png)  |
+| Input validation - open investigation card with number  | "0"  |  input not accepted  | yes  | ![open investigation card with "0"](documentation/testing/manual_testing/investigation_card/invalid_number.png)  |
+| Update investigation card when card shown  | completes an investigation round  | card shown and "x" placed in correct place in investigation card  |  yes |  ![update investigation card](documentation/testing/manual_testing/investigation_card/investigation_card_updated.png)![successfully updated](documentation/testing/manual_testing/investigation_card/peacock_rope.png) |
+|   |   |   | yes  |   |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   |  yes | ![](documentation/testing/manual_testing)  |
 
 
 
 |What is being tested?   |  What is the input? |  Expected response | Actual response  | Screenshot  |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
+|   |   |   | yes  |  ![](documentation/testing/manual_testing/) |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   |  yes |  ![](documentation/testing/manual_testing) |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   |  yes | ![](documentation/testing/manual_testing)  |
+
+
+
+
+|What is being tested?   |  What is the input? |  Expected response | Actual response  | Screenshot  |
+|---|---|---|---|---|
+|   |   |   | yes  |  ![](documentation/testing/manual_testing/) |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   |  yes |  ![](documentation/testing/manual_testing) |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   |  yes | ![](documentation/testing/manual_testing)  |
