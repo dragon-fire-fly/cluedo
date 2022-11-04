@@ -7,7 +7,8 @@ import setup
 def number_input_validation(no_options: int) -> str:
     """
     Takes a number as input and prompts the user to choose an option.
-    If the user input is a number between 1 and the input, returns the number.
+    If the user input is a number between 1 and the input, returns the
+    number as a string.
     """
     options = ""
     for num in range(1, no_options + 1):
@@ -27,6 +28,34 @@ def number_input_validation(no_options: int) -> str:
             f"Sorry, {user_ans} is not a valid input, please enter a number "
             f"between 1 and {no_options}."
         )
+
+
+def room_choice_input_validation(no_options: int) -> int:
+    """
+    Takes a number as input and prompts the user to choose an option.
+    If the user input is a number between 1 and the input, returns the number.
+    If the user input is "i" or "I", show the scorecard.
+    """
+    while True:
+        user_ans = input(
+            f"\nEnter 1 - {no_options} to choose a room or enter 'I' to view "
+            "the investigation card: "
+        ).strip()
+        if user_ans.isnumeric():
+            for num in range(1, no_options + 1):
+                if user_ans == str(num):
+                    return int(user_ans)
+            print(
+                f"Sorry, '{user_ans}' is not a valid input, please enter "
+                f"'I' or a number between 1 and {no_options}."
+            )
+        elif user_ans == "i" or user_ans == "I":
+            setup.scorecard.show_scorecard()
+        else:
+            print(
+                f"Sorry, '{user_ans}' is not a valid input, please enter "
+                f"'I' or a number between 1 and {no_options}."
+            )
 
 
 def number_dict_input_validation(
