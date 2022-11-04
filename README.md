@@ -1,8 +1,4 @@
 # Cluedo
-
-
-<!-- Scrrenshot of finished project -->
-
 ## Live site
 [PyClue on Heroku](https://pyclue.herokuapp.com/)
 
@@ -86,11 +82,11 @@ The user is able to pick one from the six characters available from the original
 The investigation card can be viewed at almost all times throughout the game and marks which player has shown which card so far to aid future investigations.  
 ![view investigation card](documentation/features/game_features/view_investigation_card.png)
 
-    The table format for displaying the investigation card was later changed to make it more readable by adding lines between the rows. This made the scorecard no longer fit neatly into the Heroku terminal, but aids greatly with user experience and playability.
+The table format for displaying the investigation card was later changed to make it more readable by adding lines between the rows. This made the scorecard no longer fit neatly into the Heroku terminal, but aids greatly with user experience and playability.
 ![updated investigation card](documentation/features/game_features/new_investigation_card.png)  
 
 
-    The investigation card is updated each time another player shows a card.
+The investigation card is updated each time another player shows a card.
 
 **Choose a room (inc. Secret Passageway)**  
 - room distances are calculated and displayed (inc. secret passageway rooms)  
@@ -203,7 +199,7 @@ The code for each class is discussed below:
 
 
 - **__ init __()**   
-The Gameboard init method initializes the room dictionary (as room: (x, x))and the current player location (as a [x, x] list).  
+The Gameboard init method initializes the room dictionary (as room: (x, x)) and the current player location (as a [x, x] list).  
 ![init method](documentation/features/code_features/oop/gameboard_class/init.png)  
 - **update_player_location()**   
 This method receives a new location (as [x, x] list) and updates the current location stored within the Gameboard class.  
@@ -396,9 +392,10 @@ Clear simply performs a terminal clearing function using the linux specific clea
 - [Python3](https://www.python.org/) as core programming language
 - [Visual Studio Code](https://code.visualstudio.com/) - for offline code editing
 - [Heroku](https://www.heroku.com) - for cloud hosting of the project
-- [Draw.io](https://app.diagrams.net/) for creatinf flow diagram
+- [Draw.io](https://app.diagrams.net/) for creating flow diagram
 - [Venv virtual environment](https://docs.python.org/3/library/venv.html) - for creating a virtual environment to work in
-- GitHub
+- [GitHub](https://github.com/) as a code hosting platform
+- [Git](https://git-scm.com/) for source code management
 - Code annotations for determining which data type can be received and which is returned  (e.g. `def y_n_input_validation(phase: str) -> bool:`)
 
 Python Modules used:
@@ -466,15 +463,13 @@ Or, if using Gitpod, you can click below to create your own workspace using this
 8. .. or apps can be manually deployed with the manual deploy function.  ![Heroku](documentation/deployment/manual_deploy.png)  
 
 
-
-
 ## Credits
 ### Content
 
-logo:
+Logo source:
 http://patorjk.com/software/taag/#p=display&f=Bloody&t=PyClue%0A%0A%0A%0A
 
-favicon:
+Favicon image source:
 https://game-icons.net/1x1/lorc/magnifying-glass.html#download
 https://favicon.io/
 
@@ -483,93 +478,3 @@ https://favicon.io/
 A huge thank you to my Mentor Tim Nelson for his continued support, enthusiasm, advice and debugging help!  
 I would also like to thank my peers in the May 2022 cohort at Code Institute for support and always providing encouragement and inspiration and my husband for his understanding, patience and partial play testing (even if his conclusion was "One player Cluedo is really boring"! :D)
 
-
-
-
-
-## Setup
-
-setup.py contains all information pertinent to the setup of the game. This includes:
-
-1. instatiating 
-    - the gameboard class
-    - the cards class
-    - player class
-    - AI player class
-2. containing all lists and dictionaries for game setup
-
-
-
-
-
-## Potential OOP objects:
-- Game board
-- Player(s)/ player piece(s)
-- Cards
-- Dice
-- Scorecard/ tracker
-
-## Functions
-### Gameboard
-![Cluedo board](game_board_layout.png)
-
-
-
-
-
-### Data structures
-Mention classes ( copy and paste code?)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome dragon-fire-fly,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
