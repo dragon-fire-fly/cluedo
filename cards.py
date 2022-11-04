@@ -44,13 +44,14 @@ class Cards:
             and self.murder_envelope[2] == player_guess[2]
         ):
             print(
-                "Congratulations, you correctly guessed the cards! \
-You win!"
+                f"Congratulations, you correctly guessed the cards!\n\nThe \
+correct cards were: {self.murder_envelope[0]}, {self.murder_envelope[1]} and \
+{self.murder_envelope[2]}.\nYou win!"
             )
             return "win"
         else:
             print(
-                f"Sorry, that was the wrong guess. \nThe correct cards \
+                f"Sorry, that was the wrong guess. \n\nThe correct cards \
 were: {self.murder_envelope[0]}, {self.murder_envelope[1]} and \
 {self.murder_envelope[2]}.\nYou lose!"
             )
