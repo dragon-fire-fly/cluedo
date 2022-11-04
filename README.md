@@ -32,11 +32,16 @@ Once you think you know WHO, WHAT and WHERE, you may make an accusation. Be care
 
 Now what are you waiting for? There's no time to lose!
 
-## Brief
-
 ## User Experience
+As a user, when playing PyClue, I would like to be able to...
+- optionally view the rules  
+- optionally view the backstory  
+- choose a character  
+- easily move around the game board  
+- ask other players whether they have a card by 'investigating'  
+- keep track of which cards I have and which cards I have been shown (and by whom)  
+- make an accusation when I think I know the correct cards  
 
-### Wireframes?
 
 ### Colour scheme?
 
@@ -84,10 +89,13 @@ The investigation card can be viewed at almost all times throughout the game and
 
 - **Choose a room (inc. Secret Passageway)**
 - room distances are calculated and displayed (inc. secret passageway rooms)
-- Player prompted for choice
-- Player moved to or towards (depending on if enough moves available) chosen room or stays in current room if preferred
+- Player prompted for choice  
+![choose room](documentation/features/game_features/choose_room.png)  
 
-![choose room](documentation/features/game_features/choose_room.png)
+- Player moved to or towards (depending on if enough moves available) chosen room or stays in current room if preferred  
+![Move towards chosen room?](documentation/features/game_features/not_enough_moves.png)
+
+
 
 - **Investigation phase**
 - Choose a suspect  
@@ -102,16 +110,22 @@ The investigation card can be viewed at almost all times throughout the game and
 ![updated scorecard](documentation/features/game_features/updated_scorecard.png)
 
 
+- **The Accusation**
+- Choose a suspect  
+![suspect accusation](documentation/features/game_features/suspect_accusation.png)  
+- Choose a weapon  
+![weapon accusation](documentation/features/game_features/weapon_accusation.png)  
+- Choose a room  
+![weapon accusation](documentation/features/game_features/room_accusation.png)
+- Input validation  
+![accusation input validation](documentation/features/game_features/input_validation_accusation.png)  
+- Check if player definitely wants to submit  
+![confirm accusation](documentation/features/game_features/accusation_check.png)  
+- Game evaluates whether you picked the correct cards and displays win/lose  
+![correct guess](documentation/features/game_features/correct_guess.png)
+![incorrect guess](documentation/features/game_features/wrong_guess.png)
 
-#### The Accusation
-- Choose a suspect
-
-- Choose a weapon
-- Choose a room
-- Input validation
-- Check if player definitely wants to submit
-
-#### Favicon
+- **Favicon**
 A magnifying glass icon was chosen as the favicon for the Heroku terminal program
 
 ![favicon](documentation/features/game_features/favicon.png)
