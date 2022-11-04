@@ -89,8 +89,8 @@ def number_dict_input_validation(
             elif choice.lower() == v.lower():
                 return k
         print(
-            f"Sorry, {choice} is not a valid input, please enter a number between "
-            f"1-{len(chosen_dict)}"
+            f"Sorry, {choice} is not a valid input, please enter a number \
+                between 1-{len(chosen_dict)}"
         )
 
 
