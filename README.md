@@ -61,21 +61,26 @@ The main menu displays the "PyClue" logo and three options - play game (with sto
 
 
 - **Story**  
-The story prints in seven parts with a "typewriter" type effect.
+The story prints in seven parts with the logo and a "typewriter" type effect.
 ![story part 1](documentation/features/game_features/story_1.png)
 ![story part 2](documentation/features/game_features/story_2.png)
-#### View Rules
+- **View Rules**
+The rules print in five parts with the logo and a "typewriter" type effect.  
+![rules](documentation/features/game_features/rules.png)
 
 ### Playing the game
 - **Choose Character**  
 ![choose character](documentation/features/game_features/select_player.png)
 
-- **View Scorecard**  
+- **View Investigation Card**  
 The investigation card can be viewed at almost all times throughout the game and marks which player has shown which card so far to aid future investigations.  
 ![view investigation card](documentation/features/game_features/view_investigation_card.png)
 
+    The table format for displaying the investigation card was later changed to make it more readable by adding lines between the rows. This made the scorecard no longer fit neatly into the Heroku terminal, but aids greatly with user experience and playability.
+![updated investigation card](documentation/features/game_features/new_investigation_card.png)  
 
-#### Update Scorecard
+
+    The investigation card is updated each time another player shows a card.
 
 - **Choose a room (inc. Secret Passageway)**
 - room distances are calculated and displayed (inc. secret passageway rooms)
