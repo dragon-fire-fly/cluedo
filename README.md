@@ -108,6 +108,8 @@ The investigation card can be viewed at almost all times throughout the game and
 #### Favicon
 A magnifying glass icon was chosen as the favicon for the Heroku terminal program
 
+![favicon](documentation/features/game_features/favicon.png)
+
 ### Python Coding Features
 #### Game constants
 <details>
@@ -373,6 +375,15 @@ Python Modules used:
 - Cloning
 
 ### Heroku
+1. To deploy a project using Heroku, first [create an account and log in](https://www.heroku.com). Create a new app by using the drop down menu.  
+![Heroku](documentation/deployment/create_new_app.png)  
+2. Create a new app by choosing a name and the appropriate region.  ![Heroku](documentation/deployment/new_app_page.png)  
+3. The app information can be found by accessing the "settings" tab.  ![Heroku](documentation/deployment/app_info.png)  
+4. In the config vars, a key of "PORT" and a value of "8000" should be set as a config var  ![Heroku](documentation/deployment/config_vars.png)  
+5. Python and NodeJS should be selected as buildpacks.  ![Heroku](documentation/deployment/buildpacks.png)  
+6. In the deploy tab, GitHub can be selected as the deployment method and the appropriate GitHub account can be linked.  ![Heroku](documentation/deployment/github_connection.png)  
+7. Automatic deployment can be selected, if wished...  ![Heroku](documentation/deployment/automatic_deploys.png)  
+8. .. or apps can be manually deployed with the manual deploy function.  ![Heroku](documentation/deployment/manual_deploy.png)  
 
 
 
