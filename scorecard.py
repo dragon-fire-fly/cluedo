@@ -9,7 +9,11 @@ class Scorecard:
         """
         Returns the scorecard as a table
         """
-        print(tabulate(self.scorecard, tablefmt="fancy_grid", stralign="center"))
+        print(tabulate(
+            self.scorecard,
+            tablefmt="fancy_grid",
+            stralign="center"
+            ))
 
     def update_scorecard(self, character: str, search_card: str) -> None:
         """
