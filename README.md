@@ -60,24 +60,26 @@ A simplified gameboard to be used in the PyClue game was designed on a grid syst
 ## Features
 
 ### Game Features
-- **Main Menu**
+**Main Menu**  
 The main menu displays the "PyClue" logo and three options - play game (with story), play game (skip story) and view rules.  
 ![main menu](documentation/features/game_features/main_menu.png)
 
 
-- **Story**  
-The story prints in seven parts with the logo and a "typewriter" type effect.
-![story part 1](documentation/features/game_features/story_1.png)
-![story part 2](documentation/features/game_features/story_2.png)
-- **View Rules**
+**Story**  
+The story prints in seven parts with the logo and a "typewriter" type effect.  
+![story part 1](documentation/features/game_features/story_1.png)  
+![story part 2](documentation/features/game_features/story_2.png)  
+
+**View Rules**  
 The rules print in five parts with the logo and a "typewriter" type effect.  
-![rules](documentation/features/game_features/rules.png)
+![rules](documentation/features/game_features/rules.png)  
 
 ### Playing the game
-- **Choose Character**  
+**Choose Character**  
+The user is able to pick one from the six characters available from the original Cluedo. User input is accepted as a number or the name of the character typed (case sensitive and requiring . where present)  
 ![choose character](documentation/features/game_features/select_player.png)
 
-- **View Investigation Card**  
+**View Investigation Card**  
 The investigation card can be viewed at almost all times throughout the game and marks which player has shown which card so far to aid future investigations.  
 ![view investigation card](documentation/features/game_features/view_investigation_card.png)
 
@@ -87,17 +89,15 @@ The investigation card can be viewed at almost all times throughout the game and
 
     The investigation card is updated each time another player shows a card.
 
-- **Choose a room (inc. Secret Passageway)**
-- room distances are calculated and displayed (inc. secret passageway rooms)
+**Choose a room (inc. Secret Passageway)**  
+- room distances are calculated and displayed (inc. secret passageway rooms)  
 - Player prompted for choice  
 ![choose room](documentation/features/game_features/choose_room.png)  
 
 - Player moved to or towards (depending on if enough moves available) chosen room or stays in current room if preferred  
 ![Move towards chosen room?](documentation/features/game_features/not_enough_moves.png)
 
-
-
-- **Investigation phase**
+**Investigation phase**  
 - Choose a suspect  
 ![choose suspect](documentation/features/game_features/choose_suspect.png)  
 - Choose a weapon  
@@ -107,28 +107,26 @@ The investigation card can be viewed at almost all times throughout the game and
 - AI player shows card  
 ![ai showing card](documentation/features/game_features/ai_show_card.png)
 - Scorecard updated  
-![updated scorecard](documentation/features/game_features/updated_scorecard.png)
+![updated scorecard](documentation/features/game_features/updated_scorecard.png)  
 
-
-- **The Accusation**
+**The Accusation**  
 - Choose a suspect  
 ![suspect accusation](documentation/features/game_features/suspect_accusation.png)  
 - Choose a weapon  
 ![weapon accusation](documentation/features/game_features/weapon_accusation.png)  
 - Choose a room  
-![weapon accusation](documentation/features/game_features/room_accusation.png)
+![weapon accusation](documentation/features/game_features/room_accusation.png)  
 - Input validation  
 ![accusation input validation](documentation/features/game_features/input_validation_accusation.png)  
 - Check if player definitely wants to submit  
 ![confirm accusation](documentation/features/game_features/accusation_check.png)  
 - Game evaluates whether you picked the correct cards and displays win/lose  
-![correct guess](documentation/features/game_features/correct_guess.png)
-![incorrect guess](documentation/features/game_features/wrong_guess.png)
+![correct guess](documentation/features/game_features/correct_guess.png)  
+![incorrect guess](documentation/features/game_features/wrong_guess.png)  
 
-- **Favicon**
-A magnifying glass icon was chosen as the favicon for the Heroku terminal program
-
-![favicon](documentation/features/game_features/favicon.png)
+**Favicon**  
+A magnifying glass icon was chosen as the favicon for the Heroku terminal program  
+![favicon](documentation/features/game_features/favicon.png)  
 
 ### Python Coding Features
 #### Game constants
@@ -355,6 +353,7 @@ Clear simply performs a terminal clearing function using the linux specific clea
 - save/load functionality
 - difficulty setting
 - multiplayer/ AI players playing
+- more versitility in acceptable user input (e.g. "col mustard" or "white" instead of needing to be "Colonel Mustard" or "Mrs. White")
 
 
 ## Technologies Used
