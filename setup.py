@@ -168,16 +168,16 @@ def show_rules():
     rule_1 = "1. The murderer, murder weapon and murder location have been \
 placed inside the 'murder envelope'\n"
     rule_2 = "2. Roll the dice or use a secret passage each turn to move from \
-room to room. You may move up, down or sideways, but not diagonally. \n"
+room to room. You may move up, down or sideways, \n   but not diagonally. \n"
     rule_3 = "3. On your turn, if you are in a room, you may question the \
-other suspects about any suspect, any weapon and the location you are \
+other suspects about any suspect, any weapon and \n   the location you are \
 currently at.\n"
     rule_4 = "4. Starting with the player to your left, if that player has \
 one of the three suggested cards, they must show you one. \n   If they don't \
 have any cards, they player to their left is questioned next, and so on.\n"
     rule_5 = "5. Once you feel certain that you know the murderer, murder \
-weapon and room, you may make an accusation. You may only make one accusation \
-per game.\n\n"
+weapon and room, you may make an accusation. \nYou may only make one \
+accusation per game.\n\n"
     rules = [rule_1, rule_2, rule_3, rule_4, rule_5]
     clear()
     print(LOGO)
