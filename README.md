@@ -359,16 +359,23 @@ Python Modules used:
 
 
 ## Bugs
+During this project, bugs were tracked using the "Issues" tab in GitHub. A summary of the closed bugs is shown below:
+![Summary of resolved bugs](documentation/bugs_summary.png)
+
+The details of each of the resolved and outstanding bugs can be viewed by following the links provided below:
+
 ### Resolved Bugs
-1. [Always printing that user is in the hallway bug](https://github.com/dragon-fire-fly/cluedo/issues/2)
-2. [Secret passageway bug](https://github.com/dragon-fire-fly/cluedo/issues/3)
-3. [Number not recognised as valid input](https://github.com/dragon-fire-fly/cluedo/issues/4)
-4. [Cards are shown by last AI player with relevant card instead of first bug](https://github.com/dragon-fire-fly/cluedo/issues/5)
-5. ['Colonel Mustard not in list' bug](https://github.com/dragon-fire-fly/cluedo/issues/6)
-6. [Game crashing if the murder cards are investigated bug](https://github.com/dragon-fire-fly/cluedo/issues/7)
-7. [Cards in the "murder envelope" always the same bug](https://github.com/dragon-fire-fly/cluedo/issues/8)
+1. [Always printing that user is in the hallway bug](https://github.com/dragon-fire-fly/cluedo/issues/2) (issue #2)
+2. [Secret passageway bug](https://github.com/dragon-fire-fly/cluedo/issues/3) (issue #3)
+3. [Number not recognised as valid input](https://github.com/dragon-fire-fly/cluedo/issues/4) (issue #4)
+4. [Cards are shown by last AI player with relevant card instead of first bug](https://github.com/dragon-fire-fly/cluedo/issues/5) (issue #5)
+5. ['Colonel Mustard not in list' bug](https://github.com/dragon-fire-fly/cluedo/issues/6) (issue #6)
+6. [Game crashing if the murder cards are investigated bug](https://github.com/dragon-fire-fly/cluedo/issues/7) (issue #7)
+7. [Cards in the "murder envelope" always the same bug](https://github.com/dragon-fire-fly/cluedo/issues/8) (issue #8)
+
 ### Outstanding Bugs
-[Sometimes end in wrong room bug](https://github.com/dragon-fire-fly/cluedo/issues/9)
+1. [Sometimes end in wrong room bug](https://github.com/dragon-fire-fly/cluedo/issues/9) (issue #9)  
+2. [Heroku terminal bug](https://github.com/dragon-fire-fly/cluedo/issues/10) (issue #10)
 
 ## Deployment
 ### Github
