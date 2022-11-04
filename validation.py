@@ -60,7 +60,7 @@ def room_choice_input_validation(no_options: int) -> int:
 
 def number_dict_input_validation(
     user_input: str, chosen_dict: dict, phase=None
-        ):
+        ) -> str:
     """
     Takes an input and a relevant dictionary and prompts the user to choose
     an option. If the user input is valid, returns the key of the chosen
@@ -89,7 +89,7 @@ def number_dict_input_validation(
             elif choice.lower() == v.lower():
                 return k
         print(
-            f"Sorry, that is not a valid input, please enter a number between "
+            f"Sorry, {choice} is not a valid input, please enter a number between "
             f"1-{len(chosen_dict)}"
         )
 
