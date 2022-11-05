@@ -81,7 +81,7 @@ class Player:
             total_die_roll = copy.deepcopy(die_roll)
             print(f"You have not rolled enough to reach the {desired_room}.")
             print(
-                f"1. Move {die_roll} space(s) towards the {desired_room}\n"
+                f"\n1. Move {die_roll} space(s) towards the {desired_room}\n"
                 f"2. Stay at current location"
             )
             stay_or_move = number_input_validation(2)

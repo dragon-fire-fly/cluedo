@@ -1,5 +1,4 @@
 import os
-import time
 
 import setup
 
@@ -19,7 +18,7 @@ def number_input_validation(no_options: int) -> str:
             options += f" or {str(no_options)}"
 
     while True:
-        user_ans = input(f"Your answer ({options}): ").strip()
+        user_ans = input(f"\nYour answer ({options}): ").strip()
 
         for num in range(1, no_options + 1):
             if user_ans == str(num):
@@ -123,12 +122,12 @@ def y_n_input_validation(phase: str) -> bool:
         ]:
             if phase == "investigation":
                 print(f"Please make new choices for the {phase}")
-                time.sleep(1.5)
+                input("\nPress enter to continue ")
                 clear()
                 return False
             elif phase == "accusation":
                 print(f"No {phase} made this round")
-                time.sleep(1.5)
+                input("\nPress enter to continue ")
                 return False
             elif phase == "end of game":
                 return False

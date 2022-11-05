@@ -10,10 +10,7 @@ from setup import (
     ROOM_LOCATIONS,
     cards
     )
-from validation import number_input_validation, clear, y_n_input_validation
-
-# Game variables
-win_condition_satisfied = False
+from validation import number_input_validation, clear
 
 
 def main_game_loop(hours_remaining):
@@ -111,25 +108,24 @@ def end_of_turn():
 {accusation[2]}."
             )
             time.sleep(1)
-            cards.check_murder_envelope(accusation)
+            win_or_lose = cards.check_murder_envelope(accusation)
             hours_remaining = 0
+            return win_or_lose
         else:
             clear()
     else:
         clear()
-    
 
-# play_game = True
+
 hours_remaining = 24
-play_game = True
 
 if __name__ == "__main__":
     while hours_remaining >= 1:
         main_game_loop(hours_remaining)
-        end_of_turn()
+        result = end_of_turn()
         hours_remaining -= 1
         clear()
-        if hours_remaining == 0:
+        if hours_remaining == 0 or result == "lose":
             end_1 = "The clock strikes midnight once again and the air around \
 you grows cold.\n\nSadly your investigation efforts were not enough to find \
 the culprit this time. \nYou'd better hope that the professional \
