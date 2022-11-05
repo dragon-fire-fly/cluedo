@@ -496,5 +496,7 @@ https://favicon.io/
 
 ### Acknowledgements
 A huge thank you to my Mentor Tim Nelson for his continued support, enthusiasm, advice and debugging help!  
-I would also like to thank my peers in the May 2022 cohort at Code Institute for support and always providing encouragement and inspiration and my husband for his understanding, patience and partial play testing (even if his conclusion was "One player Cluedo is really boring"! :D)
+I would also like to thank my peers in the May 2022 cohort at Code Institute for support and always providing encouragement and inspiration. Special thanks go to Kelly Hutchison and Warwick Hart for play testing and providing feedback :)
+
+Finally, thanks go to my husband for his understanding, patience and partial play testing (even if his conclusion was "one player Cluedo is really boring"! :D)
 
