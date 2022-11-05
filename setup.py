@@ -2,8 +2,6 @@
 import os
 import time
 
-# import installed modules
-
 # import custom modules
 from gameboard import Gameboard
 from cards import Cards
@@ -92,17 +90,6 @@ ROOMS = {
     "9": "Study",
 }
 
-game_board = (
-    (("Kitchen*"), (" "), (" "), ("Ballroom"), (" "), (" "),
-        ("Conservatory*")),
-    ((" "), (" "), (" "), (" "), (" "), (" "), (" ")),
-    ((" "), (" "), (" "), (" "), (" "), (" "), ("Billiard Room")),
-    (("Dining Room"), (" "), (" "), (" "), (" "), (" "), (" ")),
-    ((" "), (" "), (" "), (" "), (" "), (" "), ("Library")),
-    ((" "), (" "), (" "), (" "), (" "), (" "), (" ")),
-    (("Lounge*"), (" "), (" "), ("Main Hall"), (" "), (" "), ("Study*")),
-)
-
 scorecard_table = [
     [
         " ",
@@ -186,7 +173,6 @@ accusation per game.\n\n"
             time.sleep(0.025)
             print(letter, end="", flush=True)
         time.sleep(0.5)
-
     input("Press enter to continue ")
     clear()
 
@@ -196,9 +182,9 @@ def game_setup():
     chosen_character = player.choose_character()
     print(f"You have chosen to play as {chosen_character}.")
     player.set_starting_location(chosen_character)
-    time.sleep(1)
+    time.sleep(2)
     print("Shuffling cards...")
-    time.sleep(1)
+    time.sleep(2)
     clear()
     cards.deal_cards()
 
@@ -299,9 +285,7 @@ scorecard = Scorecard(scorecard_table)
 ai_char_list = []
 
 
-# print(ai_char_list[0].check_cards())
-
-# Welcome message, logo, back story etc.
+# Welcome message, logo, call main_menu
 LOGO = """
  ██▓███ ▓██   ██▓ ▄████▄   ██▓     █    ██ ▓█████
 ▓██░  ██▒▒██  ██▒▒██▀ ▀█  ▓██▒     ██  ▓██▒▓█   ▀
@@ -317,7 +301,5 @@ LOGO = """
 clear()
 print("Welcome to .... ")
 print(LOGO)
-
-# insert fancy welcome screen
 time.sleep(1)
 main_menu()
