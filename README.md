@@ -422,7 +422,7 @@ Python Modules used:
 
 
 ## Testing
-Details of manual and PEP8 compliance testing may be found in the dedicated [TESTING document]((https://github.com/dragon-fire-fly/cluedo/blob/main/TESTING.md)).
+Details of manual and PEP8 compliance testing may be found in the dedicated [TESTING document](https://github.com/dragon-fire-fly/cluedo/blob/main/TESTING.md).
 
 
 ## Bugs
