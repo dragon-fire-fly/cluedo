@@ -26,7 +26,7 @@
 | Input validation (number outside range)  | "7"  |  input not accepted | yes  | ![input validation invalid number](documentation/testing/manual_testing/character_selection/player_select_7.png)  |
 | Input validation (invalid string)  | "cat"  | input not accepted |  yes  | ![input validation invalid string](documentation/testing/manual_testing/character_selection/cat.png)  |
 | Input validation (does not exist)  | "Dr Black" | input not accepted  | yes  | ![input validation does not exist](documentation/testing/manual_testing/character_selection/dr_black.png)  |
-| Input validation (shortened name)  | "col mustard  |  input not accepted (only accepts specific dictionary keys/values) |  yes  | ![input validation shortened name](documentation/testing/manual_testing/character_selection/col_mustard.png)  |
+| Input validation (shortened name)  | "col mustard"  |  input not accepted (only accepts specific dictionary keys/values) |  yes  | ![input validation shortened name](documentation/testing/manual_testing/character_selection/col_mustard.png)  |
 
 
 ### Investigation Card
@@ -46,7 +46,7 @@
 |---|---|---|---|---|
 | Move to a new room when die roll is high enough  | "5" (a room 6 spaces away)  | end up in the dining room  | yes  |  ![choice of room](documentation/testing/manual_testing/gameboard_movement/move_to_new_room_1.png)![You are in the dining room](documentation/testing/manual_testing/gameboard_movement/move_to_new_room_2.png) |
 | Move towards a new room when die roll is not high enough  | select a room further away than the available moves and chose to move towards that room  | should print "you have moved x spaces towards y room" and finish turn in the hallway  | yes  | ![move towards room 1](documentation/testing/manual_testing/gameboard_movement/not_enough_moves.png)![move towards room 2](documentation/testing/manual_testing/gameboard_movement/not_enough_moves_2.png)![move towards room 3](documentation/testing/manual_testing/gameboard_movement/not_enough_moves_3.png)![move towards room 4](documentation/testing/manual_testing/gameboard_movement/not_enough_moves_4.png)  |
-| Stay in room  |   |   | yes  | ![stay in room](documentation/testing/manual_testing/gameboard_movement/stay_in_room.png)![still in same room](documentation/testing/manual_testing/gameboard_movement/still_in_dining_room.png)   |
+| Stay in room  | "5" (number for currect room)  | stay in dining room  | yes  | ![stay in room](documentation/testing/manual_testing/gameboard_movement/stay_in_room.png)![still in same room](documentation/testing/manual_testing/gameboard_movement/still_in_dining_room.png)   |
 | Stay in room (after selecting far away room)  | select a room further than moves available, then when asked whether to move or to stay, choose stay  | stay in the current room  | a bug was discovered here and can be found under the bug section (Printing "You chose to stay in the hallway" instead of stay in current room - issue #12). This is now fixed.  | ![stay in room after picking faraway room](documentation/testing/manual_testing/gameboard_movement/stay_after_far_away_room.png)  |
 | Use a secret passageway  | select a room that is connected by secret passageway  | move to connected room  | yes  | ![move through secret passageway 1](documentation/testing/manual_testing/gameboard_movement/use_secret_passageway_1.png)![move through secret passageway 2](documentation/testing/manual_testing/gameboard_movement/use_secret_passageway_2.png)   |
 | Cross through another room  | select a room that is further away than available moves but that has other rooms on the way  | unfortunately, the way the game board was designed, if the number of available spaces would land you in another room, it does  |  this is a known, unresolved bug and details can be found in the bugs section under "Sometimes end in wrong room bug" - issue #9 |  ![end in wrong room 1](documentation/testing/manual_testing/gameboard_movement/end_in_wrong_room_1.png)![end in wrong room 2](documentation/testing/manual_testing/gameboard_movement/end_in_wrong_room_2.png)![end in wrong room 3](documentation/testing/manual_testing/gameboard_movement/end_in_wrong_room_3.png) |
@@ -76,44 +76,17 @@
 
 |What is being tested?   |  What is the input? |  Expected response | Works as expected?  | Screenshot  |
 |---|---|---|---|---|
-| Correct suspect chosen  | each number 1-6 was tested  | corresponding suspect chosen for accusation  | yes  |  ![](documentation/testing/manual_testing/) |
-| Correct weapon chosen  | each number 1-6 was tested  | corresponding weapon chosen for accusation | yes  | ![](documentation/testing/manual_testing)  |
-| Correct room chosen  | each number 1-9 was tested  | corresponding room chosen for accusation | yes  | ![](documentation/testing/manual_testing)  |
-| Input validation - number not in range (suspect)  | "7"  | input not valid  | yes  | ![](documentation/testing/manual_testing)  |
-| Input validation - number not in range (weapon)  | "0"  | input not valid   |  yes |  ![](documentation/testing/manual_testing) |
-| Input validation - number not in range (room)  | "100"  | input not valid   |  yes |  ![](documentation/testing/manual_testing) |
-| Input validation - invalid string (suspect)   | "Dr Black"  |   | yes  | ![](documentation/testing/manual_testing)  |
-| Input validation - invalid string (weapon)   | "katana"  |   | yes  | ![](documentation/testing/manual_testing)  |
-| Input validation - invalid string (room)   | "basement"  |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   |  yes | ![](documentation/testing/manual_testing)  |
+| Correct suspect chosen  | each number 1-6 was tested (5 and 6 shown here) | corresponding suspect chosen for accusation  | yes  |  ![suspect choice](documentation/testing/manual_testing/accusation_phase/accusation_suspect.png)![suspect choice](documentation/testing/manual_testing/accusation_phase/accusation_player_6.png) |
+| Correct weapon chosen  | each number 1-6 was tested (3 and 2 shown here) | corresponding weapon chosen for accusation | yes  | ![weapon choice](documentation/testing/manual_testing/accusation_phase/accusation_weapon.png)![weapon choice](documentation/testing/manual_testing/accusation_phase/accusation_weapon_2.png)   |
+| Correct room chosen  | each number 1-9 was tested (6 and 7 shown here) | corresponding room chosen for accusation | yes  | ![room choice](documentation/testing/manual_testing/accusation_phase/accusation_rooms.png)![room choice](documentation/testing/manual_testing/accusation_phase/accusation_room_7.png)   |
+| correct output  | the suspect, weapon and room choices detailed above  |  should match the choices made (Peacock, Revolver, Library and Plum, Candlestick, Lounge) |  yes | ![accusation](documentation/testing/manual_testing/accusation_phase/accusation.png)![accusation](documentation/testing/manual_testing/accusation_phase/accusation_2.png)  |
+| Input validation - number not in range (suspect)  | "7"  | input not valid  | yes  | ![number not in range](documentation/testing/manual_testing/accusation_phase/accusation_input_val_7.png)  |
+| Input validation - number not in range (weapon)  | "0"  | input not valid   |  yes |  ![number not in range](documentation/testing/manual_testing/accusation_phase/accusation_input_val_0.png) |
+| Input validation - number not in range (room)  | "100"  | input not valid   |  yes |  ![number not in range](documentation/testing/manual_testing/accusation_phase/accusation_input_val_100.png) |
+| Input validation - invalid string (suspect)   | "The Queen"  | input not valid  | yes  | ![invalid string](documentation/testing/manual_testing/accusation_phase/accusation_queen.png)  |
+| Input validation - invalid string (weapon)   | "swordfish"  | input not valid  | yes  | ![invalid string](documentation/testing/manual_testing/accusation_phase/accusation_swordfish.png)  |
+| Input validation - invalid string (room)   | "deathstar"  | input not valid  | yes  | ![invalid string](documentation/testing/manual_testing/accusation_phase/accusation_deathstar.png)  |
+| y/n input validation  | "y"  | proceeds to make accusation  | yes  | ![yes validation](documentation/testing/manual_testing/accusation_phase/accusation_y.png)  |
+| y/n input validation  | "n"  | skips accusation for the round  | yes  | ![no validation](documentation/testing/manual_testing/accusation_phase/no_accusation.png)  |
+| y/n input validation  | "hello"  | input not valid  |  yes | ![input validation](documentation/testing/manual_testing/accusation_phase/accusation_input_val_hello.png)  |
 
-### End of Game
-
-|What is being tested?   |  What is the input? |  Expected response | Works as expected?  | Screenshot  |
-|---|---|---|---|---|
-|   |   |   | yes  |  ![](documentation/testing/manual_testing/) |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   |  yes |  ![](documentation/testing/manual_testing) |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   |  yes | ![](documentation/testing/manual_testing)  |
-
-
-|What is being tested?   |  What is the input? |  Expected response | Works as expected?  | Screenshot  |
-|---|---|---|---|---|
-|   |   |   | yes  |  ![](documentation/testing/manual_testing/) |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   |  yes |  ![](documentation/testing/manual_testing) |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   |  yes | ![](documentation/testing/manual_testing)  |
