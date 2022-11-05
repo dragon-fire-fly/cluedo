@@ -97,3 +97,15 @@
 | Running out of time  |  n/a | lose screen with ending story  | yes  |  ![out of time](documentation/testing/manual_testing/end_of_game/out_of_time.png) |
 | Incorrect choice  | guessing incorrect cards  | lose screen with incorrect and correct cards shown and ending story | yes  | ![incorrect choice](documentation/testing/manual_testing/end_of_game/incorrect_choice_end.png)![end screen](documentation/testing/manual_testing/end_of_game/end_of_game.png)   |
 | Correct choice  | guessing correct cards  | win screen with correct choices  | yes  | ![correct choice](documentation/testing/manual_testing/end_of_game/correct_choice_end.png)  |
+
+
+
+## PEP8 Compliance
+
+pycodestyle was used as the linter for this project within the desktop version of Visual Studio Code.
+
+![pycodestyle](documentation/testing/PEP8/pycodestyle.png)
+
+The only remaining item in the problems tab is a local import error for the tabulate module within the planning.ipynb file. Other PEP8 issues were not identified.
+
+![problems](documentation/testing/PEP8/problems_tab.png)
