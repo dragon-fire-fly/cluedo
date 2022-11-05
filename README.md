@@ -1,4 +1,4 @@
-# Cluedo
+# PyClue
 ## Live site
 [PyClue on Heroku](https://pyclue.herokuapp.com/)
 
