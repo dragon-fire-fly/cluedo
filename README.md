@@ -120,8 +120,23 @@ The investigation card is updated each time another player shows a card.
 - Check if player definitely wants to submit  
 ![confirm accusation](documentation/features/game_features/accusation_check.png)  
 - Game evaluates whether you picked the correct cards and displays win/lose  
-![correct guess](documentation/features/game_features/correct_guess.png)  
-![incorrect guess](documentation/features/game_features/wrong_guess.png)  
+(see below)
+
+**End of Game**  
+The game has three possible endings  
+1. correctly guessing the murder cards  
+![correct guess](documentation/features/game_features/correct_guess_win.png)  
+
+2. Incorrectly guessing the murder cards  
+![incorrect guess](documentation/features/game_features/incorrect_guess_lose.png)  
+
+3. Running out of time   
+![out of time](documentation/features/game_features/out_of_time.png) 
+
+End message  
+Each end of game scenario ends by thanking the player and inviting them to play again by pressing run program in the Heroku window.
+
+![end message](documentation/features/game_features/end_message.png) 
 
 
 

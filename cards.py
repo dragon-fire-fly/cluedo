@@ -48,6 +48,7 @@ class Cards:
 correct cards were: {self.murder_envelope[0]}, {self.murder_envelope[1]} and \
 {self.murder_envelope[2]}.\nYou win!"
             )
+            input("Press enter to continue ")
             return "win"
         else:
             print(
@@ -55,4 +56,5 @@ correct cards were: {self.murder_envelope[0]}, {self.murder_envelope[1]} and \
 were: {self.murder_envelope[0]}, {self.murder_envelope[1]} and \
 {self.murder_envelope[2]}.\nYou lose!"
             )
+            input("Press enter to continue ")
             return "lose"
