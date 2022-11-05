@@ -406,6 +406,7 @@ Clear simply performs a terminal clearing function using the linux specific clea
 - difficulty setting
 - multiplayer/ AI players playing
 - more versitility in acceptable user input (e.g. "col mustard" or "white" instead of needing to be "Colonel Mustard" or "Mrs. White")
+- use of colour for scorecard, story and/or other text - perhaps with the colorama module 
 
 
 ## Technologies Used
