@@ -387,7 +387,7 @@ Accepts a string value ("character", "suspect", "weapon" or "room"), a relevant 
 ![number dict input validation function](documentation/features/code_features/functions/validation/number_dict_input_validation.png)  
 
 - y_n_input_validation()  
-This function prompts the user for a y/n answer (as a str type). The function asssesses whether the (lowercased) user input is in the list of "yes" words or "no" words. If the user input is in neither list, it informs the user that their answerwas not valid and requests a new answer. The function returns true or false, and if false, also prints an appropriate message.  
+This function prompts the user for a y/n answer (as a str type). The function asssesses whether the (lowercased) user input is in the list of "yes" words or "no" words. If the user input is in neither list, it informs the user that their answer was not valid and requests a new answer. The function returns true or false, and if false, also prints an appropriate message.  
 ![y n input validation function](documentation/features/code_features/functions/validation/y_n_input_validation.png)  
 - clear()  
 Clear simply performs a terminal clearing function using the linux specific clearing method from the os module   
@@ -422,10 +422,7 @@ Python Modules used:
 
 
 ## Testing
-### Manual testing
-Details of manual testing may be found in the dedicated [TESTING document]((https://github.com/dragon-fire-fly/cluedo/blob/main/TESTING.md)).
-
-### PEP-8 Compliance
+Details of manual and PEP8 compliance testing may be found in the dedicated [TESTING document]((https://github.com/dragon-fire-fly/cluedo/blob/main/TESTING.md)).
 
 
 ## Bugs
@@ -459,11 +456,11 @@ Following these steps will allow you to clone a repository and open it in your l
 4. Open your local IDE and change the current working directory in GitBash to the desired location for the new repository.
 5. In the command line, type 'git clone' and paste the URL obtained earlier from GitHub.
 
-![GitHub cloning](documentation/deployment/ssh_clone.png)
+![GitHub cloning](documentation/deployment/https_clone.png)
 
 Alternatively, you can create a local copy of this repository, by typing the follow into your IDE terminal:
 
-`git clone git@github.com:dragon-fire-fly/cluedo.git`
+`git clone https://github.com/dragon-fire-fly/cluedo.git`
 
 Or, if using Gitpod, you can click below to create your own workspace using this repository.
 
