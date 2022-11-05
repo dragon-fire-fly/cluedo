@@ -7,12 +7,12 @@
 ### Main Menu
 |What is being tested?   |  What is the input? |  Expected response? | Works as expected?  | Screenshot  |
 |---|---|---|---|---|
-| Select option 1  | "1"  | plays game with story  | yes  | ![](documentation/testing/manual_testing/main_menu/main_menu_1.png) ![](documentation/testing/manual_testing/main_menu/main_menu_1_result.png) |
-| Select option 2  | "2"  | plays game without story  | yes  | ![](documentation/testing/manual_testing/main_menu/main_menu_2.png)![](documentation/testing/manual_testing/main_menu/main_menu_2_result.png)  |
-| Select option 3  | "3"  | displays rules  | yes  | ![](documentation/testing/manual_testing/main_menu/main_menu_3.png)![](documentation/testing/manual_testing/main_menu/main_menu_3_result.png)  |
-| Input validation (too many spaces)  | " 1 " (with lots of spaces)  | plays game with story  | yes  | ![](documentation/testing/manual_testing/main_menu/main_menu_1_spaces.png) ![](documentation/testing/manual_testing/main_menu/main_menu_spaces_result.png)  |
-| Input validation (number outside range)  | "4"  | input not accepted  | yes  | ![](documentation/testing/manual_testing/main_menu/main_menu_4.png) |
-| Input validation (invalid string)  | "cat"  | input not accepted  |  yes | ![](documentation/testing/manual_testing/main_menu/main_menu_cat.png)  |
+| Select option 1  | "1"  | plays game with story  | yes  | ![select option 1](documentation/testing/manual_testing/main_menu/main_menu_1.png) ![select option 1](documentation/testing/manual_testing/main_menu/main_menu_1_result.png) |
+| Select option 2  | "2"  | plays game without story  | yes  | ![select option 2](documentation/testing/manual_testing/main_menu/main_menu_2.png)![select option 2](documentation/testing/manual_testing/main_menu/main_menu_2_result.png)  |
+| Select option 3  | "3"  | displays rules  | yes  | ![select option 3](documentation/testing/manual_testing/main_menu/main_menu_3.png)![select option 3](documentation/testing/manual_testing/main_menu/main_menu_3_result.png)  |
+| Input validation (too many spaces)  | " 1 " (with lots of spaces)  | plays game with story  | yes  | ![too many spaces 1](documentation/testing/manual_testing/main_menu/main_menu_1_spaces.png) ![too many spaces 2](documentation/testing/manual_testing/main_menu/main_menu_spaces_result.png)  |
+| Input validation (number outside range)  | "4"  | input not accepted  | yes  | ![number outside range input](documentation/testing/manual_testing/main_menu/main_menu_4.png) |
+| Input validation (invalid string)  | "cat"  | input not accepted  |  yes | ![cat input](documentation/testing/manual_testing/main_menu/main_menu_cat.png)  |
 
 ### Player Selection
 
@@ -39,10 +39,6 @@
 | Input validation - open investigation card with number  | "0"  |  input not accepted  | yes  | ![open investigation card with "0"](documentation/testing/manual_testing/investigation_card/invalid_number.png)  |
 | Update investigation card when card shown  | completes an investigation round  | card shown and "x" placed in correct place in investigation card  |  yes |  ![update investigation card](documentation/testing/manual_testing/investigation_card/investigation_card_updated.png)![successfully updated](documentation/testing/manual_testing/investigation_card/peacock_rope.png) |
 | Correct cards added at start of game  | select character  |  The three cards printed at the start should correcpond to the three cards marked on the investigation card | yes  | ![correct cards?](documentation/testing/manual_testing/investigation_card/correct_cards_1.png)![correct cards added](documentation/testing/manual_testing/investigation_card/correct_cards_2.png)  |
-|   |   |   | yes  |   |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
-|   |   |   |  yes | ![](documentation/testing/manual_testing)  |
 
 ### Moving Between Rooms
 
@@ -54,12 +50,59 @@
 | Stay in room (after selecting far away room)  | select a room further than moves available, then when asked whether to move or to stay, choose stay  | stay in the current room  | a bug was discovered here and can be found under the bug section (Printing "You chose to stay in the hallway" instead of stay in current room - issue #12). This is now fixed.  | ![stay in room after picking faraway room](documentation/testing/manual_testing/gameboard_movement/stay_after_far_away_room.png)  |
 | Use a secret passageway  | select a room that is connected by secret passageway  | move to connected room  | yes  | ![move through secret passageway 1](documentation/testing/manual_testing/gameboard_movement/use_secret_passageway_1.png)![move through secret passageway 2](documentation/testing/manual_testing/gameboard_movement/use_secret_passageway_2.png)   |
 | Cross through another room  | select a room that is further away than available moves but that has other rooms on the way  | unfortunately, the way the game board was designed, if the number of available spaces would land you in another room, it does  |  this is a known, unresolved bug and details can be found in the bugs section under "Sometimes end in wrong room bug" - issue #9 |  ![end in wrong room 1](documentation/testing/manual_testing/gameboard_movement/end_in_wrong_room_1.png)![end in wrong room 2](documentation/testing/manual_testing/gameboard_movement/end_in_wrong_room_2.png)![end in wrong room 3](documentation/testing/manual_testing/gameboard_movement/end_in_wrong_room_3.png) |
-| You are now in the hallway  |  choose a room too far away to reach this turn, starting from a room | print "You are now in the hallway"  | yes  | ![](documentation/testing/manual_testing/gameboard_movement/move_to_hallway_from_room.png)  |
-| You are still in the hallway  | choose a room too far away to reach this turn, starting from the hallway  | print "You are still in the hallway"  | yes  | ![](documentation/testing/manual_testing/gameboard_movement/stay_in_hallway.png)  |
+| You are now in the hallway  |  choose a room too far away to reach this turn, starting from a room | print "You are now in the hallway"  | yes  | ![now in hallway](documentation/testing/manual_testing/gameboard_movement/move_to_hallway_from_room.png)  |
+| You are still in the hallway  | choose a room too far away to reach this turn, starting from the hallway  | print "You are still in the hallway"  | yes  | ![stay in hallway](documentation/testing/manual_testing/gameboard_movement/stay_in_hallway.png)  |
+
+
+### Investigation Phase
+
+|What is being tested?   |  What is the input? |  Expected response | Works as expected?  | Screenshot  |
+|---|---|---|---|---|
+| Correct suspect chosen  | each number 1-6 was tested  | corresponding suspect chosen for investigation  | yes  |  ![suspect 1 chosen](documentation/testing/manual_testing/investigation_phase/suspect_1_chosen.png)![suspect 1 chosen](documentation/testing/manual_testing/investigation_phase/yeah_choice.png) |
+| Correct weapon chosen  | each number 1-6 was tested  | corresponding weapon chosen for investigation | yes  | ![weapon 4 chosen](documentation/testing/manual_testing/investigation_phase/weapon_4_chosen.png)![weapon 4 chosen](documentation/testing/manual_testing/investigation_phase/yeah_choice.png)  |
+| Correct room chosen  | check that room choice corresponds to current room  | corresponding room chosen for investigation  | yes  | ![](documentation/testing/manual_testing/investigation_phase/correct_choices.png)  |
+| Input validation - number not in range (suspect)  | "7"  | input not valid  | yes  | ![](documentation/testing/manual_testing/investigation_phase/num_not_valid_suspect.png)  |
+| Input validation - number not in range (weapon)  | "0"  | input not valid   |  yes |  ![](documentation/testing/manual_testing/investigation_phase/invalid_number_weapon.png) |
+| Input validation - invalid string (suspect)   | "Dr Black"  | input not valid  | yes  | ![](documentation/testing/manual_testing/investigation_phase/invalid_string_suspect.png)  |
+| Input validation - invalid string (weapon)   | "katana"  | input not valid  | yes  | ![](documentation/testing/manual_testing/investigation_phase/invalid_string_weapon.png)  |
+| Player shows an appropriate card  | n/a  | one of the three cards should be shown by a player. Cards may be shown more than once  | yes  | ![rope card shown](documentation/testing/manual_testing/investigation_phase/yeah_choice.png)  |
+| Card added to investigation card in correct place  | n/a  | card should gain an "x" in the correct place  | yes  | ![investigation card updated](documentation/testing/manual_testing/investigation_phase/scorecard_updated.png)  |
+| y/n input validation  | "y"  | proceeds with investigation  |  yes | ![input validation yes](documentation/testing/manual_testing/investigation_phase/y_check.png)  |
+| y/n input validation  | "n"  | prompts for new choices  |  yes | ![input validation no](documentation/testing/manual_testing/investigation_phase/n_check.png)  |
+| y/n input validation  | "yeah"  | proceeds with investigation  |  yes | ![input validation yeah](documentation/testing/manual_testing/investigation_phase/yeah_choice.png)  |
+| y/n input validation  | "1"  | input not valid  |  yes | ![input validation 1](documentation/testing/manual_testing/investigation_phase/1_choice.png)  |
+
+### Accusation Phase
+
+|What is being tested?   |  What is the input? |  Expected response | Works as expected?  | Screenshot  |
+|---|---|---|---|---|
+| Correct suspect chosen  | each number 1-6 was tested  | corresponding suspect chosen for accusation  | yes  |  ![](documentation/testing/manual_testing/) |
+| Correct weapon chosen  | each number 1-6 was tested  | corresponding weapon chosen for accusation | yes  | ![](documentation/testing/manual_testing)  |
+| Correct room chosen  | each number 1-9 was tested  | corresponding room chosen for accusation | yes  | ![](documentation/testing/manual_testing)  |
+| Input validation - number not in range (suspect)  | "7"  | input not valid  | yes  | ![](documentation/testing/manual_testing)  |
+| Input validation - number not in range (weapon)  | "0"  | input not valid   |  yes |  ![](documentation/testing/manual_testing) |
+| Input validation - number not in range (room)  | "100"  | input not valid   |  yes |  ![](documentation/testing/manual_testing) |
+| Input validation - invalid string (suspect)   | "Dr Black"  |   | yes  | ![](documentation/testing/manual_testing)  |
+| Input validation - invalid string (weapon)   | "katana"  |   | yes  | ![](documentation/testing/manual_testing)  |
+| Input validation - invalid string (room)   | "basement"  |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
 |   |   |   | yes  | ![](documentation/testing/manual_testing)  |
 |   |   |   |  yes | ![](documentation/testing/manual_testing)  |
 
+### End of Game
 
+|What is being tested?   |  What is the input? |  Expected response | Works as expected?  | Screenshot  |
+|---|---|---|---|---|
+|   |   |   | yes  |  ![](documentation/testing/manual_testing/) |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   |  yes |  ![](documentation/testing/manual_testing) |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   | yes  | ![](documentation/testing/manual_testing)  |
+|   |   |   |  yes | ![](documentation/testing/manual_testing)  |
 
 
 |What is being tested?   |  What is the input? |  Expected response | Works as expected?  | Screenshot  |
