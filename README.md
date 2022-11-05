@@ -8,7 +8,9 @@
 
 
 ## Objective
-"PyClue" is a one player Python terminal game based upon the classic detective game Cluedo. More information about the history and gameplay of Cluedo can be found on the [Cluedo wikidpedia page](https://en.wikipedia.org/wiki/Cluedo).
+"PyClue" is a one player Python terminal game based upon the classic detective game Cluedo. More information about the history and gameplay of Cluedo can be found on the [Cluedo wikidpedia page](https://en.wikipedia.org/wiki/Cluedo).  
+
+The objective of PyClue is to provide entertainment to users and provides value to users who want an interactive one player game
 
 ## Story
 You were invited to a dinner party at the esteemed Dr Black's country Mansion for an evening of dinner, drinks, dancing and debauchery. 
@@ -39,7 +41,7 @@ As a user, when playing PyClue, I would like to be able to...
 - make an accusation when I think I know the correct cards  
 
 
-## Logic
+## Planning and Logic
 ### Flow diagram
 A basic flow diagram of the game mechanics is shown below. All user input is validated before being accepted. These validation steps are not shown on the flow chart. Additionally, the player has the opportunity to make an accusation at the end of each round.  
 ![Flow diagram for Cluedo game](documentation/planning_files/flow_diagram_white_bg.png)
@@ -52,6 +54,9 @@ A simplified gameboard to be used in the PyClue game was designed on a grid syst
 ![Mansion room layout](documentation/planning_files/gameboard_with_coords.png)
 
 Each square on the board has a set of x y "co-ordinates" contained within a tuple. In this way, movement between rooms and whether a player is in a room can be determined.
+
+### Jupyter Notebook
+A Jupyter notebook was created before the project was started with ideas and small pieces of practice code for the project. This Jupyter notebook can be found [here](documentation/planning_files/planning.ipynb).
 
 ## Features
 
