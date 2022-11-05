@@ -39,25 +39,25 @@ As a user, when playing PyClue, I would like to be able to...
 - make an accusation when I think I know the correct cards  
 
 
-### Colour scheme?
-
 ## Logic
 ### Flow diagram
-A basic flow diagram of the game mechanics is shown below.  
+A basic flow diagram of the game mechanics is shown below. All user input is validated before being accepted. These validation steps are not shown on the flow chart. Additionally, the player has the opportunity to make an accusation at the end of each round.  
 ![Flow diagram for Cluedo game](documentation/planning_files/flow_diagram_white_bg.png)
 
 ### Gameboard layout
-The layout of rooms in the mansion in the original cluedo game are as follows:  
+The layout of rooms in the mansion in the original cluedo game is as follows:  
 ![Original Cluedo room layout](documentation/planning_files/cluedo_rooms_original_game.png)
 
 A simplified gameboard to be used in the PyClue game was designed on a grid system as follows:  
 ![Mansion room layout](documentation/planning_files/gameboard_with_coords.png)
 
+Each square on the board has a set of x y "co-ordinates" contained within a tuple. In this way, movement between rooms and whether a player is in a room can be determined.
+
 ## Features
 
 ### Game Features  
 
-Below are screenshots of the game being played in the Heroku deployed terminal to show the game features. Features of the code can be found below.
+Below are screenshots of the game being played in the Heroku deployed terminal to show the game features. Features of the code can be found in the [Python Coding Features](#python-coding-features) section below.
 
 **Main Menu**  
 The main menu displays the "PyClue" logo and three options - play game (with story), play game (skip story) and view rules.  
@@ -97,25 +97,25 @@ The investigation card is updated each time another player shows a card.
 ![Move towards chosen room?](documentation/features/game_features/not_enough_moves.png)
 
 **Investigation phase**  
-- Choose a suspect  
+- Players are invited to choose a suspect...  
 ![choose suspect](documentation/features/game_features/choose_suspect.png)  
-- Choose a weapon  
+- ... and a weapon  
 ![choose weapon](documentation/features/game_features/choose_weapon.png)  
-- Input validation  
+- Input validation checks that the user typed answer is acceptable  
 ![yes no input validation](documentation/features/game_features/input_validation_y_n.png)  
 - AI player shows card  
 ![ai showing card](documentation/features/game_features/ai_show_card.png)
-- Scorecard updated  
+- The scorecard is updated  
 ![updated scorecard](documentation/features/game_features/updated_scorecard.png)  
 
 **The Accusation**  
-- Choose a suspect  
+- Players are invited to choose a suspect...  
 ![suspect accusation](documentation/features/game_features/suspect_accusation.png)  
-- Choose a weapon  
+- ... a weapon ... 
 ![weapon accusation](documentation/features/game_features/weapon_accusation.png)  
-- Choose a room  
+- ... and a room  
 ![weapon accusation](documentation/features/game_features/room_accusation.png)  
-- Input validation  
+- Input validation checks that the user typed answer is acceptable  
 ![accusation input validation](documentation/features/game_features/input_validation_accusation.png)  
 - Check if player definitely wants to submit  
 ![confirm accusation](documentation/features/game_features/accusation_check.png)  
@@ -130,7 +130,7 @@ The game has three possible endings
 2. Incorrectly guessing the murder cards  
 ![incorrect guess](documentation/features/game_features/incorrect_guess_lose.png)  
 
-3. Running out of time   
+3. Lose message for running out of time/incorrect choice   
 ![out of time](documentation/features/game_features/out_of_time.png) 
 
 End message  
@@ -195,10 +195,7 @@ A more detailed look at each of the code features is shown below:
 |  setup.py | Scorecard/investigation card  | ![room_locations](documentation/features/code_features/constants/scorecard.png)   |
 
 
-
-
 </details>
-
 
 #### OOP
 Classes were made for:
@@ -209,29 +206,27 @@ Classes were made for:
 - Scorecard
 
 The code for each class is discussed below:
-
 <details>
 <summary> Click to expand and view the Gameboard class code:
 </summary>
 
-
 - **__ init __()**   
-The Gameboard init method initializes the room dictionary (as room: (x, x)) and the current player location (as a [x, x] list).  
+The Gameboard init method initializes the room dictionary (as room: (x, y)) and the current player location (as a [x, y] list).  
 ![init method](documentation/features/code_features/oop/gameboard_class/init.png)  
 - **update_player_location()**   
-This method receives a new location (as [x, x] list) and updates the current location stored within the Gameboard class.  
+This method receives a new location (as [x, y] list) and updates the current location stored within the Gameboard class.  
 ![update player location method](documentation/features/code_features/oop/gameboard_class/update_player_location.png)  
 - **current_player_location()**  
 This method simply returns the current location stored within the Gameboard class.  
 ![current player location method](documentation/features/code_features/oop/gameboard_class/current_player_location.png)  
 - **calculate_distance()**  
-This method takes the co-ordinates of two points (either as a [x, x] list or an (x, x) tuple) and calculates and returns the total distance between the two points as an int. The calculation adds all the spaces on the x and y axis as players are not allowed to move diagonally in Pyclue.   
+This method takes the co-ordinates of two points (either as a [x, y] list or an (x, y) tuple) and calculates and returns the total distance between the two points as an int. The calculation adds all the spaces on the x and y axis as players are not allowed to move diagonally in PyClue.   
 ![calculate distance method](documentation/features/code_features/oop/gameboard_class/calculate_distance.png)  
 - **room_distances()**   
-This method starts with a dictionary of the rooms and a default value of 0 spaces for each room. The method then updates the distance (dictionary value)by calling the calculate_distance() method for each room in the dictionary and returns it.   
+This method starts with a dictionary of the rooms and a default value of 0 spaces for each room. The method then updates the distance (dictionary value) by calling the calculate_distance() method for each room in the dictionary and returns it.   
 ![room distances method](documentation/features/code_features/oop/gameboard_class/room_distances.png)  
 - **which_room()**  
-This method evaluates whether the co-ordinates of the player's current location matches the co-ordinates of any room in the room dictionary. If so,. it returns the name of the room. Otherwise, returns "hallway".    
+This method evaluates whether the co-ordinates of the player's current location matches the co-ordinates of any room in the room dictionary. If so, it returns the name of the room. Otherwise, returns "hallway".    
 ![which room method](documentation/features/code_features/oop/gameboard_class/which_room.png)  
 - **choose_room()**  
 This method calls the room_distances() method and the check_for_secret_passageways() method and displays the rooms with their corresponding distances to the user and prompts for a choice. The choice is validated with the number_input_validation() function and the desired room and updated room_distances library are returned.  
@@ -315,7 +310,7 @@ This method takes the player's guess as a list of strings (suspect, weapon, room
 The init method initializes the scorecard as a list of lists (where each list contains each row of data)  
 ![init method](documentation/features/code_features/oop/scorecard_class/init.png)  
 - **show_scorecard()**  
-The show scorecard method uses the imported tabulate module to display the list of lists as a table. The tabulate style chosen is "pretty". 
+The show scorecard method uses the imported tabulate module to display the list of lists as a table. The tabulate style chosen is "fancy_grid" with an alignment of "center".  
 ![show scorecard method](documentation/features/code_features/oop/scorecard_class/show_scorecard.png)  |
 - **update_scorecard()**  
 The update scorecard method takes as arguments the character who just showed a card and the card that they showed. The method then saves the index of the character from the first list, which acts as the column headings, as "char_num". The index of the list which contains the card is then saved as the "list_index" variable.
@@ -336,8 +331,8 @@ The Classes were saved into seperate .py files which were then imported into set
 The main menu consists of a while loop which uses the number_input_validation() method to request an input from the user to ascertain whether they want to start the game with or without the story or if they want to view the rules first.  
 ![main menu function](documentation/features/code_features/functions/setup/main_menu.png)  
 - **show_rules()**  
-
-![show rules function](documentation/features/code_features)  
+The rules are broken into five paragraphs. Each rule is sequentially added to a "rules list" which is printed (along with the logo) on each iteration of the printing loop. During each loop, the "new" rule is printed with a typewriter effect by using the sleep() method from the time module to pause for 0.025 seconds between each letter. The flush=True parameter is used to ensure that the print function prints each letter seperately.
+![show rules function](documentation/features/code_features/functions/setup/show_rules_code.png)  
 - **game_setup()**  
 The `game_setup()` function calls the `player.choose_character()` method to prompt the user to pick a character to play as. The starting location for that character is then assigned using the `player.set_starting_location(chosen_character)` method. The cards are then dealt with `cards.deal_cards()` and the user's hand is assigned with `user_hand = DEALT_CARDS.pop(chosen_character)` and these cards added to the investigation/scorecard with 
 `for card in enumerate(user_hand):
@@ -366,7 +361,7 @@ The `main_game_loop()` function calls the `gameboard.current_player_location()` 
 
 ![main game loop function](documentation/features/code_features/functions/run/main_game_loop.png)  
 - investigate()  
-The `investigate()` method compares the three cards chosen during the `main_game_loop()` to the cards in the ai character hands. For each of the five characters in the `ai_character_list`, each of the three `investigation_cards` is compared in turn to each card in each character's hand. This comparison is run starting at the last character and ending at the first character in the list by using list slicing [::-1]. The function then prints the name of the   
+The `investigate()` method compares the three cards chosen during the `main_game_loop()` to the cards in the ai character hands. For each of the five characters in the `ai_character_list`, each of the three `investigation_cards` is compared in turn to each card in each character's hand. This comparison is run starting at the last character and ending at the first character in the list by using list slicing [::-1]. The function then prints the name of the character who shows the card, and which card they are showing (if any character has any card)  
 ![investigate function](documentation/features/code_features/functions/run/investigate.png)  
 - end_of_turn()   
 At the end of the turn, the user is asked whether they would like to end their turn, make an accusation or view the investigation card. If they choose to make an accusation, the `player.make_accusation()` method is called and then the `cards.check_murder_envelope(accusation)` method is called to compare the guessed cards to the "murder envelope".   
@@ -383,6 +378,9 @@ At the end of the turn, the user is asked whether they would like to end their t
 - number_input_validation()  
 Takes the number of options as an argument and prompts the user for a number between 1 and the number of options. If the user input is valid, the user choice (as a string) is returned. Otherwise, the user is informed that their answer was not valid and is prompted for a new input.  
 ![number input validation function](documentation/features/code_features/functions/validation/number_input_validation.png)  
+
+- room_choice_input_validation()
+Similar to `number_input_validation()` above but specifically for choosing a room.
 
 - number_dict_input_validation()  
 Accepts a string value ("character", "suspect", "weapon" or "room"), a relevant dictionary (suspect_dict, weapon_dict or room_dict) and optionally a phase ("investigation" or "accusation"). The user is prompted for an input relevant to the arguments passed. If the input is either a key or a value from the relevant dictionary, the key of the dictionary is returned. If the input is invalid, the user is informed and requeted for a new input.  
