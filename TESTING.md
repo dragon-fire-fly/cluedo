@@ -90,3 +90,10 @@
 | y/n input validation  | "n"  | skips accusation for the round  | yes  | ![no validation](documentation/testing/manual_testing/accusation_phase/no_accusation.png)  |
 | y/n input validation  | "hello"  | input not valid  |  yes | ![input validation](documentation/testing/manual_testing/accusation_phase/accusation_input_val_hello.png)  |
 
+### End of Game
+
+|What is being tested?   |  What is the input? |  Expected response | Works as expected?  | Screenshot  |
+|---|---|---|---|---|
+| Running out of time  |  n/a | lose screen with ending story  | yes  |  ![out of time](documentation/testing/manual_testing/end_of_game/out_of_time.png) |
+| Incorrect choice  | guessing incorrect cards  | lose screen with incorrect and correct cards shown and ending story | yes  | ![incorrect choice](documentation/testing/manual_testing/end_of_game/incorrect_choice_end.png)![end screen](documentation/testing/manual_testing/end_of_game/end_of_game.png)   |
+| Correct choice  | guessing correct cards  | win screen with correct choices  | yes  | ![correct choice](documentation/testing/manual_testing/end_of_game/correct_choice_end.png)  |
