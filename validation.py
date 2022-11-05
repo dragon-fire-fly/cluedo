@@ -25,7 +25,7 @@ def number_input_validation(no_options: int) -> str:
                 return str(num)
         print(
             f"Sorry, {user_ans} is not a valid input, please enter a number "
-            f"between 1 and {no_options}."
+            f"between 1 and {no_options}: "
         )
 
 
@@ -89,7 +89,7 @@ def number_dict_input_validation(
                 return k
         print(
             f"Sorry, {choice} is not a valid input, please enter a number "
-            f"between 1-{len(chosen_dict)}"
+            f"between 1-{len(chosen_dict)}: "
         )
 
 
