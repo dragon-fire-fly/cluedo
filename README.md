@@ -123,6 +123,8 @@ The investigation card is updated each time another player shows a card.
 ![correct guess](documentation/features/game_features/correct_guess.png)  
 ![incorrect guess](documentation/features/game_features/wrong_guess.png)  
 
+
+
 **Favicon**  
 A magnifying glass icon was chosen as the favicon for the Heroku terminal program  
 ![favicon](documentation/features/game_features/favicon.png)  
@@ -408,6 +410,8 @@ Python Modules used:
 
 ## Testing
 ### Manual testing
+Details of manual testing may be found in the dedicated [TESTING document]((https://github.com/dragon-fire-fly/cluedo/blob/main/TESTING.md)).
+
 ### PEP-8 Compliance
 
 
@@ -426,6 +430,7 @@ The details of each of the resolved and outstanding bugs can be viewed by follow
 6. [Game crashing if the murder cards are investigated bug](https://github.com/dragon-fire-fly/cluedo/issues/7) (issue #7)
 7. [Cards in the "murder envelope" always the same bug](https://github.com/dragon-fire-fly/cluedo/issues/8) (issue #8)
 8. [KeyError when selecting a room](https://github.com/dragon-fire-fly/cluedo/issues/11) (issue #11)
+9. [Printing "You chose to stay in the hallway" instead of stay in current room](https://github.com/dragon-fire-fly/cluedo/issues/12)(issue #12)
 
 ### Outstanding Bugs
 1. [Sometimes end in wrong room bug](https://github.com/dragon-fire-fly/cluedo/issues/9) (issue #9)  
