@@ -184,7 +184,7 @@ def game_setup():
     player.set_starting_location(chosen_character)
     time.sleep(2)
     print("Shuffling cards...")
-    time.sleep(2)
+    time.sleep(3)
     clear()
     cards.deal_cards()
 
